@@ -1,0 +1,15 @@
+2016-04-13 22:47:45  Reading input records from 'demo_input.csv'.
+
+2016-04-13 22:47:45  Reading input record 001. Trying WoRMs EXACT match for scientific name: 'Placopecten magellanicus'. WoRMs EXACT match was SUCCESSFUL. UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'. ACCEPTED record 001. 
+2016-04-13 22:47:46  Reading input record 002. Trying WoRMs EXACT match for scientific name: 'Placopecten magellanicus'. WoRMs EXACT match was SUCCESSFUL. ACCEPTED record 002. 
+2016-04-13 22:47:46  Reading input record 003. Trying WoRMs EXACT match for scientific name: 'magellanicus placopecten'. WoRMs FUZZY match FAILED. REJECTED record 003. 
+2016-04-13 22:47:52  Reading input record 004. Trying WoRMs EXACT match for scientific name: 'Placopecten magellanicus'. WoRMs EXACT match was SUCCESSFUL. UPDATING scientific name authorship from '' to '(Gmelin, 1791)'. ACCEPTED record 004. 
+2016-04-13 22:47:53  Reading input record 005. Trying WoRMs EXACT match for scientific name: 'Placopecten magellanicus'. WoRMs EXACT match was SUCCESSFUL. ACCEPTED record 005. 
+2016-04-13 22:47:53  Reading input record 006. Trying WoRMs EXACT match for scientific name: ''. WoRMs FUZZY match FAILED. REJECTED record 006. 
+2016-04-13 22:47:58  Reading input record 007. Trying WoRMs EXACT match for scientific name: 'Placopcten magellanicus'. WoRMs FUZZY match was SUCCESSFUL. UPDATING scientific name from 'Placopcten magellanicus' to 'Placopecten magellanicus'. UPDATING scientific name authorship from 'Gmellin' to '(Gmelin, 1791)'. ACCEPTED record 007. 
+2016-04-13 22:48:03  Reading input record 008. Trying WoRMs EXACT match for scientific name: 'Placopecten magellanicus'. WoRMs EXACT match was SUCCESSFUL. ACCEPTED record 008. 
+2016-04-13 22:48:03  Reading input record 009. Trying WoRMs EXACT match for scientific name: 'Nodipecten nodsus'. WoRMs FUZZY match was SUCCESSFUL. UPDATING scientific name from 'Nodipecten nodsus' to 'Nodipecten nodosus'. ACCEPTED record 009. 
+2016-04-13 22:48:08  Reading input record 010. Trying WoRMs EXACT match for scientific name: 'Pecten nodosus'. WoRMs FUZZY match FAILED. REJECTED record 010. 
+
+2016-04-13 22:48:14  Wrote 7 accepted records to 'demo_cleaned.csv'.
+2016-04-13 22:48:14  Wrote 3 rejected records to 'demo_rejected.csv'.

@@ -1,0 +1,4 @@
+id,scientificName,scientificNameAuthorship,specificEpithet,genus,family,order,class,phylum,kingdom,recordedBy,eventDate,verbatimEventDate,locality,stateProvince,country,higherGeography
+MCZ:Mala:247327,magellanicus placopecten,"(Gmelin, 1791)",magellanicus,Placopecten,Pectinidae,Pectinoida,Bivalvia,Mollusca,Animalia,K. Read,1963-09-01/1963-09-30,Sep-63,"Salt Pond, Bluehill",Maine,United States,"North America, United States, Maine"
+MCZ:Mala:249963,,"(Gmelin, 1791)",magellanicus,Placopecten,Pectinidae,Pectinoida,Bivalvia,Mollusca,Animalia,Mr. Francis N. Balch,1904-06-01/1904-06-30,4-Jun,"Prince Edward Islands, Pleasant River",,Canada,"North America, Canada"
+MCZ:Mala:74068,Pecten nodosus,"(Linnaeus, 1758)",nodosus,Nodipecten,Pectinidae,Pectinoida,Bivalvia,Mollusca,Animalia,[no agent data],,[date unknown],St. Thomas,,West Indies,West Indies
