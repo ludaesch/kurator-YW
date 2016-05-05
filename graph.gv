@@ -1,0 +1,83 @@
+digraph Workflow {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_data_name_date_log
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Courier]
+clean_name_using_localDB
+date_validation
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+log_data [shape=record rankdir=LR label="{<f0> log_data |<f1> file\:\{log_data_file_name\}}"];
+output2_data [shape=record rankdir=LR label="{<f0> output2_data |<f1> file\:\{output2_data_file_name\}}"];
+log2_data [shape=record rankdir=LR label="{<f0> log2_data |<f1> file\:\{log2_data_file_name\}}"];
+localDB_data [shape=record rankdir=LR label="{<f0> localDB_data |<f1> \{localDB_data_file_name\}}"];
+input_data [shape=record rankdir=LR label="{<f0> input_data |<f1> file\:\{input_data_file_name\}}"];
+output_data [shape=record rankdir=LR label="{<f0> output_data |<f1> file\:\{output_data_file_name\}}"];
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+input_data_file_name
+localDB_data_file_name
+output_data_file_name
+log_data_file_name
+input_field_delimiter
+localDB_field_delimiter
+output_field_delimiter
+output2_data_file_name
+log2_data_file_name
+clean_name_using_localDB -> output_data
+clean_name_using_localDB -> log_data
+input_data_file_name -> clean_name_using_localDB
+localDB_data_file_name -> clean_name_using_localDB
+output_data_file_name -> clean_name_using_localDB
+log_data_file_name -> clean_name_using_localDB
+input_field_delimiter -> clean_name_using_localDB
+localDB_field_delimiter -> clean_name_using_localDB
+output_field_delimiter -> clean_name_using_localDB
+localDB_data -> clean_name_using_localDB
+input_data -> clean_name_using_localDB
+date_validation -> output2_data
+date_validation -> log2_data
+output2_data_file_name -> date_validation
+log2_data_file_name -> date_validation
+input_field_delimiter -> date_validation
+output_field_delimiter -> date_validation
+output_data -> date_validation
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+input_data_file_name_input_port [label=""]
+localDB_data_file_name_input_port [label=""]
+output_data_file_name_input_port [label=""]
+log_data_file_name_input_port [label=""]
+input_field_delimiter_input_port [label=""]
+localDB_field_delimiter_input_port [label=""]
+output_field_delimiter_input_port [label=""]
+input_data_input_port [label=""]
+localDB_data_input_port [label=""]
+output2_data_file_name_input_port [label=""]
+log2_data_file_name_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+log_data_output_port [label=""]
+output2_data_output_port [label=""]
+log2_data_output_port [label=""]
+}}
+input_data_file_name_input_port -> input_data_file_name
+localDB_data_file_name_input_port -> localDB_data_file_name
+output_data_file_name_input_port -> output_data_file_name
+log_data_file_name_input_port -> log_data_file_name
+input_field_delimiter_input_port -> input_field_delimiter
+localDB_field_delimiter_input_port -> localDB_field_delimiter
+output_field_delimiter_input_port -> output_field_delimiter
+input_data_input_port -> input_data
+localDB_data_input_port -> localDB_data
+output2_data_file_name_input_port -> output2_data_file_name
+log2_data_file_name_input_port -> log2_data_file_name
+log_data -> log_data_output_port
+output2_data -> output2_data_output_port
+log2_data -> log2_data_output_port
+}
