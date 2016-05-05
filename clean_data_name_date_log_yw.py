@@ -4,7 +4,6 @@ import time
 from datetime import datetime
 import re
 
-<<<<<<< HEAD
 #######################################################################
 
 """
@@ -24,10 +23,6 @@ import re
 @out output2_data  @uri file:{output2_data_file_name}
 @out log2_data @uri file:{log2_data_file_name}
 """
-=======
-##############################################################################
-
->>>>>>> kurator-org/master
 
 """
 @begin clean_name_using_localDB
@@ -38,18 +33,10 @@ import re
 @param input_field_delimiter
 @param localDB_field_delimiter
 @param output_field_delimiter
-<<<<<<< HEAD
 @in localDB_data @uri {localDB_data_file_name}
 @in input_data @uri file:{input_data_file_name}
 @out output_data  @uri file:{output_data_file_name}
 @out log_data @uri file:{log_data_file_name}
-=======
-@in input_data @uri file:{input_data_file_name}
-@out output_data  @uri file:{output_data_file_name}
-@out log_data @uri file:{log_data_file_name}
-@out accepted_record_count
-@out rejected_record_count
->>>>>>> kurator-org/master
 """
 def clean_name_using_localDB(
     input_data_file_name, 
@@ -68,7 +55,6 @@ def clean_name_using_localDB(
 
     # create log file 
     """
-<<<<<<< HEAD
     @log {timestamp} Reading input records from {input_data_file_name}
     """
     log_data = open(log_data_file_name,'w')    
@@ -82,29 +68,6 @@ def clean_name_using_localDB(
     @param localDB_field_delimiter
     @call fuzzymatch
     @out localDB_scientificName_lst
-=======
-    @begin create_log_file
-    @param input_data_file_name
-    @param log_data_file_name
-    @call timestamp
-    @log {timestamp} Reading input records from {input_data_file_name}
-    @out log_data @uri file:{log_data_file_name}
-    """
-    log_data = open(log_data_file_name,'w')    
-    log_data.write(timestamp("Reading input records from '{0}'.\n".format(input_data_file_name)))
-    """
-    @end create_log_file
-    """
-    
-    """
-    @begin read_records_from_localDB
-    @param localDB_data_file_name
-    @param localDB_data_fieldnames
-    @call fuzzymatch
-    @out localDB_record_num
-    @out localDB_scientificName_lst
-    @out localDB_authorship_lst
->>>>>>> kurator-org/master
     """
     # create CSV reader for localDB records
     localDB_data = csv.DictReader(open(localDB_data_file_name, 'r'),
@@ -142,15 +105,7 @@ def clean_name_using_localDB(
     @param input_data_file_name
     @param input_field_delimiter
     @in input_data @uri file:{input_data_file_name}
-<<<<<<< HEAD
     @out original_record
-=======
-    @call timestamp
-    @out record_num @as record_id
-    @out original_record
-    @out output_record
-    @out log_data @uri file:{log_data_file_name}
->>>>>>> kurator-org/master
     """
     # create CSV reader for input records
     input_data = csv.DictReader(open(input_data_file_name, 'r'),
@@ -158,32 +113,14 @@ def clean_name_using_localDB(
 
     # iterate over input data records
     record_num = 0
-<<<<<<< HEAD
       
-=======
-    
-    """
-    @begin create_output_data_file
-    @param output_data_file_name
-    @param output_field_delimiter
-    @out output_data
-    @out output_record_count
-    """
->>>>>>> kurator-org/master
     # open file for storing output data if not already open
     output_data = csv.DictWriter(open(output_data_file_name, 'w'), 
                                       input_data.fieldnames, 
                                       delimiter=output_field_delimiter)
     output_data.writeheader()
     output_record_count = 0
-<<<<<<< HEAD
    
-=======
-    """
-    @end create_output_data_file
-    """
-    
->>>>>>> kurator-org/master
     for original_record in input_data:
         output_record = original_record
         record_num += 1
@@ -198,46 +135,25 @@ def clean_name_using_localDB(
         """
     
         """
-<<<<<<< HEAD
         @begin extract_scientific_name_and_authorship_fields
-=======
-        @begin extract_record_fields
->>>>>>> kurator-org/master
         @in original_record    
         @out original_scientific_name
         @out original_authorship
         """     
-<<<<<<< HEAD
         # extract values of fields to be validated
         original_scientific_name = original_record['scientificName']
         original_authorship = original_record['scientificNameAuthorship']
         """
         @end extract_scientific_name_and_authorship_fields
-=======
-    # extract values of fields to be validated
-        original_scientific_name = original_record['scientificName']
-        original_authorship = original_record['scientificNameAuthorship']
-        """
-        @end extract_record_fields
->>>>>>> kurator-org/master
         """
     
         """    
         @begin find_matching_localDB_record 
         @in original_scientific_name
         @in localDB_scientificName_lst
-<<<<<<< HEAD
         @call exactmatch
         @OUT matching_localDB_record
         """
-=======
-        @call timestramp
-        @call exactmatch
-        @OUT matching_localDB_record
-        @OUT localDB_match_result
-        @out log_data @uri file:{log_data_file_name}
-            """
->>>>>>> kurator-org/master
         localDB_match_result = None
         
         
@@ -248,16 +164,6 @@ def clean_name_using_localDB(
         log_data.write(timestamp("Trying localDB EXACT match for scientific name: '{0}'.\n".format(original_scientific_name)))
         matching_localDB_record = exactmatch(localDB_scientificName_lst, original_scientific_name)
         
-<<<<<<< HEAD
-=======
-        
-        """
-        @begin compute_localDB_match_result
-        @in matching_localDB_record
-        @out localDB_match_result  
-        @out log_data @uri file:{log_data_file_name}
-        """
->>>>>>> kurator-org/master
         if matching_localDB_record is not None:
             """
             @log {timestamp} localDB EXACT match was SUCCESSFUL
@@ -282,30 +188,12 @@ def clean_name_using_localDB(
                 """
                 @log {timestamp}  localDB FUZZY match FAILED.
                 """
-<<<<<<< HEAD
                 log_data.write(timestamp('localDB FUZZY match FAILED.\n'))   
-=======
-                log_data.write(timestamp('localDB FUZZY match FAILED.\n'))
-        """
-        @end compute_localDB_match_result
-        """    
->>>>>>> kurator-org/master
         """
         @end find_matching_localDB_record
         """
 
     #########################################################
-<<<<<<< HEAD
-=======
-        """
-        @begin reject_records_not_in_localDB
-        @in localDB_match_result
-        @out output_data
-        @out rejected_record_count
-        @out output_record_count
-        @out log_data @uri file:{log_data_file_name}
-        """
->>>>>>> kurator-org/master
         # reject the currect record if not matched successfully against localDB
         if localDB_match_result is None:
             """
@@ -320,22 +208,11 @@ def clean_name_using_localDB(
             
             # skip to processing of next record in input file
             continue                
-<<<<<<< HEAD
      #############################################################
         """
         @begin update_scientific_name
         @in original_scientific_name
         @in matching_localDB_record
-=======
-        """
-        @end reject_records_not_in_localDB
-        """
-    #############################################################
-        """
-        @begin update_scientific_name
-        @in original_scientific_name
-        @in localDB_match_result
->>>>>>> kurator-org/master
         @out updated_scientific_name
         """
         updated_scientific_name = None
@@ -352,11 +229,6 @@ def clean_name_using_localDB(
         @begin update_authorship
         @in matching_localDB_record
         @in original_authorship
-<<<<<<< HEAD
-=======
-        @in localDB_authorship_lst
-        @in localDB_scientificName_lst
->>>>>>> kurator-org/master
         @out updated_authorship
         """
         updated_authorship = None
@@ -374,17 +246,9 @@ def clean_name_using_localDB(
         """
         @begin compose_output_record
         @in updated_scientific_name
-<<<<<<< HEAD
         @in original_record
         @in updated_authorship
         @out output_record
-=======
-        @in original_scientific_name
-        @in updated_authorship
-        @in original_authorship
-        @out output_record
-        @out log_data @uri file:{log_data_file_name}
->>>>>>> kurator-org/master
         """
         
         if updated_scientific_name is not None:
@@ -414,12 +278,6 @@ def clean_name_using_localDB(
         @param output_field_delimiter
         @in output_record
         @out output_data  @uri file:{output_data_file_name}
-<<<<<<< HEAD
-=======
-        @out output_record_count 
-        @out accepted_record_count
-        @out log_data @uri file: {log_data_file_name}
->>>>>>> kurator-org/master
         @log {timestamp} ACCEPTED record {record_id}
         """
         log_data.write(timestamp('ACCEPTED record {0:03d}.\n'.format(record_num)))
@@ -445,26 +303,14 @@ def clean_name_using_localDB(
 
 """
 @begin date_validation
-<<<<<<< HEAD
-=======
-@param input2_data_file_name @as output_data_file_name
->>>>>>> kurator-org/master
 @param output2_data_file_name 
 @param log2_data_file_name
 @param input_field_delimiter
 @param output_field_delimiter
-<<<<<<< HEAD
 @in output_data @uri file:{output_data_file_name}
 @param input2_data_file_name
 @out output2_data  @uri file:{output2_data_file_name}
 @out log2_data @uri file:{log2_data_file_name}
-=======
-@in input2_data @uri file:{input2_data_file_name}
-@out output2_data  @uri file:{output2_data_file_name}
-@out log2_data @uri file:{log2_data_file_name}
-@out accepted2_record_count
-@out rejected2_record_count
->>>>>>> kurator-org/master
 """
 def date_validation(
     input2_data_file_name,
@@ -481,44 +327,19 @@ def date_validation(
     
     # create log file 
     """
-<<<<<<< HEAD
     @log {timestamp} Reading input records from {input2_data_file_name}
     """
     log2_data = open(log2_data_file_name,'w')    
     log2_data.write(timestamp("Reading input records from '{0}'.\n".format(input2_data_file_name)))
 
-=======
-    @begin create_log2_file
-    @param input2_data_file_name
-    @param log2_data_file_name
-    @call timestamp
-    @log {timestamp} Reading input records from {input2_data_file_name}
-    @out log2_data @uri file:{log2_data_file_name}
-    """
-    log2_data = open(log2_data_file_name,'w')    
-    log2_data.write(timestamp("Reading input records from '{0}'.\n".format(input2_data_file_name)))
-    """
-    @end create_log2_file
-    """
->>>>>>> kurator-org/master
     match_result = None    
     # create CSV reader for input records
     """
     @begin read2_input_data_records
     @param input2_data_file_name
-<<<<<<< HEAD
     @param input_field_delimiter
     @in output_data @uri file:{output_data_file_name}
     @out original2_record
-=======
-    @param input2_field_delimiter
-    @in input2_data @uri file:{input2_data_file_name}
-    @call timestamp
-    @out record2_num @as record2_id
-    @out original2_record
-    @out output2_record
-    @out log2_data @uri file:{log2_data_file_name}
->>>>>>> kurator-org/master
     """
     input2_data = csv.DictReader(open(input2_data_file_name, 'r'),
                                 delimiter=input_field_delimiter)
@@ -528,27 +349,11 @@ def date_validation(
     
     
     # open file for storing output data if not already open
-<<<<<<< HEAD
-=======
-    """
-    @begin create_output2_data_file
-    @param output2_data_file_name
-    @param output_field_delimiter
-    @out output2_data
-    @out output2_record_count
-    """
->>>>>>> kurator-org/master
     output2_data = csv.DictWriter(open(output2_data_file_name, 'w'), 
                                       input2_data.fieldnames, 
                                       delimiter=output_field_delimiter)
     output2_data.writeheader()
     output2_record_count = 0
-<<<<<<< HEAD
-=======
-    """
-    @end create_output2_data_file
-    """
->>>>>>> kurator-org/master
     
     for original2_record in input2_data:
         output2_record = original2_record
@@ -565,41 +370,22 @@ def date_validation(
         
         # extract values of fields to be validated
         """
-<<<<<<< HEAD
         @begin extract_eventDate_fields
-=======
-        @begin extract_record_fields
->>>>>>> kurator-org/master
         @in original2_record    
         @out original2_eventDate
         """
         original2_eventDate = original2_record['eventDate']
         updated2_eventDate = None
         """
-<<<<<<< HEAD
         @end extract_eventDate_fields
-=======
-        @end extract_record_fields
->>>>>>> kurator-org/master
         """
         
         """
         @begin clean_eventDate
         @in original2_eventDate
         @out log2_data
-<<<<<<< HEAD
         @param log2_data_file_name
         @out output2_data
-=======
-        @out match2_result
-        @out updated2_eventDate
-        @param log2_data_file_name
-        @out rejected2_record_count
-        @out output2_record_count
-        @out output2_data
-        @out output2_record_count
-        @out accepted2_record_count
->>>>>>> kurator-org/master
         """
         # reject the currect record if no value
         if len(original2_eventDate) < 1:
@@ -707,13 +493,9 @@ def date_validation(
 """
 @end date_validation               
 """
-<<<<<<< HEAD
 """
 @end clean_data_name_date_log
 """
-=======
-
->>>>>>> kurator-org/master
 
 """    
 @begin exactmatch
