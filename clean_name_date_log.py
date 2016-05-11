@@ -4,21 +4,7 @@ import time
 from datetime import datetime
 import re
 
-##################################################################################################
-# @BEGIN clean_data_using_localDB
-# @PARAM input_data_file_name
-# @PARAM cleaned_data_file_name
-# @PARAM rejected_data_file_name
-# @PARAM log_data_file_name
-# @PARAM input_field_delimiter
-# @PARAM output_field_delimiter
-# @PARAM log_field_delimiter
-# @IN input_data @FILE file:{input_data_file_name}
-# @OUT cleaned_data  @FILE file:{cleaned_data_file_name}
-# @OUT rejected_data @FILE file:{rejected_data_file_name}
-# @OUT log_data @FILE file:{log_data_file_name}
-
-def clean_data_using_localDB(
+def name_val(
     input_data_file_name, 
     localDB_data_file_name,
     output_data_file_name,
@@ -32,14 +18,7 @@ def clean_data_using_localDB(
     rejected_record_count = 0
     log_record_count = 0
     output_record_count = 0
-
-    ##############################################################################################
-    # @BEGIN read_input_data_records
-    # @PARAM input_data_file_name
-    # @PARAM input_field_delimiter
-    # @IN input_data @FILE file:{input_data_file_name}
-    # @OUT original_record
-    
+   
     # create log file 
     log_data = open(log_data_file_name,'w')    
     log_data.write(timestamp("Reading input records from '{0}'.\n".format(input_data_file_name)))
@@ -92,27 +71,10 @@ def clean_data_using_localDB(
         log_data.write('\n')
         log_data.write(timestamp('Reading input record {0:03d}.\n'.format(record_num)))
     
-    # @END read_input_data_records
-
-    ##############################################################################################
-    # @BEGIN extract_record_fields 
-    # @IN original_record
-    # @OUT original_scientific_name
-    # @OUT original_authorship
-    
         # extract values of fields to be validated
         original_scientific_name = original_record['scientificName']
         original_authorship = original_record['scientificNameAuthorship']
             
-    # @END extract_record_fields 
-
-        
-    ##############################################################################################
-    # @BEGIN find_matching_localDB_record 
-    # @IN original_scientific_name
-    # @OUT matching_localDB_record
-    # @OUT localDB_lsid
-    
         localDB_match_result = None
         
         # first try exact match of the scientific name against localDB
@@ -134,19 +96,6 @@ def clean_data_using_localDB(
             else:
                 log_data.write(timestamp('localDB FUZZY match FAILED.\n'))
                 
-            
-                    
-    # @END find_matching_localDB_record
-
-    ##############################################################################################
-    # @BEGIN reject_records_not_in_localDB
-    # @IN original_record
-    # @IN matching_localDB_record
-    # @PARAM rejected_data_file_name
-    # @PARAM output_field_delimiter
-    # @OUT rejected_data @FILE file:{rejected_data_file_name}
-    
-        # reject the currect record if not matched successfully against localDB
         if localDB_match_result is None:
             log_data.write(timestamp('REJECTED record {0:03d}.\n'.format(record_num)))
             rejected_record_count += 1
@@ -157,27 +106,12 @@ def clean_data_using_localDB(
             
             # skip to processing of next record in input file
             continue
-                
-    # @END reject_records_not_in_localDB
-
-    ##############################################################################################
-    # @BEGIN update_scientific_name
-    # @IN original_scientific_name
-    # @IN matching_localDB_record
-    # @OUT updated_scientific_name
         
         updated_scientific_name = None
         
         # get scientific name from localDB record if the taxon name match was fuzzy
         if localDB_match_result == 'fuzzy':
             updated_scientific_name = matching_localDB_record['original_scientific_name']
-    # @END update_scientific_name
-
-    ##############################################################################################
-    # @BEGIN update_authorship
-    # @IN matching_localDB_record
-    # @IN original_authorship
-    # @OUT updated_authorship
     
         updated_authorship = None
         
@@ -186,18 +120,6 @@ def clean_data_using_localDB(
         if localDB_name_authorship != original_authorship:
             updated_authorship = localDB_name_authorship
 
-    # @END update_authorship
-
-    ##############################################################################################
-    # @BEGIN compose_cleaned_record
-    # @IN original_record
-    # @IN localDB_lsid
-    # @IN updated_scientific_name
-    # @IN original_scientific_name
-    # @IN updated_authorship
-    # @IN original_authorship
-    # @OUT cleaned_record
-        
         if updated_scientific_name is not None:
             log_data.write(timestamp("UPDATING scientific name from '{0}' to '{1}'.\n".format(
                      original_scientific_name, updated_scientific_name)))
@@ -208,32 +130,18 @@ def clean_data_using_localDB(
                 original_authorship, updated_authorship)))
             output_record['scientificNameAuthorship'] = updated_authorship
                 
-    # @END compose_cleaned_record
-
-    ##############################################################################################
-    # @BEGIN write_clean_data_set
-    # @PARAM cleaned_data_file_name
-    # @PARAM output_field_delimiter
-    # @IN cleaned_record
-    # @OUT cleaned_data  @FILE file:{cleaned_data_file_name}
-
-    
         log_data.write(timestamp('ACCEPTED record {0:03d}.\n'.format(record_num)))
         accepted_record_count += 1
         # write output record to output file
         output_data.writerow(output_record)
         output_record_count += 1
-        
-    # @END write_clean_data_set
 
     print
     log_data.write("\n")
     log_data.write(timestamp("Wrote {0} accepted records to '{1}'.\n".format(accepted_record_count, output_data_file_name)))
     log_data.write(timestamp("Wrote {0} rejected records to '{1}'.\n".format(rejected_record_count, output_data_file_name)))
 
-# @END clean_data_using_localDB
-
-def date_validation(
+def date_val(
     input_data_file_name2,
     output_data_file_name_date,
     log_data_file_name_date,
@@ -385,15 +293,15 @@ def timestamp(message):
     return '  '.join(timestamp_message)
 
 if __name__ == '__main__':
-    """ Demo of clean_data_using_localDB script """
+    """ Demo of name_val script """
 
-    clean_data_using_localDB(
+    name_val(
         input_data_file_name='demo_input.csv',
         localDB_data_file_name='demo_localDB.csv',
         output_data_file_name='demo_output_ScientificName.csv',
         log_data_file_name='demo_log_ScientificName.txt'
     )
-    date_validation(
+    date_val(
         input_data_file_name2='demo_output_ScientificName.csv',
         output_data_file_name_date='demo_output_ScientificName_EventDate.csv',
         log_data_file_name_date='demo_log_EventDate.txt'

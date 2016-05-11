@@ -7,42 +7,26 @@ import re
 #######################################################################
 
 """
-@begin clean_data_name_date_log
-@param input_data_file_name
-@param localDB_data_file_name
-@param output_data_file_name
-@param log_data_file_name
-@param input_field_delimiter
-@param localDB_field_delimiter
-@param output_field_delimiter
-@in input_data @uri file:{input_data_file_name}
+@begin clean_name_date_log
+@in input1_data @uri file:{input1_data_file_name}
 @in localDB_data @uri {localDB_data_file_name}
-@out log_data @uri file:{log_data_file_name}
-@param output2_data_file_name 
-@param log2_data_file_name
+@out log1_data @uri file:{log1_data_file_name}
 @out output2_data  @uri file:{output2_data_file_name}
 @out log2_data @uri file:{log2_data_file_name}
 """
 
 """
-@begin clean_name_using_localDB
-@param input_data_file_name
-@param localDB_data_file_name
-@param output_data_file_name
-@param log_data_file_name
-@param input_field_delimiter
-@param localDB_field_delimiter
-@param output_field_delimiter
+@begin name_val
 @in localDB_data @uri {localDB_data_file_name}
-@in input_data @uri file:{input_data_file_name}
-@out output_data  @uri file:{output_data_file_name}
-@out log_data @uri file:{log_data_file_name}
+@in input1_data @uri file:{input1_data_file_name}
+@out output1_data  @uri file:{output1_data_file_name}
+@out log1_data @uri file:{log1_data_file_name}
 """
-def clean_name_using_localDB(
-    input_data_file_name, 
+def name_val(
+    input1_data_file_name, 
     localDB_data_file_name,
-    output_data_file_name,
-    log_data_file_name,
+    output1_data_file_name,
+    log1_data_file_name,
     input_field_delimiter=',',
     localDB_field_delimiter=',',
     output_field_delimiter=','
@@ -51,21 +35,18 @@ def clean_name_using_localDB(
     accepted_record_count = 0
     rejected_record_count = 0
     log_record_count = 0
-    output_record_count = 0
+    output1_record_count = 0
 
     # create log file 
     """
-    @log {timestamp} Reading input records from {input_data_file_name}
+    @log {timestamp} Reading input records from {input1_data_file_name}
     """
-    log_data = open(log_data_file_name,'w')    
-    log_data.write(timestamp("Reading input records from '{0}'.\n".format(input_data_file_name)))
+    log1_data = open(log1_data_file_name,'w')    
+    log1_data.write(timestamp("Reading input records from '{0}'.\n".format(input1_data_file_name)))
     
     """
     @begin read_records_from_localDB
     @in localDB_data @uri {localDB_data_file_name}
-    @param localDB_data_file_name
-    @param localDB_data_fieldnames
-    @param localDB_field_delimiter
     @call fuzzymatch
     @out localDB_scientificName_lst
     """
@@ -101,55 +82,52 @@ def clean_name_using_localDB(
     """
     
     """
-    @begin read_input_data_records
-    @param input_data_file_name
-    @param input_field_delimiter
-    @in input_data @uri file:{input_data_file_name}
-    @out original_record
+    @begin read_input1_data_records
+    @in input1_data @uri file:{input1_data_file_name}
+    @out original1_record
     """
     # create CSV reader for input records
-    input_data = csv.DictReader(open(input_data_file_name, 'r'),
+    input1_data = csv.DictReader(open(input1_data_file_name, 'r'),
                                 delimiter=input_field_delimiter)
 
     # iterate over input data records
     record_num = 0
       
     # open file for storing output data if not already open
-    output_data = csv.DictWriter(open(output_data_file_name, 'w'), 
-                                      input_data.fieldnames, 
+    output_data = csv.DictWriter(open(output1_data_file_name, 'w'), 
+                                      input1_data.fieldnames, 
                                       delimiter=output_field_delimiter)
     output_data.writeheader()
-    output_record_count = 0
    
-    for original_record in input_data:
-        output_record = original_record
+    for original1_record in input1_data:
+        output1_record = original1_record
         record_num += 1
         print
         """
         @log {timestamp} Reading input record {record_id} 
         """
-        log_data.write('\n')
-        log_data.write(timestamp('Reading input record {0:03d}.\n'.format(record_num)))   
+        log1_data.write('\n')
+        log1_data.write(timestamp('Reading input record {0:03d}.\n'.format(record_num)))   
         """
-        @end read_input_data_records
+        @end read_input1_data_records
         """
     
         """
-        @begin extract_scientific_name_and_authorship_fields
-        @in original_record    
-        @out original_scientific_name
+        @begin extract_scientificName_and_authorship
+        @in original1_record    
+        @out original_scientificName
         @out original_authorship
         """     
         # extract values of fields to be validated
-        original_scientific_name = original_record['scientificName']
-        original_authorship = original_record['scientificNameAuthorship']
+        original_scientificName = original1_record['scientificName']
+        original_authorship = original1_record['scientificNameAuthorship']
         """
-        @end extract_scientific_name_and_authorship_fields
+        @end extract_scientificName_and_authorship
         """
     
         """    
         @begin find_matching_localDB_record 
-        @in original_scientific_name
+        @in original_scientificName
         @in localDB_scientificName_lst
         @call exactmatch
         @OUT matching_localDB_record
@@ -159,36 +137,36 @@ def clean_name_using_localDB(
         
         # first try exact match of the scientific name against localDB
         """
-        @log {timestamp} Trying localDB EXACT match for scientific name: {original_scientific_name}
+        @log {timestamp} Trying localDB EXACT match for scientific name: {original_scientificName}
         """
-        log_data.write(timestamp("Trying localDB EXACT match for scientific name: '{0}'.\n".format(original_scientific_name)))
-        matching_localDB_record = exactmatch(localDB_scientificName_lst, original_scientific_name)
+        log1_data.write(timestamp("Trying localDB EXACT match for scientific name: '{0}'.\n".format(original_scientificName)))
+        matching_localDB_record = exactmatch(localDB_scientificName_lst, original_scientificName)
         
         if matching_localDB_record is not None:
             """
             @log {timestamp} localDB EXACT match was SUCCESSFUL
             """
-            log_data.write(timestamp('localDB EXACT match was SUCCESSFUL.\n'))
+            log1_data.write(timestamp('localDB EXACT match was SUCCESSFUL.\n'))
             localDB_match_result = 'exact'
 
         # otherwise try a fuzzy match
         else:
             """
             @log {timestamp} EXACT match FAILED.
-            @log {timestamp} Trying localDB FUZZY match for scientific name: {original_scientific_name}
+            @log {timestamp} Trying localDB FUZZY match for scientific name: {original_scientificName}
             """
-            log_data.write(timestamp('EXACT match FAILED.\n'))
-            log_data.write(timestamp("Trying localDB FUZZY match for scientific name: '{0}'.\n".format(original_scientific_name)))
-            matching_localDB_record = fuzzymatch(localDB_scientificName_lst, original_scientific_name)
+            log1_data.write(timestamp('EXACT match FAILED.\n'))
+            log1_data.write(timestamp("Trying localDB FUZZY match for scientific name: '{0}'.\n".format(original_scientificName)))
+            matching_localDB_record = fuzzymatch(localDB_scientificName_lst, original_scientificName)
             
             if None not in matching_localDB_record.values():
-                log_data.write(timestamp('localDB FUZZY match was SUCCESSFUL.\n'))
+                log1_data.write(timestamp('localDB FUZZY match was SUCCESSFUL.\n'))
                 localDB_match_result = 'fuzzy'
             else:
                 """
                 @log {timestamp}  localDB FUZZY match FAILED.
                 """
-                log_data.write(timestamp('localDB FUZZY match FAILED.\n'))   
+                log1_data.write(timestamp('localDB FUZZY match FAILED.\n'))   
         """
         @end find_matching_localDB_record
         """
@@ -199,29 +177,29 @@ def clean_name_using_localDB(
             """
             @log {timestamp} REJECTED record {record_id}
             """
-            log_data.write(timestamp('REJECTED record {0:03d}.\n'.format(record_num)))
+            log1_data.write(timestamp('REJECTED record {0:03d}.\n'.format(record_num)))
             rejected_record_count += 1
             
             # write output record to output file
-            output_data.writerow(output_record)
-            output_record_count += 1
+            output_data.writerow(output1_record)
+            output1_record_count += 1
             
             # skip to processing of next record in input file
             continue                
      #############################################################
         """
-        @begin update_scientific_name
-        @in original_scientific_name
+        @begin update_scientificName
+        @in original_scientificName
         @in matching_localDB_record
-        @out updated_scientific_name
+        @out updated_scientificName
         """
-        updated_scientific_name = None
+        updated_scientificName = None
         
         # get scientific name from localDB record if the taxon name match was fuzzy
         if localDB_match_result == 'fuzzy':
-            updated_scientific_name = matching_localDB_record['original_scientific_name']
+            updated_scientificName = matching_localDB_record['original_scientificName']
         """
-        @end update_scientific_name
+        @end update_scientificName
         """
 
     #####################################################################
@@ -244,75 +222,68 @@ def clean_name_using_localDB(
 
     #####################################################################
         """
-        @begin compose_output_record
-        @in updated_scientific_name
-        @in original_record
+        @begin compose_output1_record
+        @in updated_scientificName
         @in updated_authorship
-        @out output_record
+        @out output1_record
         """
         
-        if updated_scientific_name is not None:
+        if updated_scientificName is not None:
             """
-            @log {timestamp} UPDATING scientific name from {original_scientific_name} to {updated_scientific_name}
+            @log {timestamp} UPDATING scientific name from {original_scientificName} to {updated_scientificName}
             """
-            log_data.write(timestamp("UPDATING scientific name from '{0}' to '{1}'.\n".format(
-                     original_scientific_name, updated_scientific_name)))
-            output_record['scientificName'] = updated_scientific_name
+            log1_data.write(timestamp("UPDATING scientific name from '{0}' to '{1}'.\n".format(
+                     original_scientificName, updated_scientificName)))
+            output1_record['scientificName'] = updated_scientificName
             
         if updated_authorship is not None:
             """
             @log {timestamp} UPDATING scientific name authorship from {original_authorship} to {updated_authorship}
             """
-            log_data.write(timestamp("UPDATING scientific name authorship from '{0}' to '{1}'.\n".format(
+            log1_data.write(timestamp("UPDATING scientific name authorship from '{0}' to '{1}'.\n".format(
                 original_authorship, updated_authorship)))
-            output_record['scientificNameAuthorship'] = updated_authorship
+            output1_record['scientificNameAuthorship'] = updated_authorship
                 
         """
-        @end compose_output_record
+        @end compose_output1_record
         """
 
     #####################################################################
         """
         @begin write_output_data_set
-        @param output_data_file_name
-        @param output_field_delimiter
-        @in output_record
-        @out output_data  @uri file:{output_data_file_name}
+        @in output1_record
+        @out output1_data  @uri file:{output1_data_file_name}
+        @out log1_data @uri file:{log1_data_file_name}
         @log {timestamp} ACCEPTED record {record_id}
         """
-        log_data.write(timestamp('ACCEPTED record {0:03d}.\n'.format(record_num)))
+        log1_data.write(timestamp('ACCEPTED record {0:03d}.\n'.format(record_num)))
         accepted_record_count += 1
         # write output record to output file
-        output_data.writerow(output_record)
-        output_record_count += 1
+        output_data.writerow(output1_record)
+        output1_record_count += 1
         """
         @end write_output_data_set
         """
 
     print
-    log_data.write("\n")
+    log1_data.write("\n")
     """
-    @log {timestamp} Wrote {accepted_record_count} accepted records to {output_data_file_name}
-    @log {timestamp} Wrote {rejected_record_count} rejected records to {output_data_file_name}
+    @log {timestamp} Wrote {accepted_record_count} accepted records to {output1_data_file_name}
+    @log {timestamp} Wrote {rejected_record_count} rejected records to {output1_data_file_name}
     """
-    log_data.write(timestamp("Wrote {0} accepted records to '{1}'.\n".format(accepted_record_count, output_data_file_name)))
-    log_data.write(timestamp("Wrote {0} rejected records to '{1}'.\n".format(rejected_record_count, output_data_file_name)))
+    log1_data.write(timestamp("Wrote {0} accepted records to '{1}'.\n".format(accepted_record_count, output1_data_file_name)))
+    log1_data.write(timestamp("Wrote {0} rejected records to '{1}'.\n".format(rejected_record_count, output1_data_file_name)))
 """
-@end clean_name_using_localDB
+@end name_val
 """
 
 """
-@begin date_validation
-@param output2_data_file_name 
-@param log2_data_file_name
-@param input_field_delimiter
-@param output_field_delimiter
-@in output_data @uri file:{output_data_file_name}
-@param input2_data_file_name
+@begin date_val
+@in output1_data  @uri file:{output1_data_file_name}
 @out output2_data  @uri file:{output2_data_file_name}
 @out log2_data @uri file:{log2_data_file_name}
 """
-def date_validation(
+def date_val(
     input2_data_file_name,
     output2_data_file_name,
     log2_data_file_name,
@@ -336,9 +307,7 @@ def date_validation(
     # create CSV reader for input records
     """
     @begin read2_input_data_records
-    @param input2_data_file_name
-    @param input_field_delimiter
-    @in output_data @uri file:{output_data_file_name}
+    @in input2_data  @uri file:{output1_data_file_name}
     @out original2_record
     """
     input2_data = csv.DictReader(open(input2_data_file_name, 'r'),
@@ -370,22 +339,21 @@ def date_validation(
         
         # extract values of fields to be validated
         """
-        @begin extract_eventDate_fields
+        @begin extract_eventDate
         @in original2_record    
         @out original2_eventDate
         """
         original2_eventDate = original2_record['eventDate']
         updated2_eventDate = None
         """
-        @end extract_eventDate_fields
+        @end extract_eventDate
         """
         
         """
         @begin clean_eventDate
         @in original2_eventDate
-        @out log2_data
-        @param log2_data_file_name
-        @out output2_data
+        @out log2_data @uri file:{log2_data_file_name}
+        @out output2_data  @uri file:{output2_data_file_name}
         """
         # reject the currect record if no value
         if len(original2_eventDate) < 1:
@@ -491,10 +459,10 @@ def date_validation(
     log2_data.write(timestamp("Wrote {0} accepted records to '{1}'.\n".format(accepted2_record_count, output2_data_file_name)))
     log2_data.write(timestamp("Wrote {0} rejected records to '{1}'.\n".format(rejected2_record_count, output2_data_file_name)))
 """
-@end date_validation               
+@end date_val               
 """
 """
-@end clean_data_name_date_log
+@end clean_name_date_log
 """
 
 """    
@@ -556,16 +524,16 @@ def timestamp(message):
 """
 
 if __name__ == '__main__':
-    """ Demo of clean_data_name_date_log script """
+    """ Demo of clean_name_date_log script """
 
-    clean_name_using_localDB(
-        input_data_file_name='demo_input.csv',
+    name_val(
+        input1_data_file_name='demo_input.csv',
         localDB_data_file_name='demo_localDB.csv',
-        output_data_file_name='demo_output_ScientificName.csv',
-        log_data_file_name='demo_log_ScientificName.txt'
+        output1_data_file_name='demo_output_name_val.csv',
+        log1_data_file_name='name_val_log.txt'
     )
-    date_validation(
-        input2_data_file_name='demo_output_ScientificName.csv',
-        output2_data_file_name='demo_output_ScientificName_EventDate.csv',
-        log2_data_file_name='demo_log_EventDate.txt'
+    date_val(
+        input2_data_file_name='demo_output_name_val.csv',
+        output2_data_file_name='demo_output_name_date_val.csv',
+        log2_data_file_name='date_val_log.txt'
     )
