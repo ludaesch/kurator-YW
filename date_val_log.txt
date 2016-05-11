@@ -1,0 +1,51 @@
+2016-05-11 18:05:49  Reading input records from 'demo_output_name_val.csv'.
+
+2016-05-11 18:05:49  Reading input record 001.
+2016-05-11 18:05:49  Checking ISO date format (YYYY-MM-DD) for event date: '5/27/50'.
+2016-05-11 18:05:49  Not compliant with ISO date format.
+2016-05-11 18:05:49  Converting event date format from '5/27/50' to '1950-05-27'.
+2016-05-11 18:05:49  ACCEPTED record 001.
+
+2016-05-11 18:05:49  Reading input record 002.
+2016-05-11 18:05:49  Checking ISO date format (YYYY-MM-DD) for event date: '1880-01-01/1880-12-31'.
+2016-05-11 18:05:49  Compliant with ISO date format.
+2016-05-11 18:05:49  ACCEPTED record 002.
+
+2016-05-11 18:05:49  Reading input record 003.
+2016-05-11 18:05:49  Checking ISO date format (YYYY-MM-DD) for event date: '1963-09-01/1963-09-30'.
+2016-05-11 18:05:49  Compliant with ISO date format.
+2016-05-11 18:05:49  ACCEPTED record 003.
+
+2016-05-11 18:05:49  Reading input record 004.
+2016-05-11 18:05:49  Checking ISO date format (YYYY-MM-DD) for event date: '1931-09-01/1931-09-30'.
+2016-05-11 18:05:49  Compliant with ISO date format.
+2016-05-11 18:05:49  ACCEPTED record 004.
+
+2016-05-11 18:05:49  Reading input record 005.
+2016-05-11 18:05:49  Checking ISO date format (YYYY-MM-DD) for event date: '1880-01-01/1880-12-31'.
+2016-05-11 18:05:49  Compliant with ISO date format.
+2016-05-11 18:05:49  ACCEPTED record 005.
+
+2016-05-11 18:05:49  Reading input record 006.
+2016-05-11 18:05:49  Checking ISO date format (YYYY-MM-DD) for event date: '1904-06-01/1904-06-30'.
+2016-05-11 18:05:49  Compliant with ISO date format.
+2016-05-11 18:05:49  ACCEPTED record 006.
+
+2016-05-11 18:05:49  Reading input record 007.
+2016-05-11 18:05:49  Trying validating event date: .
+2016-05-11 18:05:49  REJECTED record 007.
+
+2016-05-11 18:05:49  Reading input record 008.
+2016-05-11 18:05:49  Trying validating event date: .
+2016-05-11 18:05:49  REJECTED record 008.
+
+2016-05-11 18:05:49  Reading input record 009.
+2016-05-11 18:05:49  Trying validating event date: .
+2016-05-11 18:05:49  REJECTED record 009.
+
+2016-05-11 18:05:49  Reading input record 010.
+2016-05-11 18:05:49  Trying validating event date: .
+2016-05-11 18:05:49  REJECTED record 010.
+
+2016-05-11 18:05:49  Wrote 6 accepted records to 'demo_output_name_date_val.csv'.
+2016-05-11 18:05:49  Wrote 4 rejected records to 'demo_output_name_date_val.csv'.
