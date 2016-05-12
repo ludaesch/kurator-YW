@@ -85,6 +85,7 @@ def name_val(
     @begin read_input1_data_records
     @in input1_data @uri file:{input1_data_file_name}
     @out original1_record
+    @out record_num @as record_id
     """
     # create CSV reader for input records
     input1_data = csv.DictReader(open(input1_data_file_name, 'r'),
@@ -250,8 +251,9 @@ def name_val(
 
     #####################################################################
         """
-        @begin write_output_data_set
+        @begin write_output_data
         @in output1_record
+        @in record_num @as record_id
         @out output1_data  @uri file:{output1_data_file_name}
         @out log1_data @uri file:{log1_data_file_name}
         @log {timestamp} ACCEPTED record {record_id}
@@ -262,7 +264,7 @@ def name_val(
         output_data.writerow(output1_record)
         output1_record_count += 1
         """
-        @end write_output_data_set
+        @end write_output_data
         """
 
     print

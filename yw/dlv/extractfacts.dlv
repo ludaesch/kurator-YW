@@ -1,0 +1,139 @@
+
+% FACT: extract_source(source_id, source_path).
+extract_source(1, 'clean_name_date_log_yw.py').
+
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
+annotation(1, 1, 10, 'begin', '@begin', 'clean_name_date_log').
+annotation(2, 1, 11, 'in', '@in', 'input1_data').
+annotation(3, 1, 11, 'uri', '@uri', 'file:{input1_data_file_name}').
+annotation(4, 1, 12, 'in', '@in', 'localDB_data').
+annotation(5, 1, 12, 'uri', '@uri', '{localDB_data_file_name}').
+annotation(6, 1, 13, 'out', '@out', 'log1_data').
+annotation(7, 1, 13, 'uri', '@uri', 'file:{log1_data_file_name}').
+annotation(8, 1, 14, 'out', '@out', 'output2_data').
+annotation(9, 1, 14, 'uri', '@uri', 'file:{output2_data_file_name}').
+annotation(10, 1, 15, 'out', '@out', 'log2_data').
+annotation(11, 1, 15, 'uri', '@uri', 'file:{log2_data_file_name}').
+annotation(12, 1, 19, 'begin', '@begin', 'name_val').
+annotation(13, 1, 20, 'in', '@in', 'localDB_data').
+annotation(14, 1, 20, 'uri', '@uri', '{localDB_data_file_name}').
+annotation(15, 1, 21, 'in', '@in', 'input1_data').
+annotation(16, 1, 21, 'uri', '@uri', 'file:{input1_data_file_name}').
+annotation(17, 1, 22, 'out', '@out', 'output1_data').
+annotation(18, 1, 22, 'uri', '@uri', 'file:{output1_data_file_name}').
+annotation(19, 1, 23, 'out', '@out', 'log1_data').
+annotation(20, 1, 23, 'uri', '@uri', 'file:{log1_data_file_name}').
+annotation(21, 1, 48, 'begin', '@begin', 'read_records_from_localDB').
+annotation(22, 1, 49, 'in', '@in', 'localDB_data').
+annotation(23, 1, 49, 'uri', '@uri', '{localDB_data_file_name}').
+annotation(24, 1, 50, 'call', '@call', 'fuzzymatch').
+annotation(25, 1, 51, 'out', '@out', 'localDB_scientificName_lst').
+annotation(26, 1, 81, 'end', '@end', 'read_records_from_localDB').
+annotation(27, 1, 85, 'begin', '@begin', 'read_input1_data_records').
+annotation(28, 1, 86, 'in', '@in', 'input1_data').
+annotation(29, 1, 86, 'uri', '@uri', 'file:{input1_data_file_name}').
+annotation(30, 1, 87, 'out', '@out', 'original1_record').
+annotation(31, 1, 88, 'out', '@out', 'record_num').
+annotation(32, 1, 88, 'as', '@as', 'record_id').
+annotation(33, 1, 113, 'end', '@end', 'read_input1_data_records').
+annotation(34, 1, 117, 'begin', '@begin', 'extract_scientificName_and_authorship').
+annotation(35, 1, 118, 'in', '@in', 'original1_record').
+annotation(36, 1, 119, 'out', '@out', 'original_scientificName').
+annotation(37, 1, 120, 'out', '@out', 'original_authorship').
+annotation(38, 1, 126, 'end', '@end', 'extract_scientificName_and_authorship').
+annotation(39, 1, 130, 'begin', '@begin', 'find_matching_localDB_record').
+annotation(40, 1, 131, 'in', '@in', 'original_scientificName').
+annotation(41, 1, 132, 'in', '@in', 'localDB_scientificName_lst').
+annotation(42, 1, 133, 'call', '@call', 'exactmatch').
+annotation(43, 1, 134, 'out', '@OUT', 'matching_localDB_record').
+annotation(44, 1, 172, 'end', '@end', 'find_matching_localDB_record').
+annotation(45, 1, 192, 'begin', '@begin', 'update_scientificName').
+annotation(46, 1, 193, 'in', '@in', 'original_scientificName').
+annotation(47, 1, 194, 'in', '@in', 'matching_localDB_record').
+annotation(48, 1, 195, 'out', '@out', 'updated_scientificName').
+annotation(49, 1, 203, 'end', '@end', 'update_scientificName').
+annotation(50, 1, 208, 'begin', '@begin', 'update_authorship').
+annotation(51, 1, 209, 'in', '@in', 'matching_localDB_record').
+annotation(52, 1, 210, 'in', '@in', 'original_authorship').
+annotation(53, 1, 211, 'out', '@out', 'updated_authorship').
+annotation(54, 1, 221, 'end', '@end', 'update_authorship').
+annotation(55, 1, 226, 'begin', '@begin', 'compose_output1_record').
+annotation(56, 1, 227, 'in', '@in', 'updated_scientificName').
+annotation(57, 1, 228, 'in', '@in', 'updated_authorship').
+annotation(58, 1, 229, 'out', '@out', 'output1_record').
+annotation(59, 1, 249, 'end', '@end', 'compose_output1_record').
+annotation(60, 1, 254, 'begin', '@begin', 'write_output_data').
+annotation(61, 1, 255, 'in', '@in', 'output1_record').
+annotation(62, 1, 256, 'in', '@in', 'record_num').
+annotation(63, 1, 256, 'as', '@as', 'record_id').
+annotation(64, 1, 257, 'out', '@out', 'output1_data').
+annotation(65, 1, 257, 'uri', '@uri', 'file:{output1_data_file_name}').
+annotation(66, 1, 258, 'out', '@out', 'log1_data').
+annotation(67, 1, 258, 'uri', '@uri', 'file:{log1_data_file_name}').
+annotation(68, 1, 267, 'end', '@end', 'write_output_data').
+annotation(69, 1, 279, 'end', '@end', 'name_val').
+annotation(70, 1, 283, 'begin', '@begin', 'date_val').
+annotation(71, 1, 284, 'in', '@in', 'output1_data').
+annotation(72, 1, 284, 'uri', '@uri', 'file:{output1_data_file_name}').
+annotation(73, 1, 285, 'out', '@out', 'output2_data').
+annotation(74, 1, 285, 'uri', '@uri', 'file:{output2_data_file_name}').
+annotation(75, 1, 286, 'out', '@out', 'log2_data').
+annotation(76, 1, 286, 'uri', '@uri', 'file:{log2_data_file_name}').
+annotation(77, 1, 311, 'begin', '@begin', 'read2_input_data_records').
+annotation(78, 1, 312, 'in', '@in', 'input2_data').
+annotation(79, 1, 312, 'uri', '@uri', 'file:{output1_data_file_name}').
+annotation(80, 1, 313, 'out', '@out', 'original2_record').
+annotation(81, 1, 339, 'end', '@end', 'read2_input_data_records').
+annotation(82, 1, 344, 'begin', '@begin', 'extract_eventDate').
+annotation(83, 1, 345, 'in', '@in', 'original2_record').
+annotation(84, 1, 346, 'out', '@out', 'original2_eventDate').
+annotation(85, 1, 351, 'end', '@end', 'extract_eventDate').
+annotation(86, 1, 355, 'begin', '@begin', 'clean_eventDate').
+annotation(87, 1, 356, 'in', '@in', 'original2_eventDate').
+annotation(88, 1, 357, 'out', '@out', 'log2_data').
+annotation(89, 1, 357, 'uri', '@uri', 'file:{log2_data_file_name}').
+annotation(90, 1, 358, 'out', '@out', 'output2_data').
+annotation(91, 1, 358, 'uri', '@uri', 'file:{output2_data_file_name}').
+annotation(92, 1, 453, 'end', '@end', 'clean_eventDate').
+annotation(93, 1, 464, 'end', '@end', 'date_val').
+annotation(94, 1, 467, 'end', '@end', 'clean_name_date_log').
+annotation(95, 1, 471, 'begin', '@begin', 'exactmatch').
+annotation(96, 1, 472, 'param', '@param', 'lst').
+annotation(97, 1, 473, 'param', '@param', 'label_str').
+annotation(98, 1, 474, 'return', '@return', 'key').
+annotation(99, 1, 475, 'return', '@return', 'None').
+annotation(100, 1, 488, 'end', '@end', 'exactmatch').
+annotation(101, 1, 492, 'begin', '@begin', 'fuzzymatch').
+annotation(102, 1, 493, 'param', '@param', 'lst').
+annotation(103, 1, 494, 'param', '@param', 'label_str').
+annotation(104, 1, 495, 'return', '@return', 'mat_dict').
+annotation(105, 1, 510, 'end', '@end', 'fuzzymatch').
+annotation(106, 1, 514, 'begin', '@begin', 'timestamp').
+annotation(107, 1, 515, 'param', '@param', 'message').
+annotation(108, 1, 516, 'return', '@return', 'timestamp_message').
+annotation(109, 1, 525, 'end', '@end', 'timestamp').
+
+% FACT: annotation_description(annotation_id, description).
+
+% FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
+annotation_qualifies(3, 2).
+annotation_qualifies(5, 4).
+annotation_qualifies(7, 6).
+annotation_qualifies(9, 8).
+annotation_qualifies(11, 10).
+annotation_qualifies(14, 13).
+annotation_qualifies(16, 15).
+annotation_qualifies(18, 17).
+annotation_qualifies(20, 19).
+annotation_qualifies(23, 22).
+annotation_qualifies(29, 28).
+annotation_qualifies(32, 31).
+annotation_qualifies(63, 62).
+annotation_qualifies(65, 64).
+annotation_qualifies(67, 66).
+annotation_qualifies(72, 71).
+annotation_qualifies(74, 73).
+annotation_qualifies(76, 75).
+annotation_qualifies(79, 78).
+annotation_qualifies(89, 88).
+annotation_qualifies(91, 90).

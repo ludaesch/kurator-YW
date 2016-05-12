@@ -1,0 +1,1761 @@
+
+% FACT: resource(resource_id, resource_uri).
+resource(1, '.run_yw_log.txt.swp').
+resource(2, '__init__.py').
+resource(3, 'actors.yaml').
+resource(4, 'build_dist_on_bamboo.sh').
+resource(5, 'clean_data_using_localDB_ScientificName_log.py').
+resource(6, 'clean_data_using_localDB_ScientificName_log_yw.py').
+resource(7, 'clean_data_using_worms_log_inline.py').
+resource(8, 'clean_data_using_worms_log_single_output.py').
+resource(9, 'clean_data_using_worms_log_stdout.py').
+resource(10, 'clean_name_date_log.py').
+resource(11, 'clean_name_date_log_yw.py').
+resource(12, 'comment.txt').
+resource(13, 'date_val_log.txt').
+resource(14, 'demo_cleaned_backup.csv').
+resource(15, 'demo_input.csv').
+resource(16, 'demo_localDB.csv').
+resource(17, 'demo_log_EventDate_backup.txt').
+resource(18, 'demo_log_EventDate_bk.txt').
+resource(19, 'demo_log_ScientificName_backup.txt').
+resource(20, 'demo_log_ScientificName_inline.txt').
+resource(21, 'demo_log_ScientificName_stdout.txt').
+resource(22, 'demo_output.csv').
+resource(23, 'demo_output_backup.csv').
+resource(24, 'demo_output_name_date_val.csv').
+resource(25, 'demo_output_name_val.csv').
+resource(26, 'demo_output_ScientificName.csv').
+resource(27, 'demo_output_ScientificName_backup.csv').
+resource(28, 'demo_output_ScientificName_EventDate_backup.csv').
+resource(29, 'demo_rejected_backup.csv').
+resource(30, 'graph.pdf').
+resource(31, 'graph_bk.pdf').
+resource(32, 'listing.txt').
+resource(33, 'name_val_log.txt').
+resource(34, 'README.md').
+resource(35, 'record_curator.py').
+resource(36, 'record_filter.py').
+resource(37, 'run_yw_log.txt').
+resource(38, 'service.pyc').
+resource(39, 'setup.cfg').
+resource(40, 'setup.py').
+resource(41, 'subgraph_date_val.pdf').
+resource(42, 'subgraph_date_val_bk.pdf').
+resource(43, 'subgraph_name_val.pdf').
+resource(44, 'types.yaml').
+resource(45, 'yesworkflow-0.2-SNAPSHOT-jar-with-dependencies.jar').
+
+% FACT: data_resource(data_id, resource_id).
+data_resource(1, 1).
+data_resource(1, 2).
+data_resource(1, 3).
+data_resource(1, 4).
+data_resource(1, 5).
+data_resource(1, 6).
+data_resource(1, 7).
+data_resource(1, 8).
+data_resource(1, 9).
+data_resource(1, 10).
+data_resource(1, 11).
+data_resource(1, 12).
+data_resource(1, 13).
+data_resource(1, 14).
+data_resource(1, 15).
+data_resource(1, 16).
+data_resource(1, 17).
+data_resource(1, 18).
+data_resource(1, 19).
+data_resource(1, 20).
+data_resource(1, 21).
+data_resource(1, 22).
+data_resource(1, 23).
+data_resource(1, 24).
+data_resource(1, 25).
+data_resource(1, 26).
+data_resource(1, 27).
+data_resource(1, 28).
+data_resource(1, 29).
+data_resource(1, 30).
+data_resource(1, 31).
+data_resource(1, 32).
+data_resource(1, 33).
+data_resource(1, 34).
+data_resource(1, 35).
+data_resource(1, 36).
+data_resource(1, 37).
+data_resource(1, 38).
+data_resource(1, 39).
+data_resource(1, 40).
+data_resource(1, 41).
+data_resource(1, 42).
+data_resource(1, 43).
+data_resource(1, 44).
+data_resource(1, 45).
+data_resource(2, 1).
+data_resource(2, 2).
+data_resource(2, 3).
+data_resource(2, 4).
+data_resource(2, 5).
+data_resource(2, 6).
+data_resource(2, 7).
+data_resource(2, 8).
+data_resource(2, 9).
+data_resource(2, 10).
+data_resource(2, 11).
+data_resource(2, 12).
+data_resource(2, 13).
+data_resource(2, 14).
+data_resource(2, 15).
+data_resource(2, 16).
+data_resource(2, 17).
+data_resource(2, 18).
+data_resource(2, 19).
+data_resource(2, 20).
+data_resource(2, 21).
+data_resource(2, 22).
+data_resource(2, 23).
+data_resource(2, 24).
+data_resource(2, 25).
+data_resource(2, 26).
+data_resource(2, 27).
+data_resource(2, 28).
+data_resource(2, 29).
+data_resource(2, 30).
+data_resource(2, 31).
+data_resource(2, 32).
+data_resource(2, 33).
+data_resource(2, 34).
+data_resource(2, 35).
+data_resource(2, 36).
+data_resource(2, 37).
+data_resource(2, 38).
+data_resource(2, 39).
+data_resource(2, 40).
+data_resource(2, 41).
+data_resource(2, 42).
+data_resource(2, 43).
+data_resource(2, 44).
+data_resource(2, 45).
+data_resource(3, 1).
+data_resource(3, 2).
+data_resource(3, 3).
+data_resource(3, 4).
+data_resource(3, 5).
+data_resource(3, 6).
+data_resource(3, 7).
+data_resource(3, 8).
+data_resource(3, 9).
+data_resource(3, 10).
+data_resource(3, 11).
+data_resource(3, 12).
+data_resource(3, 13).
+data_resource(3, 14).
+data_resource(3, 15).
+data_resource(3, 16).
+data_resource(3, 17).
+data_resource(3, 18).
+data_resource(3, 19).
+data_resource(3, 20).
+data_resource(3, 21).
+data_resource(3, 22).
+data_resource(3, 23).
+data_resource(3, 24).
+data_resource(3, 25).
+data_resource(3, 26).
+data_resource(3, 27).
+data_resource(3, 28).
+data_resource(3, 29).
+data_resource(3, 30).
+data_resource(3, 31).
+data_resource(3, 32).
+data_resource(3, 33).
+data_resource(3, 34).
+data_resource(3, 35).
+data_resource(3, 36).
+data_resource(3, 37).
+data_resource(3, 38).
+data_resource(3, 39).
+data_resource(3, 40).
+data_resource(3, 41).
+data_resource(3, 42).
+data_resource(3, 43).
+data_resource(3, 44).
+data_resource(3, 45).
+data_resource(4, 1).
+data_resource(4, 2).
+data_resource(4, 3).
+data_resource(4, 4).
+data_resource(4, 5).
+data_resource(4, 6).
+data_resource(4, 7).
+data_resource(4, 8).
+data_resource(4, 9).
+data_resource(4, 10).
+data_resource(4, 11).
+data_resource(4, 12).
+data_resource(4, 13).
+data_resource(4, 14).
+data_resource(4, 15).
+data_resource(4, 16).
+data_resource(4, 17).
+data_resource(4, 18).
+data_resource(4, 19).
+data_resource(4, 20).
+data_resource(4, 21).
+data_resource(4, 22).
+data_resource(4, 23).
+data_resource(4, 24).
+data_resource(4, 25).
+data_resource(4, 26).
+data_resource(4, 27).
+data_resource(4, 28).
+data_resource(4, 29).
+data_resource(4, 30).
+data_resource(4, 31).
+data_resource(4, 32).
+data_resource(4, 33).
+data_resource(4, 34).
+data_resource(4, 35).
+data_resource(4, 36).
+data_resource(4, 37).
+data_resource(4, 38).
+data_resource(4, 39).
+data_resource(4, 40).
+data_resource(4, 41).
+data_resource(4, 42).
+data_resource(4, 43).
+data_resource(4, 44).
+data_resource(4, 45).
+data_resource(5, 1).
+data_resource(5, 2).
+data_resource(5, 3).
+data_resource(5, 4).
+data_resource(5, 5).
+data_resource(5, 6).
+data_resource(5, 7).
+data_resource(5, 8).
+data_resource(5, 9).
+data_resource(5, 10).
+data_resource(5, 11).
+data_resource(5, 12).
+data_resource(5, 13).
+data_resource(5, 14).
+data_resource(5, 15).
+data_resource(5, 16).
+data_resource(5, 17).
+data_resource(5, 18).
+data_resource(5, 19).
+data_resource(5, 20).
+data_resource(5, 21).
+data_resource(5, 22).
+data_resource(5, 23).
+data_resource(5, 24).
+data_resource(5, 25).
+data_resource(5, 26).
+data_resource(5, 27).
+data_resource(5, 28).
+data_resource(5, 29).
+data_resource(5, 30).
+data_resource(5, 31).
+data_resource(5, 32).
+data_resource(5, 33).
+data_resource(5, 34).
+data_resource(5, 35).
+data_resource(5, 36).
+data_resource(5, 37).
+data_resource(5, 38).
+data_resource(5, 39).
+data_resource(5, 40).
+data_resource(5, 41).
+data_resource(5, 42).
+data_resource(5, 43).
+data_resource(5, 44).
+data_resource(5, 45).
+data_resource(6, 1).
+data_resource(6, 2).
+data_resource(6, 3).
+data_resource(6, 4).
+data_resource(6, 5).
+data_resource(6, 6).
+data_resource(6, 7).
+data_resource(6, 8).
+data_resource(6, 9).
+data_resource(6, 10).
+data_resource(6, 11).
+data_resource(6, 12).
+data_resource(6, 13).
+data_resource(6, 14).
+data_resource(6, 15).
+data_resource(6, 16).
+data_resource(6, 17).
+data_resource(6, 18).
+data_resource(6, 19).
+data_resource(6, 20).
+data_resource(6, 21).
+data_resource(6, 22).
+data_resource(6, 23).
+data_resource(6, 24).
+data_resource(6, 25).
+data_resource(6, 26).
+data_resource(6, 27).
+data_resource(6, 28).
+data_resource(6, 29).
+data_resource(6, 30).
+data_resource(6, 31).
+data_resource(6, 32).
+data_resource(6, 33).
+data_resource(6, 34).
+data_resource(6, 35).
+data_resource(6, 36).
+data_resource(6, 37).
+data_resource(6, 38).
+data_resource(6, 39).
+data_resource(6, 40).
+data_resource(6, 41).
+data_resource(6, 42).
+data_resource(6, 43).
+data_resource(6, 44).
+data_resource(6, 45).
+data_resource(7, 1).
+data_resource(7, 2).
+data_resource(7, 3).
+data_resource(7, 4).
+data_resource(7, 5).
+data_resource(7, 6).
+data_resource(7, 7).
+data_resource(7, 8).
+data_resource(7, 9).
+data_resource(7, 10).
+data_resource(7, 11).
+data_resource(7, 12).
+data_resource(7, 13).
+data_resource(7, 14).
+data_resource(7, 15).
+data_resource(7, 16).
+data_resource(7, 17).
+data_resource(7, 18).
+data_resource(7, 19).
+data_resource(7, 20).
+data_resource(7, 21).
+data_resource(7, 22).
+data_resource(7, 23).
+data_resource(7, 24).
+data_resource(7, 25).
+data_resource(7, 26).
+data_resource(7, 27).
+data_resource(7, 28).
+data_resource(7, 29).
+data_resource(7, 30).
+data_resource(7, 31).
+data_resource(7, 32).
+data_resource(7, 33).
+data_resource(7, 34).
+data_resource(7, 35).
+data_resource(7, 36).
+data_resource(7, 37).
+data_resource(7, 38).
+data_resource(7, 39).
+data_resource(7, 40).
+data_resource(7, 41).
+data_resource(7, 42).
+data_resource(7, 43).
+data_resource(7, 44).
+data_resource(7, 45).
+data_resource(8, 1).
+data_resource(8, 2).
+data_resource(8, 3).
+data_resource(8, 4).
+data_resource(8, 5).
+data_resource(8, 6).
+data_resource(8, 7).
+data_resource(8, 8).
+data_resource(8, 9).
+data_resource(8, 10).
+data_resource(8, 11).
+data_resource(8, 12).
+data_resource(8, 13).
+data_resource(8, 14).
+data_resource(8, 15).
+data_resource(8, 16).
+data_resource(8, 17).
+data_resource(8, 18).
+data_resource(8, 19).
+data_resource(8, 20).
+data_resource(8, 21).
+data_resource(8, 22).
+data_resource(8, 23).
+data_resource(8, 24).
+data_resource(8, 25).
+data_resource(8, 26).
+data_resource(8, 27).
+data_resource(8, 28).
+data_resource(8, 29).
+data_resource(8, 30).
+data_resource(8, 31).
+data_resource(8, 32).
+data_resource(8, 33).
+data_resource(8, 34).
+data_resource(8, 35).
+data_resource(8, 36).
+data_resource(8, 37).
+data_resource(8, 38).
+data_resource(8, 39).
+data_resource(8, 40).
+data_resource(8, 41).
+data_resource(8, 42).
+data_resource(8, 43).
+data_resource(8, 44).
+data_resource(8, 45).
+data_resource(9, 1).
+data_resource(9, 2).
+data_resource(9, 3).
+data_resource(9, 4).
+data_resource(9, 5).
+data_resource(9, 6).
+data_resource(9, 7).
+data_resource(9, 8).
+data_resource(9, 9).
+data_resource(9, 10).
+data_resource(9, 11).
+data_resource(9, 12).
+data_resource(9, 13).
+data_resource(9, 14).
+data_resource(9, 15).
+data_resource(9, 16).
+data_resource(9, 17).
+data_resource(9, 18).
+data_resource(9, 19).
+data_resource(9, 20).
+data_resource(9, 21).
+data_resource(9, 22).
+data_resource(9, 23).
+data_resource(9, 24).
+data_resource(9, 25).
+data_resource(9, 26).
+data_resource(9, 27).
+data_resource(9, 28).
+data_resource(9, 29).
+data_resource(9, 30).
+data_resource(9, 31).
+data_resource(9, 32).
+data_resource(9, 33).
+data_resource(9, 34).
+data_resource(9, 35).
+data_resource(9, 36).
+data_resource(9, 37).
+data_resource(9, 38).
+data_resource(9, 39).
+data_resource(9, 40).
+data_resource(9, 41).
+data_resource(9, 42).
+data_resource(9, 43).
+data_resource(9, 44).
+data_resource(9, 45).
+data_resource(10, 1).
+data_resource(10, 2).
+data_resource(10, 3).
+data_resource(10, 4).
+data_resource(10, 5).
+data_resource(10, 6).
+data_resource(10, 7).
+data_resource(10, 8).
+data_resource(10, 9).
+data_resource(10, 10).
+data_resource(10, 11).
+data_resource(10, 12).
+data_resource(10, 13).
+data_resource(10, 14).
+data_resource(10, 15).
+data_resource(10, 16).
+data_resource(10, 17).
+data_resource(10, 18).
+data_resource(10, 19).
+data_resource(10, 20).
+data_resource(10, 21).
+data_resource(10, 22).
+data_resource(10, 23).
+data_resource(10, 24).
+data_resource(10, 25).
+data_resource(10, 26).
+data_resource(10, 27).
+data_resource(10, 28).
+data_resource(10, 29).
+data_resource(10, 30).
+data_resource(10, 31).
+data_resource(10, 32).
+data_resource(10, 33).
+data_resource(10, 34).
+data_resource(10, 35).
+data_resource(10, 36).
+data_resource(10, 37).
+data_resource(10, 38).
+data_resource(10, 39).
+data_resource(10, 40).
+data_resource(10, 41).
+data_resource(10, 42).
+data_resource(10, 43).
+data_resource(10, 44).
+data_resource(10, 45).
+data_resource(12, 1).
+data_resource(12, 2).
+data_resource(12, 3).
+data_resource(12, 4).
+data_resource(12, 5).
+data_resource(12, 6).
+data_resource(12, 7).
+data_resource(12, 8).
+data_resource(12, 9).
+data_resource(12, 10).
+data_resource(12, 11).
+data_resource(12, 12).
+data_resource(12, 13).
+data_resource(12, 14).
+data_resource(12, 15).
+data_resource(12, 16).
+data_resource(12, 17).
+data_resource(12, 18).
+data_resource(12, 19).
+data_resource(12, 20).
+data_resource(12, 21).
+data_resource(12, 22).
+data_resource(12, 23).
+data_resource(12, 24).
+data_resource(12, 25).
+data_resource(12, 26).
+data_resource(12, 27).
+data_resource(12, 28).
+data_resource(12, 29).
+data_resource(12, 30).
+data_resource(12, 31).
+data_resource(12, 32).
+data_resource(12, 33).
+data_resource(12, 34).
+data_resource(12, 35).
+data_resource(12, 36).
+data_resource(12, 37).
+data_resource(12, 38).
+data_resource(12, 39).
+data_resource(12, 40).
+data_resource(12, 41).
+data_resource(12, 42).
+data_resource(12, 43).
+data_resource(12, 44).
+data_resource(12, 45).
+data_resource(21, 1).
+data_resource(21, 2).
+data_resource(21, 3).
+data_resource(21, 4).
+data_resource(21, 5).
+data_resource(21, 6).
+data_resource(21, 7).
+data_resource(21, 8).
+data_resource(21, 9).
+data_resource(21, 10).
+data_resource(21, 11).
+data_resource(21, 12).
+data_resource(21, 13).
+data_resource(21, 14).
+data_resource(21, 15).
+data_resource(21, 16).
+data_resource(21, 17).
+data_resource(21, 18).
+data_resource(21, 19).
+data_resource(21, 20).
+data_resource(21, 21).
+data_resource(21, 22).
+data_resource(21, 23).
+data_resource(21, 24).
+data_resource(21, 25).
+data_resource(21, 26).
+data_resource(21, 27).
+data_resource(21, 28).
+data_resource(21, 29).
+data_resource(21, 30).
+data_resource(21, 31).
+data_resource(21, 32).
+data_resource(21, 33).
+data_resource(21, 34).
+data_resource(21, 35).
+data_resource(21, 36).
+data_resource(21, 37).
+data_resource(21, 38).
+data_resource(21, 39).
+data_resource(21, 40).
+data_resource(21, 41).
+data_resource(21, 42).
+data_resource(21, 43).
+data_resource(21, 44).
+data_resource(21, 45).
+data_resource(22, 1).
+data_resource(22, 2).
+data_resource(22, 3).
+data_resource(22, 4).
+data_resource(22, 5).
+data_resource(22, 6).
+data_resource(22, 7).
+data_resource(22, 8).
+data_resource(22, 9).
+data_resource(22, 10).
+data_resource(22, 11).
+data_resource(22, 12).
+data_resource(22, 13).
+data_resource(22, 14).
+data_resource(22, 15).
+data_resource(22, 16).
+data_resource(22, 17).
+data_resource(22, 18).
+data_resource(22, 19).
+data_resource(22, 20).
+data_resource(22, 21).
+data_resource(22, 22).
+data_resource(22, 23).
+data_resource(22, 24).
+data_resource(22, 25).
+data_resource(22, 26).
+data_resource(22, 27).
+data_resource(22, 28).
+data_resource(22, 29).
+data_resource(22, 30).
+data_resource(22, 31).
+data_resource(22, 32).
+data_resource(22, 33).
+data_resource(22, 34).
+data_resource(22, 35).
+data_resource(22, 36).
+data_resource(22, 37).
+data_resource(22, 38).
+data_resource(22, 39).
+data_resource(22, 40).
+data_resource(22, 41).
+data_resource(22, 42).
+data_resource(22, 43).
+data_resource(22, 44).
+data_resource(22, 45).
+data_resource(8, 1).
+data_resource(8, 2).
+data_resource(8, 3).
+data_resource(8, 4).
+data_resource(8, 5).
+data_resource(8, 6).
+data_resource(8, 7).
+data_resource(8, 8).
+data_resource(8, 9).
+data_resource(8, 10).
+data_resource(8, 11).
+data_resource(8, 12).
+data_resource(8, 13).
+data_resource(8, 14).
+data_resource(8, 15).
+data_resource(8, 16).
+data_resource(8, 17).
+data_resource(8, 18).
+data_resource(8, 19).
+data_resource(8, 20).
+data_resource(8, 21).
+data_resource(8, 22).
+data_resource(8, 23).
+data_resource(8, 24).
+data_resource(8, 25).
+data_resource(8, 26).
+data_resource(8, 27).
+data_resource(8, 28).
+data_resource(8, 29).
+data_resource(8, 30).
+data_resource(8, 31).
+data_resource(8, 32).
+data_resource(8, 33).
+data_resource(8, 34).
+data_resource(8, 35).
+data_resource(8, 36).
+data_resource(8, 37).
+data_resource(8, 38).
+data_resource(8, 39).
+data_resource(8, 40).
+data_resource(8, 41).
+data_resource(8, 42).
+data_resource(8, 43).
+data_resource(8, 44).
+data_resource(8, 45).
+data_resource(23, 1).
+data_resource(23, 2).
+data_resource(23, 3).
+data_resource(23, 4).
+data_resource(23, 5).
+data_resource(23, 6).
+data_resource(23, 7).
+data_resource(23, 8).
+data_resource(23, 9).
+data_resource(23, 10).
+data_resource(23, 11).
+data_resource(23, 12).
+data_resource(23, 13).
+data_resource(23, 14).
+data_resource(23, 15).
+data_resource(23, 16).
+data_resource(23, 17).
+data_resource(23, 18).
+data_resource(23, 19).
+data_resource(23, 20).
+data_resource(23, 21).
+data_resource(23, 22).
+data_resource(23, 23).
+data_resource(23, 24).
+data_resource(23, 25).
+data_resource(23, 26).
+data_resource(23, 27).
+data_resource(23, 28).
+data_resource(23, 29).
+data_resource(23, 30).
+data_resource(23, 31).
+data_resource(23, 32).
+data_resource(23, 33).
+data_resource(23, 34).
+data_resource(23, 35).
+data_resource(23, 36).
+data_resource(23, 37).
+data_resource(23, 38).
+data_resource(23, 39).
+data_resource(23, 40).
+data_resource(23, 41).
+data_resource(23, 42).
+data_resource(23, 43).
+data_resource(23, 44).
+data_resource(23, 45).
+data_resource(24, 1).
+data_resource(24, 2).
+data_resource(24, 3).
+data_resource(24, 4).
+data_resource(24, 5).
+data_resource(24, 6).
+data_resource(24, 7).
+data_resource(24, 8).
+data_resource(24, 9).
+data_resource(24, 10).
+data_resource(24, 11).
+data_resource(24, 12).
+data_resource(24, 13).
+data_resource(24, 14).
+data_resource(24, 15).
+data_resource(24, 16).
+data_resource(24, 17).
+data_resource(24, 18).
+data_resource(24, 19).
+data_resource(24, 20).
+data_resource(24, 21).
+data_resource(24, 22).
+data_resource(24, 23).
+data_resource(24, 24).
+data_resource(24, 25).
+data_resource(24, 26).
+data_resource(24, 27).
+data_resource(24, 28).
+data_resource(24, 29).
+data_resource(24, 30).
+data_resource(24, 31).
+data_resource(24, 32).
+data_resource(24, 33).
+data_resource(24, 34).
+data_resource(24, 35).
+data_resource(24, 36).
+data_resource(24, 37).
+data_resource(24, 38).
+data_resource(24, 39).
+data_resource(24, 40).
+data_resource(24, 41).
+data_resource(24, 42).
+data_resource(24, 43).
+data_resource(24, 44).
+data_resource(24, 45).
+data_resource(25, 1).
+data_resource(25, 2).
+data_resource(25, 3).
+data_resource(25, 4).
+data_resource(25, 5).
+data_resource(25, 6).
+data_resource(25, 7).
+data_resource(25, 8).
+data_resource(25, 9).
+data_resource(25, 10).
+data_resource(25, 11).
+data_resource(25, 12).
+data_resource(25, 13).
+data_resource(25, 14).
+data_resource(25, 15).
+data_resource(25, 16).
+data_resource(25, 17).
+data_resource(25, 18).
+data_resource(25, 19).
+data_resource(25, 20).
+data_resource(25, 21).
+data_resource(25, 22).
+data_resource(25, 23).
+data_resource(25, 24).
+data_resource(25, 25).
+data_resource(25, 26).
+data_resource(25, 27).
+data_resource(25, 28).
+data_resource(25, 29).
+data_resource(25, 30).
+data_resource(25, 31).
+data_resource(25, 32).
+data_resource(25, 33).
+data_resource(25, 34).
+data_resource(25, 35).
+data_resource(25, 36).
+data_resource(25, 37).
+data_resource(25, 38).
+data_resource(25, 39).
+data_resource(25, 40).
+data_resource(25, 41).
+data_resource(25, 42).
+data_resource(25, 43).
+data_resource(25, 44).
+data_resource(25, 45).
+data_resource(28, 1).
+data_resource(28, 2).
+data_resource(28, 3).
+data_resource(28, 4).
+data_resource(28, 5).
+data_resource(28, 6).
+data_resource(28, 7).
+data_resource(28, 8).
+data_resource(28, 9).
+data_resource(28, 10).
+data_resource(28, 11).
+data_resource(28, 12).
+data_resource(28, 13).
+data_resource(28, 14).
+data_resource(28, 15).
+data_resource(28, 16).
+data_resource(28, 17).
+data_resource(28, 18).
+data_resource(28, 19).
+data_resource(28, 20).
+data_resource(28, 21).
+data_resource(28, 22).
+data_resource(28, 23).
+data_resource(28, 24).
+data_resource(28, 25).
+data_resource(28, 26).
+data_resource(28, 27).
+data_resource(28, 28).
+data_resource(28, 29).
+data_resource(28, 30).
+data_resource(28, 31).
+data_resource(28, 32).
+data_resource(28, 33).
+data_resource(28, 34).
+data_resource(28, 35).
+data_resource(28, 36).
+data_resource(28, 37).
+data_resource(28, 38).
+data_resource(28, 39).
+data_resource(28, 40).
+data_resource(28, 41).
+data_resource(28, 42).
+data_resource(28, 43).
+data_resource(28, 44).
+data_resource(28, 45).
+data_resource(29, 1).
+data_resource(29, 2).
+data_resource(29, 3).
+data_resource(29, 4).
+data_resource(29, 5).
+data_resource(29, 6).
+data_resource(29, 7).
+data_resource(29, 8).
+data_resource(29, 9).
+data_resource(29, 10).
+data_resource(29, 11).
+data_resource(29, 12).
+data_resource(29, 13).
+data_resource(29, 14).
+data_resource(29, 15).
+data_resource(29, 16).
+data_resource(29, 17).
+data_resource(29, 18).
+data_resource(29, 19).
+data_resource(29, 20).
+data_resource(29, 21).
+data_resource(29, 22).
+data_resource(29, 23).
+data_resource(29, 24).
+data_resource(29, 25).
+data_resource(29, 26).
+data_resource(29, 27).
+data_resource(29, 28).
+data_resource(29, 29).
+data_resource(29, 30).
+data_resource(29, 31).
+data_resource(29, 32).
+data_resource(29, 33).
+data_resource(29, 34).
+data_resource(29, 35).
+data_resource(29, 36).
+data_resource(29, 37).
+data_resource(29, 38).
+data_resource(29, 39).
+data_resource(29, 40).
+data_resource(29, 41).
+data_resource(29, 42).
+data_resource(29, 43).
+data_resource(29, 44).
+data_resource(29, 45).
+
+% FACT: uri_variable_value(resource_id, uri_variable_id, uri_variable_value).
+uri_variable_value(1, 1, '').
+uri_variable_value(2, 1, '').
+uri_variable_value(3, 1, '').
+uri_variable_value(4, 1, '').
+uri_variable_value(5, 1, '').
+uri_variable_value(6, 1, '').
+uri_variable_value(7, 1, '').
+uri_variable_value(8, 1, '').
+uri_variable_value(9, 1, '').
+uri_variable_value(10, 1, '').
+uri_variable_value(11, 1, '').
+uri_variable_value(12, 1, '').
+uri_variable_value(13, 1, '').
+uri_variable_value(14, 1, '').
+uri_variable_value(15, 1, '').
+uri_variable_value(16, 1, '').
+uri_variable_value(17, 1, '').
+uri_variable_value(18, 1, '').
+uri_variable_value(19, 1, '').
+uri_variable_value(20, 1, '').
+uri_variable_value(21, 1, '').
+uri_variable_value(22, 1, '').
+uri_variable_value(23, 1, '').
+uri_variable_value(24, 1, '').
+uri_variable_value(25, 1, '').
+uri_variable_value(26, 1, '').
+uri_variable_value(27, 1, '').
+uri_variable_value(28, 1, '').
+uri_variable_value(29, 1, '').
+uri_variable_value(30, 1, '').
+uri_variable_value(31, 1, '').
+uri_variable_value(32, 1, '').
+uri_variable_value(33, 1, '').
+uri_variable_value(34, 1, '').
+uri_variable_value(35, 1, '').
+uri_variable_value(36, 1, '').
+uri_variable_value(37, 1, '').
+uri_variable_value(38, 1, '').
+uri_variable_value(39, 1, '').
+uri_variable_value(40, 1, '').
+uri_variable_value(41, 1, '').
+uri_variable_value(42, 1, '').
+uri_variable_value(43, 1, '').
+uri_variable_value(44, 1, '').
+uri_variable_value(45, 1, '').
+uri_variable_value(1, 2, '').
+uri_variable_value(2, 2, '').
+uri_variable_value(3, 2, '').
+uri_variable_value(4, 2, '').
+uri_variable_value(5, 2, '').
+uri_variable_value(6, 2, '').
+uri_variable_value(7, 2, '').
+uri_variable_value(8, 2, '').
+uri_variable_value(9, 2, '').
+uri_variable_value(10, 2, '').
+uri_variable_value(11, 2, '').
+uri_variable_value(12, 2, '').
+uri_variable_value(13, 2, '').
+uri_variable_value(14, 2, '').
+uri_variable_value(15, 2, '').
+uri_variable_value(16, 2, '').
+uri_variable_value(17, 2, '').
+uri_variable_value(18, 2, '').
+uri_variable_value(19, 2, '').
+uri_variable_value(20, 2, '').
+uri_variable_value(21, 2, '').
+uri_variable_value(22, 2, '').
+uri_variable_value(23, 2, '').
+uri_variable_value(24, 2, '').
+uri_variable_value(25, 2, '').
+uri_variable_value(26, 2, '').
+uri_variable_value(27, 2, '').
+uri_variable_value(28, 2, '').
+uri_variable_value(29, 2, '').
+uri_variable_value(30, 2, '').
+uri_variable_value(31, 2, '').
+uri_variable_value(32, 2, '').
+uri_variable_value(33, 2, '').
+uri_variable_value(34, 2, '').
+uri_variable_value(35, 2, '').
+uri_variable_value(36, 2, '').
+uri_variable_value(37, 2, '').
+uri_variable_value(38, 2, '').
+uri_variable_value(39, 2, '').
+uri_variable_value(40, 2, '').
+uri_variable_value(41, 2, '').
+uri_variable_value(42, 2, '').
+uri_variable_value(43, 2, '').
+uri_variable_value(44, 2, '').
+uri_variable_value(45, 2, '').
+uri_variable_value(1, 3, '').
+uri_variable_value(2, 3, '').
+uri_variable_value(3, 3, '').
+uri_variable_value(4, 3, '').
+uri_variable_value(5, 3, '').
+uri_variable_value(6, 3, '').
+uri_variable_value(7, 3, '').
+uri_variable_value(8, 3, '').
+uri_variable_value(9, 3, '').
+uri_variable_value(10, 3, '').
+uri_variable_value(11, 3, '').
+uri_variable_value(12, 3, '').
+uri_variable_value(13, 3, '').
+uri_variable_value(14, 3, '').
+uri_variable_value(15, 3, '').
+uri_variable_value(16, 3, '').
+uri_variable_value(17, 3, '').
+uri_variable_value(18, 3, '').
+uri_variable_value(19, 3, '').
+uri_variable_value(20, 3, '').
+uri_variable_value(21, 3, '').
+uri_variable_value(22, 3, '').
+uri_variable_value(23, 3, '').
+uri_variable_value(24, 3, '').
+uri_variable_value(25, 3, '').
+uri_variable_value(26, 3, '').
+uri_variable_value(27, 3, '').
+uri_variable_value(28, 3, '').
+uri_variable_value(29, 3, '').
+uri_variable_value(30, 3, '').
+uri_variable_value(31, 3, '').
+uri_variable_value(32, 3, '').
+uri_variable_value(33, 3, '').
+uri_variable_value(34, 3, '').
+uri_variable_value(35, 3, '').
+uri_variable_value(36, 3, '').
+uri_variable_value(37, 3, '').
+uri_variable_value(38, 3, '').
+uri_variable_value(39, 3, '').
+uri_variable_value(40, 3, '').
+uri_variable_value(41, 3, '').
+uri_variable_value(42, 3, '').
+uri_variable_value(43, 3, '').
+uri_variable_value(44, 3, '').
+uri_variable_value(45, 3, '').
+uri_variable_value(1, 4, '').
+uri_variable_value(2, 4, '').
+uri_variable_value(3, 4, '').
+uri_variable_value(4, 4, '').
+uri_variable_value(5, 4, '').
+uri_variable_value(6, 4, '').
+uri_variable_value(7, 4, '').
+uri_variable_value(8, 4, '').
+uri_variable_value(9, 4, '').
+uri_variable_value(10, 4, '').
+uri_variable_value(11, 4, '').
+uri_variable_value(12, 4, '').
+uri_variable_value(13, 4, '').
+uri_variable_value(14, 4, '').
+uri_variable_value(15, 4, '').
+uri_variable_value(16, 4, '').
+uri_variable_value(17, 4, '').
+uri_variable_value(18, 4, '').
+uri_variable_value(19, 4, '').
+uri_variable_value(20, 4, '').
+uri_variable_value(21, 4, '').
+uri_variable_value(22, 4, '').
+uri_variable_value(23, 4, '').
+uri_variable_value(24, 4, '').
+uri_variable_value(25, 4, '').
+uri_variable_value(26, 4, '').
+uri_variable_value(27, 4, '').
+uri_variable_value(28, 4, '').
+uri_variable_value(29, 4, '').
+uri_variable_value(30, 4, '').
+uri_variable_value(31, 4, '').
+uri_variable_value(32, 4, '').
+uri_variable_value(33, 4, '').
+uri_variable_value(34, 4, '').
+uri_variable_value(35, 4, '').
+uri_variable_value(36, 4, '').
+uri_variable_value(37, 4, '').
+uri_variable_value(38, 4, '').
+uri_variable_value(39, 4, '').
+uri_variable_value(40, 4, '').
+uri_variable_value(41, 4, '').
+uri_variable_value(42, 4, '').
+uri_variable_value(43, 4, '').
+uri_variable_value(44, 4, '').
+uri_variable_value(45, 4, '').
+uri_variable_value(1, 5, '').
+uri_variable_value(2, 5, '').
+uri_variable_value(3, 5, '').
+uri_variable_value(4, 5, '').
+uri_variable_value(5, 5, '').
+uri_variable_value(6, 5, '').
+uri_variable_value(7, 5, '').
+uri_variable_value(8, 5, '').
+uri_variable_value(9, 5, '').
+uri_variable_value(10, 5, '').
+uri_variable_value(11, 5, '').
+uri_variable_value(12, 5, '').
+uri_variable_value(13, 5, '').
+uri_variable_value(14, 5, '').
+uri_variable_value(15, 5, '').
+uri_variable_value(16, 5, '').
+uri_variable_value(17, 5, '').
+uri_variable_value(18, 5, '').
+uri_variable_value(19, 5, '').
+uri_variable_value(20, 5, '').
+uri_variable_value(21, 5, '').
+uri_variable_value(22, 5, '').
+uri_variable_value(23, 5, '').
+uri_variable_value(24, 5, '').
+uri_variable_value(25, 5, '').
+uri_variable_value(26, 5, '').
+uri_variable_value(27, 5, '').
+uri_variable_value(28, 5, '').
+uri_variable_value(29, 5, '').
+uri_variable_value(30, 5, '').
+uri_variable_value(31, 5, '').
+uri_variable_value(32, 5, '').
+uri_variable_value(33, 5, '').
+uri_variable_value(34, 5, '').
+uri_variable_value(35, 5, '').
+uri_variable_value(36, 5, '').
+uri_variable_value(37, 5, '').
+uri_variable_value(38, 5, '').
+uri_variable_value(39, 5, '').
+uri_variable_value(40, 5, '').
+uri_variable_value(41, 5, '').
+uri_variable_value(42, 5, '').
+uri_variable_value(43, 5, '').
+uri_variable_value(44, 5, '').
+uri_variable_value(45, 5, '').
+uri_variable_value(1, 6, '').
+uri_variable_value(2, 6, '').
+uri_variable_value(3, 6, '').
+uri_variable_value(4, 6, '').
+uri_variable_value(5, 6, '').
+uri_variable_value(6, 6, '').
+uri_variable_value(7, 6, '').
+uri_variable_value(8, 6, '').
+uri_variable_value(9, 6, '').
+uri_variable_value(10, 6, '').
+uri_variable_value(11, 6, '').
+uri_variable_value(12, 6, '').
+uri_variable_value(13, 6, '').
+uri_variable_value(14, 6, '').
+uri_variable_value(15, 6, '').
+uri_variable_value(16, 6, '').
+uri_variable_value(17, 6, '').
+uri_variable_value(18, 6, '').
+uri_variable_value(19, 6, '').
+uri_variable_value(20, 6, '').
+uri_variable_value(21, 6, '').
+uri_variable_value(22, 6, '').
+uri_variable_value(23, 6, '').
+uri_variable_value(24, 6, '').
+uri_variable_value(25, 6, '').
+uri_variable_value(26, 6, '').
+uri_variable_value(27, 6, '').
+uri_variable_value(28, 6, '').
+uri_variable_value(29, 6, '').
+uri_variable_value(30, 6, '').
+uri_variable_value(31, 6, '').
+uri_variable_value(32, 6, '').
+uri_variable_value(33, 6, '').
+uri_variable_value(34, 6, '').
+uri_variable_value(35, 6, '').
+uri_variable_value(36, 6, '').
+uri_variable_value(37, 6, '').
+uri_variable_value(38, 6, '').
+uri_variable_value(39, 6, '').
+uri_variable_value(40, 6, '').
+uri_variable_value(41, 6, '').
+uri_variable_value(42, 6, '').
+uri_variable_value(43, 6, '').
+uri_variable_value(44, 6, '').
+uri_variable_value(45, 6, '').
+uri_variable_value(1, 7, '').
+uri_variable_value(2, 7, '').
+uri_variable_value(3, 7, '').
+uri_variable_value(4, 7, '').
+uri_variable_value(5, 7, '').
+uri_variable_value(6, 7, '').
+uri_variable_value(7, 7, '').
+uri_variable_value(8, 7, '').
+uri_variable_value(9, 7, '').
+uri_variable_value(10, 7, '').
+uri_variable_value(11, 7, '').
+uri_variable_value(12, 7, '').
+uri_variable_value(13, 7, '').
+uri_variable_value(14, 7, '').
+uri_variable_value(15, 7, '').
+uri_variable_value(16, 7, '').
+uri_variable_value(17, 7, '').
+uri_variable_value(18, 7, '').
+uri_variable_value(19, 7, '').
+uri_variable_value(20, 7, '').
+uri_variable_value(21, 7, '').
+uri_variable_value(22, 7, '').
+uri_variable_value(23, 7, '').
+uri_variable_value(24, 7, '').
+uri_variable_value(25, 7, '').
+uri_variable_value(26, 7, '').
+uri_variable_value(27, 7, '').
+uri_variable_value(28, 7, '').
+uri_variable_value(29, 7, '').
+uri_variable_value(30, 7, '').
+uri_variable_value(31, 7, '').
+uri_variable_value(32, 7, '').
+uri_variable_value(33, 7, '').
+uri_variable_value(34, 7, '').
+uri_variable_value(35, 7, '').
+uri_variable_value(36, 7, '').
+uri_variable_value(37, 7, '').
+uri_variable_value(38, 7, '').
+uri_variable_value(39, 7, '').
+uri_variable_value(40, 7, '').
+uri_variable_value(41, 7, '').
+uri_variable_value(42, 7, '').
+uri_variable_value(43, 7, '').
+uri_variable_value(44, 7, '').
+uri_variable_value(45, 7, '').
+uri_variable_value(1, 8, '').
+uri_variable_value(2, 8, '').
+uri_variable_value(3, 8, '').
+uri_variable_value(4, 8, '').
+uri_variable_value(5, 8, '').
+uri_variable_value(6, 8, '').
+uri_variable_value(7, 8, '').
+uri_variable_value(8, 8, '').
+uri_variable_value(9, 8, '').
+uri_variable_value(10, 8, '').
+uri_variable_value(11, 8, '').
+uri_variable_value(12, 8, '').
+uri_variable_value(13, 8, '').
+uri_variable_value(14, 8, '').
+uri_variable_value(15, 8, '').
+uri_variable_value(16, 8, '').
+uri_variable_value(17, 8, '').
+uri_variable_value(18, 8, '').
+uri_variable_value(19, 8, '').
+uri_variable_value(20, 8, '').
+uri_variable_value(21, 8, '').
+uri_variable_value(22, 8, '').
+uri_variable_value(23, 8, '').
+uri_variable_value(24, 8, '').
+uri_variable_value(25, 8, '').
+uri_variable_value(26, 8, '').
+uri_variable_value(27, 8, '').
+uri_variable_value(28, 8, '').
+uri_variable_value(29, 8, '').
+uri_variable_value(30, 8, '').
+uri_variable_value(31, 8, '').
+uri_variable_value(32, 8, '').
+uri_variable_value(33, 8, '').
+uri_variable_value(34, 8, '').
+uri_variable_value(35, 8, '').
+uri_variable_value(36, 8, '').
+uri_variable_value(37, 8, '').
+uri_variable_value(38, 8, '').
+uri_variable_value(39, 8, '').
+uri_variable_value(40, 8, '').
+uri_variable_value(41, 8, '').
+uri_variable_value(42, 8, '').
+uri_variable_value(43, 8, '').
+uri_variable_value(44, 8, '').
+uri_variable_value(45, 8, '').
+uri_variable_value(1, 9, '').
+uri_variable_value(2, 9, '').
+uri_variable_value(3, 9, '').
+uri_variable_value(4, 9, '').
+uri_variable_value(5, 9, '').
+uri_variable_value(6, 9, '').
+uri_variable_value(7, 9, '').
+uri_variable_value(8, 9, '').
+uri_variable_value(9, 9, '').
+uri_variable_value(10, 9, '').
+uri_variable_value(11, 9, '').
+uri_variable_value(12, 9, '').
+uri_variable_value(13, 9, '').
+uri_variable_value(14, 9, '').
+uri_variable_value(15, 9, '').
+uri_variable_value(16, 9, '').
+uri_variable_value(17, 9, '').
+uri_variable_value(18, 9, '').
+uri_variable_value(19, 9, '').
+uri_variable_value(20, 9, '').
+uri_variable_value(21, 9, '').
+uri_variable_value(22, 9, '').
+uri_variable_value(23, 9, '').
+uri_variable_value(24, 9, '').
+uri_variable_value(25, 9, '').
+uri_variable_value(26, 9, '').
+uri_variable_value(27, 9, '').
+uri_variable_value(28, 9, '').
+uri_variable_value(29, 9, '').
+uri_variable_value(30, 9, '').
+uri_variable_value(31, 9, '').
+uri_variable_value(32, 9, '').
+uri_variable_value(33, 9, '').
+uri_variable_value(34, 9, '').
+uri_variable_value(35, 9, '').
+uri_variable_value(36, 9, '').
+uri_variable_value(37, 9, '').
+uri_variable_value(38, 9, '').
+uri_variable_value(39, 9, '').
+uri_variable_value(40, 9, '').
+uri_variable_value(41, 9, '').
+uri_variable_value(42, 9, '').
+uri_variable_value(43, 9, '').
+uri_variable_value(44, 9, '').
+uri_variable_value(45, 9, '').
+uri_variable_value(1, 10, '').
+uri_variable_value(2, 10, '').
+uri_variable_value(3, 10, '').
+uri_variable_value(4, 10, '').
+uri_variable_value(5, 10, '').
+uri_variable_value(6, 10, '').
+uri_variable_value(7, 10, '').
+uri_variable_value(8, 10, '').
+uri_variable_value(9, 10, '').
+uri_variable_value(10, 10, '').
+uri_variable_value(11, 10, '').
+uri_variable_value(12, 10, '').
+uri_variable_value(13, 10, '').
+uri_variable_value(14, 10, '').
+uri_variable_value(15, 10, '').
+uri_variable_value(16, 10, '').
+uri_variable_value(17, 10, '').
+uri_variable_value(18, 10, '').
+uri_variable_value(19, 10, '').
+uri_variable_value(20, 10, '').
+uri_variable_value(21, 10, '').
+uri_variable_value(22, 10, '').
+uri_variable_value(23, 10, '').
+uri_variable_value(24, 10, '').
+uri_variable_value(25, 10, '').
+uri_variable_value(26, 10, '').
+uri_variable_value(27, 10, '').
+uri_variable_value(28, 10, '').
+uri_variable_value(29, 10, '').
+uri_variable_value(30, 10, '').
+uri_variable_value(31, 10, '').
+uri_variable_value(32, 10, '').
+uri_variable_value(33, 10, '').
+uri_variable_value(34, 10, '').
+uri_variable_value(35, 10, '').
+uri_variable_value(36, 10, '').
+uri_variable_value(37, 10, '').
+uri_variable_value(38, 10, '').
+uri_variable_value(39, 10, '').
+uri_variable_value(40, 10, '').
+uri_variable_value(41, 10, '').
+uri_variable_value(42, 10, '').
+uri_variable_value(43, 10, '').
+uri_variable_value(44, 10, '').
+uri_variable_value(45, 10, '').
+uri_variable_value(1, 11, '').
+uri_variable_value(2, 11, '').
+uri_variable_value(3, 11, '').
+uri_variable_value(4, 11, '').
+uri_variable_value(5, 11, '').
+uri_variable_value(6, 11, '').
+uri_variable_value(7, 11, '').
+uri_variable_value(8, 11, '').
+uri_variable_value(9, 11, '').
+uri_variable_value(10, 11, '').
+uri_variable_value(11, 11, '').
+uri_variable_value(12, 11, '').
+uri_variable_value(13, 11, '').
+uri_variable_value(14, 11, '').
+uri_variable_value(15, 11, '').
+uri_variable_value(16, 11, '').
+uri_variable_value(17, 11, '').
+uri_variable_value(18, 11, '').
+uri_variable_value(19, 11, '').
+uri_variable_value(20, 11, '').
+uri_variable_value(21, 11, '').
+uri_variable_value(22, 11, '').
+uri_variable_value(23, 11, '').
+uri_variable_value(24, 11, '').
+uri_variable_value(25, 11, '').
+uri_variable_value(26, 11, '').
+uri_variable_value(27, 11, '').
+uri_variable_value(28, 11, '').
+uri_variable_value(29, 11, '').
+uri_variable_value(30, 11, '').
+uri_variable_value(31, 11, '').
+uri_variable_value(32, 11, '').
+uri_variable_value(33, 11, '').
+uri_variable_value(34, 11, '').
+uri_variable_value(35, 11, '').
+uri_variable_value(36, 11, '').
+uri_variable_value(37, 11, '').
+uri_variable_value(38, 11, '').
+uri_variable_value(39, 11, '').
+uri_variable_value(40, 11, '').
+uri_variable_value(41, 11, '').
+uri_variable_value(42, 11, '').
+uri_variable_value(43, 11, '').
+uri_variable_value(44, 11, '').
+uri_variable_value(45, 11, '').
+uri_variable_value(1, 12, '').
+uri_variable_value(2, 12, '').
+uri_variable_value(3, 12, '').
+uri_variable_value(4, 12, '').
+uri_variable_value(5, 12, '').
+uri_variable_value(6, 12, '').
+uri_variable_value(7, 12, '').
+uri_variable_value(8, 12, '').
+uri_variable_value(9, 12, '').
+uri_variable_value(10, 12, '').
+uri_variable_value(11, 12, '').
+uri_variable_value(12, 12, '').
+uri_variable_value(13, 12, '').
+uri_variable_value(14, 12, '').
+uri_variable_value(15, 12, '').
+uri_variable_value(16, 12, '').
+uri_variable_value(17, 12, '').
+uri_variable_value(18, 12, '').
+uri_variable_value(19, 12, '').
+uri_variable_value(20, 12, '').
+uri_variable_value(21, 12, '').
+uri_variable_value(22, 12, '').
+uri_variable_value(23, 12, '').
+uri_variable_value(24, 12, '').
+uri_variable_value(25, 12, '').
+uri_variable_value(26, 12, '').
+uri_variable_value(27, 12, '').
+uri_variable_value(28, 12, '').
+uri_variable_value(29, 12, '').
+uri_variable_value(30, 12, '').
+uri_variable_value(31, 12, '').
+uri_variable_value(32, 12, '').
+uri_variable_value(33, 12, '').
+uri_variable_value(34, 12, '').
+uri_variable_value(35, 12, '').
+uri_variable_value(36, 12, '').
+uri_variable_value(37, 12, '').
+uri_variable_value(38, 12, '').
+uri_variable_value(39, 12, '').
+uri_variable_value(40, 12, '').
+uri_variable_value(41, 12, '').
+uri_variable_value(42, 12, '').
+uri_variable_value(43, 12, '').
+uri_variable_value(44, 12, '').
+uri_variable_value(45, 12, '').
+uri_variable_value(1, 13, '').
+uri_variable_value(2, 13, '').
+uri_variable_value(3, 13, '').
+uri_variable_value(4, 13, '').
+uri_variable_value(5, 13, '').
+uri_variable_value(6, 13, '').
+uri_variable_value(7, 13, '').
+uri_variable_value(8, 13, '').
+uri_variable_value(9, 13, '').
+uri_variable_value(10, 13, '').
+uri_variable_value(11, 13, '').
+uri_variable_value(12, 13, '').
+uri_variable_value(13, 13, '').
+uri_variable_value(14, 13, '').
+uri_variable_value(15, 13, '').
+uri_variable_value(16, 13, '').
+uri_variable_value(17, 13, '').
+uri_variable_value(18, 13, '').
+uri_variable_value(19, 13, '').
+uri_variable_value(20, 13, '').
+uri_variable_value(21, 13, '').
+uri_variable_value(22, 13, '').
+uri_variable_value(23, 13, '').
+uri_variable_value(24, 13, '').
+uri_variable_value(25, 13, '').
+uri_variable_value(26, 13, '').
+uri_variable_value(27, 13, '').
+uri_variable_value(28, 13, '').
+uri_variable_value(29, 13, '').
+uri_variable_value(30, 13, '').
+uri_variable_value(31, 13, '').
+uri_variable_value(32, 13, '').
+uri_variable_value(33, 13, '').
+uri_variable_value(34, 13, '').
+uri_variable_value(35, 13, '').
+uri_variable_value(36, 13, '').
+uri_variable_value(37, 13, '').
+uri_variable_value(38, 13, '').
+uri_variable_value(39, 13, '').
+uri_variable_value(40, 13, '').
+uri_variable_value(41, 13, '').
+uri_variable_value(42, 13, '').
+uri_variable_value(43, 13, '').
+uri_variable_value(44, 13, '').
+uri_variable_value(45, 13, '').
+uri_variable_value(1, 14, '').
+uri_variable_value(2, 14, '').
+uri_variable_value(3, 14, '').
+uri_variable_value(4, 14, '').
+uri_variable_value(5, 14, '').
+uri_variable_value(6, 14, '').
+uri_variable_value(7, 14, '').
+uri_variable_value(8, 14, '').
+uri_variable_value(9, 14, '').
+uri_variable_value(10, 14, '').
+uri_variable_value(11, 14, '').
+uri_variable_value(12, 14, '').
+uri_variable_value(13, 14, '').
+uri_variable_value(14, 14, '').
+uri_variable_value(15, 14, '').
+uri_variable_value(16, 14, '').
+uri_variable_value(17, 14, '').
+uri_variable_value(18, 14, '').
+uri_variable_value(19, 14, '').
+uri_variable_value(20, 14, '').
+uri_variable_value(21, 14, '').
+uri_variable_value(22, 14, '').
+uri_variable_value(23, 14, '').
+uri_variable_value(24, 14, '').
+uri_variable_value(25, 14, '').
+uri_variable_value(26, 14, '').
+uri_variable_value(27, 14, '').
+uri_variable_value(28, 14, '').
+uri_variable_value(29, 14, '').
+uri_variable_value(30, 14, '').
+uri_variable_value(31, 14, '').
+uri_variable_value(32, 14, '').
+uri_variable_value(33, 14, '').
+uri_variable_value(34, 14, '').
+uri_variable_value(35, 14, '').
+uri_variable_value(36, 14, '').
+uri_variable_value(37, 14, '').
+uri_variable_value(38, 14, '').
+uri_variable_value(39, 14, '').
+uri_variable_value(40, 14, '').
+uri_variable_value(41, 14, '').
+uri_variable_value(42, 14, '').
+uri_variable_value(43, 14, '').
+uri_variable_value(44, 14, '').
+uri_variable_value(45, 14, '').
+uri_variable_value(1, 15, '').
+uri_variable_value(2, 15, '').
+uri_variable_value(3, 15, '').
+uri_variable_value(4, 15, '').
+uri_variable_value(5, 15, '').
+uri_variable_value(6, 15, '').
+uri_variable_value(7, 15, '').
+uri_variable_value(8, 15, '').
+uri_variable_value(9, 15, '').
+uri_variable_value(10, 15, '').
+uri_variable_value(11, 15, '').
+uri_variable_value(12, 15, '').
+uri_variable_value(13, 15, '').
+uri_variable_value(14, 15, '').
+uri_variable_value(15, 15, '').
+uri_variable_value(16, 15, '').
+uri_variable_value(17, 15, '').
+uri_variable_value(18, 15, '').
+uri_variable_value(19, 15, '').
+uri_variable_value(20, 15, '').
+uri_variable_value(21, 15, '').
+uri_variable_value(22, 15, '').
+uri_variable_value(23, 15, '').
+uri_variable_value(24, 15, '').
+uri_variable_value(25, 15, '').
+uri_variable_value(26, 15, '').
+uri_variable_value(27, 15, '').
+uri_variable_value(28, 15, '').
+uri_variable_value(29, 15, '').
+uri_variable_value(30, 15, '').
+uri_variable_value(31, 15, '').
+uri_variable_value(32, 15, '').
+uri_variable_value(33, 15, '').
+uri_variable_value(34, 15, '').
+uri_variable_value(35, 15, '').
+uri_variable_value(36, 15, '').
+uri_variable_value(37, 15, '').
+uri_variable_value(38, 15, '').
+uri_variable_value(39, 15, '').
+uri_variable_value(40, 15, '').
+uri_variable_value(41, 15, '').
+uri_variable_value(42, 15, '').
+uri_variable_value(43, 15, '').
+uri_variable_value(44, 15, '').
+uri_variable_value(45, 15, '').
+uri_variable_value(1, 16, '').
+uri_variable_value(2, 16, '').
+uri_variable_value(3, 16, '').
+uri_variable_value(4, 16, '').
+uri_variable_value(5, 16, '').
+uri_variable_value(6, 16, '').
+uri_variable_value(7, 16, '').
+uri_variable_value(8, 16, '').
+uri_variable_value(9, 16, '').
+uri_variable_value(10, 16, '').
+uri_variable_value(11, 16, '').
+uri_variable_value(12, 16, '').
+uri_variable_value(13, 16, '').
+uri_variable_value(14, 16, '').
+uri_variable_value(15, 16, '').
+uri_variable_value(16, 16, '').
+uri_variable_value(17, 16, '').
+uri_variable_value(18, 16, '').
+uri_variable_value(19, 16, '').
+uri_variable_value(20, 16, '').
+uri_variable_value(21, 16, '').
+uri_variable_value(22, 16, '').
+uri_variable_value(23, 16, '').
+uri_variable_value(24, 16, '').
+uri_variable_value(25, 16, '').
+uri_variable_value(26, 16, '').
+uri_variable_value(27, 16, '').
+uri_variable_value(28, 16, '').
+uri_variable_value(29, 16, '').
+uri_variable_value(30, 16, '').
+uri_variable_value(31, 16, '').
+uri_variable_value(32, 16, '').
+uri_variable_value(33, 16, '').
+uri_variable_value(34, 16, '').
+uri_variable_value(35, 16, '').
+uri_variable_value(36, 16, '').
+uri_variable_value(37, 16, '').
+uri_variable_value(38, 16, '').
+uri_variable_value(39, 16, '').
+uri_variable_value(40, 16, '').
+uri_variable_value(41, 16, '').
+uri_variable_value(42, 16, '').
+uri_variable_value(43, 16, '').
+uri_variable_value(44, 16, '').
+uri_variable_value(45, 16, '').
+uri_variable_value(1, 17, '').
+uri_variable_value(2, 17, '').
+uri_variable_value(3, 17, '').
+uri_variable_value(4, 17, '').
+uri_variable_value(5, 17, '').
+uri_variable_value(6, 17, '').
+uri_variable_value(7, 17, '').
+uri_variable_value(8, 17, '').
+uri_variable_value(9, 17, '').
+uri_variable_value(10, 17, '').
+uri_variable_value(11, 17, '').
+uri_variable_value(12, 17, '').
+uri_variable_value(13, 17, '').
+uri_variable_value(14, 17, '').
+uri_variable_value(15, 17, '').
+uri_variable_value(16, 17, '').
+uri_variable_value(17, 17, '').
+uri_variable_value(18, 17, '').
+uri_variable_value(19, 17, '').
+uri_variable_value(20, 17, '').
+uri_variable_value(21, 17, '').
+uri_variable_value(22, 17, '').
+uri_variable_value(23, 17, '').
+uri_variable_value(24, 17, '').
+uri_variable_value(25, 17, '').
+uri_variable_value(26, 17, '').
+uri_variable_value(27, 17, '').
+uri_variable_value(28, 17, '').
+uri_variable_value(29, 17, '').
+uri_variable_value(30, 17, '').
+uri_variable_value(31, 17, '').
+uri_variable_value(32, 17, '').
+uri_variable_value(33, 17, '').
+uri_variable_value(34, 17, '').
+uri_variable_value(35, 17, '').
+uri_variable_value(36, 17, '').
+uri_variable_value(37, 17, '').
+uri_variable_value(38, 17, '').
+uri_variable_value(39, 17, '').
+uri_variable_value(40, 17, '').
+uri_variable_value(41, 17, '').
+uri_variable_value(42, 17, '').
+uri_variable_value(43, 17, '').
+uri_variable_value(44, 17, '').
+uri_variable_value(45, 17, '').
+uri_variable_value(1, 18, '').
+uri_variable_value(2, 18, '').
+uri_variable_value(3, 18, '').
+uri_variable_value(4, 18, '').
+uri_variable_value(5, 18, '').
+uri_variable_value(6, 18, '').
+uri_variable_value(7, 18, '').
+uri_variable_value(8, 18, '').
+uri_variable_value(9, 18, '').
+uri_variable_value(10, 18, '').
+uri_variable_value(11, 18, '').
+uri_variable_value(12, 18, '').
+uri_variable_value(13, 18, '').
+uri_variable_value(14, 18, '').
+uri_variable_value(15, 18, '').
+uri_variable_value(16, 18, '').
+uri_variable_value(17, 18, '').
+uri_variable_value(18, 18, '').
+uri_variable_value(19, 18, '').
+uri_variable_value(20, 18, '').
+uri_variable_value(21, 18, '').
+uri_variable_value(22, 18, '').
+uri_variable_value(23, 18, '').
+uri_variable_value(24, 18, '').
+uri_variable_value(25, 18, '').
+uri_variable_value(26, 18, '').
+uri_variable_value(27, 18, '').
+uri_variable_value(28, 18, '').
+uri_variable_value(29, 18, '').
+uri_variable_value(30, 18, '').
+uri_variable_value(31, 18, '').
+uri_variable_value(32, 18, '').
+uri_variable_value(33, 18, '').
+uri_variable_value(34, 18, '').
+uri_variable_value(35, 18, '').
+uri_variable_value(36, 18, '').
+uri_variable_value(37, 18, '').
+uri_variable_value(38, 18, '').
+uri_variable_value(39, 18, '').
+uri_variable_value(40, 18, '').
+uri_variable_value(41, 18, '').
+uri_variable_value(42, 18, '').
+uri_variable_value(43, 18, '').
+uri_variable_value(44, 18, '').
+uri_variable_value(45, 18, '').
+uri_variable_value(1, 19, '').
+uri_variable_value(2, 19, '').
+uri_variable_value(3, 19, '').
+uri_variable_value(4, 19, '').
+uri_variable_value(5, 19, '').
+uri_variable_value(6, 19, '').
+uri_variable_value(7, 19, '').
+uri_variable_value(8, 19, '').
+uri_variable_value(9, 19, '').
+uri_variable_value(10, 19, '').
+uri_variable_value(11, 19, '').
+uri_variable_value(12, 19, '').
+uri_variable_value(13, 19, '').
+uri_variable_value(14, 19, '').
+uri_variable_value(15, 19, '').
+uri_variable_value(16, 19, '').
+uri_variable_value(17, 19, '').
+uri_variable_value(18, 19, '').
+uri_variable_value(19, 19, '').
+uri_variable_value(20, 19, '').
+uri_variable_value(21, 19, '').
+uri_variable_value(22, 19, '').
+uri_variable_value(23, 19, '').
+uri_variable_value(24, 19, '').
+uri_variable_value(25, 19, '').
+uri_variable_value(26, 19, '').
+uri_variable_value(27, 19, '').
+uri_variable_value(28, 19, '').
+uri_variable_value(29, 19, '').
+uri_variable_value(30, 19, '').
+uri_variable_value(31, 19, '').
+uri_variable_value(32, 19, '').
+uri_variable_value(33, 19, '').
+uri_variable_value(34, 19, '').
+uri_variable_value(35, 19, '').
+uri_variable_value(36, 19, '').
+uri_variable_value(37, 19, '').
+uri_variable_value(38, 19, '').
+uri_variable_value(39, 19, '').
+uri_variable_value(40, 19, '').
+uri_variable_value(41, 19, '').
+uri_variable_value(42, 19, '').
+uri_variable_value(43, 19, '').
+uri_variable_value(44, 19, '').
+uri_variable_value(45, 19, '').

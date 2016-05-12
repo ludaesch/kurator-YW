@@ -1,0 +1,45 @@
+digraph Workflow {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_name_date_log
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Courier]
+name_val
+date_val
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+log1_data [shape=record rankdir=LR label="{<f0> log1_data |<f1> file\:\{log1_data_file_name\}}"];
+output2_data [shape=record rankdir=LR label="{<f0> output2_data |<f1> file\:\{output2_data_file_name\}}"];
+log2_data [shape=record rankdir=LR label="{<f0> log2_data |<f1> file\:\{log2_data_file_name\}}"];
+localDB_data [shape=record rankdir=LR label="{<f0> localDB_data |<f1> \{localDB_data_file_name\}}"];
+input1_data [shape=record rankdir=LR label="{<f0> input1_data |<f1> file\:\{input1_data_file_name\}}"];
+output1_data [shape=record rankdir=LR label="{<f0> output1_data |<f1> file\:\{output1_data_file_name\}}"];
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+name_val -> output1_data
+name_val -> log1_data
+localDB_data -> name_val
+input1_data -> name_val
+date_val -> output2_data
+date_val -> log2_data
+output1_data -> date_val
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+input1_data_input_port [label=""]
+localDB_data_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+log1_data_output_port [label=""]
+output2_data_output_port [label=""]
+log2_data_output_port [label=""]
+}}
+input1_data_input_port -> input1_data
+localDB_data_input_port -> localDB_data
+log1_data -> log1_data_output_port
+output2_data -> output2_data_output_port
+log2_data -> log2_data_output_port
+}
