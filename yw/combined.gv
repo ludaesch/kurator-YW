@@ -1,45 +1,93 @@
+
+/* Start of top-level graph */
 digraph Workflow {
 rankdir=TB
+
+/* Title for graph */
 fontname=Courier; fontsize=18; labelloc=t
 label=clean_name_date_log
+
+/* Start of double cluster for drawing box around nodes in workflow */
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
+
+/* Style for nodes representing atomic programs in workflow */
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+
+/* Nodes representing atomic programs in workflow */
+
+/* Style for nodes representing composite programs (sub-workflows) in workflow */
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Courier]
-name_val
-date_val
+
+/* Nodes representing composite programs (sub-workflows) in workflow */
+validate_scientificName_field_of_data
+validate_evenDate_field_of_data
+
+/* Style for nodes representing non-parameter data channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
 log1_data [shape=record rankdir=LR label="{<f0> log1_data |<f1> file\:\{log1_data_file_name\}}"];
 output2_data [shape=record rankdir=LR label="{<f0> output2_data |<f1> file\:\{output2_data_file_name\}}"];
 log2_data [shape=record rankdir=LR label="{<f0> log2_data |<f1> file\:\{log2_data_file_name\}}"];
-localDB_data [shape=record rankdir=LR label="{<f0> localDB_data |<f1> \{localDB_data_file_name\}}"];
 input1_data [shape=record rankdir=LR label="{<f0> input1_data |<f1> file\:\{input1_data_file_name\}}"];
 output1_data [shape=record rankdir=LR label="{<f0> output1_data |<f1> file\:\{output1_data_file_name\}}"];
+
+/* Style for nodes representing parameter channels in workflow */
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
-name_val -> output1_data
-name_val -> log1_data
-localDB_data -> name_val
-input1_data -> name_val
-date_val -> output2_data
-date_val -> log2_data
-output1_data -> date_val
+
+/* Nodes representing parameter channels in workflow */
+local_authority_source [shape=record rankdir=LR label="{<f0> local_authority_source |<f1> \{local_authority_source_file_name\}}"];
+
+/* Edges representing connections between programs and channels */
+validate_scientificName_field_of_data -> output1_data
+validate_scientificName_field_of_data -> log1_data
+local_authority_source -> validate_scientificName_field_of_data
+input1_data -> validate_scientificName_field_of_data
+validate_evenDate_field_of_data -> output2_data
+validate_evenDate_field_of_data -> log2_data
+output1_data -> validate_evenDate_field_of_data
+
+/* End of double cluster for drawing box around nodes in workflow */
 }}
+
+/* Hidden double-cluster for grouping workflow input ports */
 subgraph cluster_input_ports_group_outer { label=""; color=white
 subgraph cluster_input_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow input ports */
 node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
 input1_data_input_port [label=""]
-localDB_data_input_port [label=""]
+local_authority_source_input_port [label=""]
+
+/* End of double-cluster for grouping workflow input ports */
 }}
+
+/* Hidden double-cluster for grouping workflow output ports */
 subgraph cluster_output_ports_group_outer { label=""; color=white
 subgraph cluster_output_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow output ports */
 node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
 log1_data_output_port [label=""]
 output2_data_output_port [label=""]
 log2_data_output_port [label=""]
+
+/* End of double-cluster for grouping workflow output ports */
 }}
+
+/* Edges from input ports to channels */
 input1_data_input_port -> input1_data
-localDB_data_input_port -> localDB_data
+local_authority_source_input_port -> local_authority_source
+
+/* Edges from channels to output ports */
 log1_data -> log1_data_output_port
 output2_data -> output2_data_output_port
 log2_data -> log2_data_output_port
+
+/* End of top-level graph */
 }

@@ -1,26 +1,35 @@
 digraph Workflow {
 rankdir=TB
 fontname=Courier; fontsize=18; labelloc=t
-label="clean_name_date_log.date_val"
+label="clean_name_date_log.validate_evenDate_field_of_data"
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-read2_input_data_records
-extract_eventDate
+read_input2_data_records
 clean_eventDate
+write_log2_data
+write_output2_data
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 output2_data [shape=record rankdir=LR label="{<f0> output2_data |<f1> file\:\{output2_data_file_name\}}"];
 log2_data [shape=record rankdir=LR label="{<f0> log2_data |<f1> file\:\{log2_data_file_name\}}"];
-original2_record
-original2_eventDate
+eventDate
+updated_eventDate
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
-read2_input_data_records -> original2_record
-input2_data -> read2_input_data_records
-extract_eventDate -> original2_eventDate
-original2_record -> extract_eventDate
-clean_eventDate -> log2_data
-clean_eventDate -> output2_data
-original2_eventDate -> clean_eventDate
+catalogNumber
+read_input2_data_records -> eventDate
+read_input2_data_records -> catalogNumber
+read_input2_data_records -> others
+input2_data -> read_input2_data_records
+clean_eventDate -> updated_eventDate
+eventDate -> clean_eventDate
+write_log2_data -> log2_data
+input2_data_file_name -> write_log2_data
+catalogNumber -> write_log2_data
+eventDate -> write_log2_data
+updated_eventDate -> write_log2_data
+write_output2_data -> output2_data
+input2_data -> write_output2_data
+updated_eventDate -> write_output2_data
 }}
 subgraph cluster_input_ports_group_outer { label=""; color=white
 subgraph cluster_input_ports_group_inner { label=""; color=white
