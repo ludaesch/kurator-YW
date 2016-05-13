@@ -1,62 +1,63 @@
 digraph Workflow {
 rankdir=TB
 fontname=Courier; fontsize=18; labelloc=t
-label="clean_name_date_log.name_val"
+label="clean_name_date_log.validate_scientificName_field_of_data"
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
-read_records_from_localDB
+read_scientificName
 read_input1_data_records
-extract_scientificName_and_authorship
-find_matching_localDB_record
+find_matching_local_authority_source_record
 update_scientificName
 update_authorship
-compose_output1_record
-write_output_data
+write_log1_data
+write_output1_data
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
 output1_data [shape=record rankdir=LR label="{<f0> output1_data |<f1> file\:\{output1_data_file_name\}}"];
 log1_data [shape=record rankdir=LR label="{<f0> log1_data |<f1> file\:\{log1_data_file_name\}}"];
-localDB_data [shape=record rankdir=LR label="{<f0> localDB_data |<f1> \{localDB_data_file_name\}}"];
 input1_data [shape=record rankdir=LR label="{<f0> input1_data |<f1> file\:\{input1_data_file_name\}}"];
-original1_record
-original_scientificName
-localDB_scientificName_lst
-matching_localDB_record
-original_authorship
+scientificName
+matching_local_authority_source_record
+authorship
 updated_scientificName
 updated_authorship
-output1_record
-record_id
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
-read_records_from_localDB -> localDB_scientificName_lst
-localDB_data -> read_records_from_localDB
-read_input1_data_records -> original1_record
-read_input1_data_records -> record_id
+local_authority_source [shape=record rankdir=LR label="{<f0> local_authority_source |<f1> \{local_authority_source_file_name\}}"];
+local_authority_source_scientificName_lst
+catalogNumber
+read_scientificName -> local_authority_source_scientificName_lst
+local_authority_source -> read_scientificName
+read_input1_data_records -> scientificName
+read_input1_data_records -> authorship
+read_input1_data_records -> catalogNumber
+read_input1_data_records -> others
 input1_data -> read_input1_data_records
-extract_scientificName_and_authorship -> original_scientificName
-extract_scientificName_and_authorship -> original_authorship
-original1_record -> extract_scientificName_and_authorship
-find_matching_localDB_record -> matching_localDB_record
-original_scientificName -> find_matching_localDB_record
-localDB_scientificName_lst -> find_matching_localDB_record
+find_matching_local_authority_source_record -> matching_local_authority_source_record
+scientificName -> find_matching_local_authority_source_record
+local_authority_source_scientificName_lst -> find_matching_local_authority_source_record
 update_scientificName -> updated_scientificName
-original_scientificName -> update_scientificName
-matching_localDB_record -> update_scientificName
+scientificName -> update_scientificName
+matching_local_authority_source_record -> update_scientificName
 update_authorship -> updated_authorship
-matching_localDB_record -> update_authorship
-original_authorship -> update_authorship
-compose_output1_record -> output1_record
-updated_scientificName -> compose_output1_record
-updated_authorship -> compose_output1_record
-write_output_data -> output1_data
-write_output_data -> log1_data
-output1_record -> write_output_data
-record_id -> write_output_data
+matching_local_authority_source_record -> update_authorship
+authorship -> update_authorship
+write_log1_data -> log1_data
+input1_data_file_name -> write_log1_data
+catalogNumber -> write_log1_data
+local_authority_source -> write_log1_data
+scientificName -> write_log1_data
+authorship -> write_log1_data
+updated_scientificName -> write_log1_data
+updated_authorship -> write_log1_data
+write_output1_data -> output1_data
+input1_data -> write_output1_data
+updated_scientificName -> write_output1_data
+updated_authorship -> write_output1_data
 }}
 subgraph cluster_input_ports_group_outer { label=""; color=white
 subgraph cluster_input_ports_group_inner { label=""; color=white
 node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
-localDB_data_input_port [label=""]
+local_authority_source_input_port [label=""]
 input1_data_input_port [label=""]
 }}
 subgraph cluster_output_ports_group_outer { label=""; color=white
@@ -65,7 +66,7 @@ node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontn
 output1_data_output_port [label=""]
 log1_data_output_port [label=""]
 }}
-localDB_data_input_port -> localDB_data
+local_authority_source_input_port -> local_authority_source
 input1_data_input_port -> input1_data
 output1_data -> output1_data_output_port
 log1_data -> log1_data_output_port
