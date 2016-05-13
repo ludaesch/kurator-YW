@@ -1,27 +1,27 @@
 
 % FACT: program(program_id, program_name, qualified_program_name, begin_annotation_id, end_annotation_id).
-program(1, 'clean_name_date_log', 'clean_name_date_log', 1, 94).
-program(2, 'name_val', 'clean_name_date_log.name_val', 12, 69).
-program(3, 'read_records_from_localDB', 'clean_name_date_log.name_val.read_records_from_localDB', 21, 26).
-program(4, 'read_input1_data_records', 'clean_name_date_log.name_val.read_input1_data_records', 27, 33).
-program(5, 'extract_scientificName_and_authorship', 'clean_name_date_log.name_val.extract_scientificName_and_authorship', 34, 38).
-program(6, 'find_matching_localDB_record', 'clean_name_date_log.name_val.find_matching_localDB_record', 39, 44).
-program(7, 'update_scientificName', 'clean_name_date_log.name_val.update_scientificName', 45, 49).
-program(8, 'update_authorship', 'clean_name_date_log.name_val.update_authorship', 50, 54).
-program(9, 'compose_output1_record', 'clean_name_date_log.name_val.compose_output1_record', 55, 59).
-program(10, 'write_output_data', 'clean_name_date_log.name_val.write_output_data', 60, 68).
-program(11, 'date_val', 'clean_name_date_log.date_val', 70, 93).
-program(12, 'read2_input_data_records', 'clean_name_date_log.date_val.read2_input_data_records', 77, 81).
-program(13, 'extract_eventDate', 'clean_name_date_log.date_val.extract_eventDate', 82, 85).
-program(14, 'clean_eventDate', 'clean_name_date_log.date_val.clean_eventDate', 86, 92).
-program(15, 'exactmatch', 'exactmatch', 95, 100).
-program(16, 'fuzzymatch', 'fuzzymatch', 101, 105).
-program(17, 'timestamp', 'timestamp', 106, 109).
+program(1, "clean_name_date_log", "clean_name_date_log", 1, 126).
+program(2, "validate_scientificName_field_of_data", "clean_name_date_log.validate_scientificName_field_of_data", 12, 82).
+program(3, "read_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.read_scientificName", 21, 26).
+program(4, "read_input1_data_records", "clean_name_date_log.validate_scientificName_field_of_data.read_input1_data_records", 27, 38).
+program(5, "find_matching_local_authority_source_record", "clean_name_date_log.validate_scientificName_field_of_data.find_matching_local_authority_source_record", 39, 45).
+program(6, "update_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.update_scientificName", 46, 51).
+program(7, "update_authorship", "clean_name_date_log.validate_scientificName_field_of_data.update_authorship", 52, 57).
+program(8, "write_log1_data", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data", 58, 73).
+program(9, "write_output1_data", "clean_name_date_log.validate_scientificName_field_of_data.write_output1_data", 74, 81).
+program(10, "validate_evenDate_field_of_data", "clean_name_date_log.validate_evenDate_field_of_data", 83, 125).
+program(11, "read_input2_data_records", "clean_name_date_log.validate_evenDate_field_of_data.read_input2_data_records", 90, 99).
+program(12, "clean_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.clean_eventDate", 100, 105).
+program(13, "write_log2_data", "clean_name_date_log.validate_evenDate_field_of_data.write_log2_data", 106, 117).
+program(14, "write_output2_data", "clean_name_date_log.validate_evenDate_field_of_data.write_output2_data", 118, 124).
+program(15, "exactmatch", "exactmatch", 127, 132).
+program(16, "fuzzymatch", "fuzzymatch", 133, 137).
+program(17, "timestamp", "timestamp", 138, 141).
 
 % FACT: workflow(program_id).
 workflow(1).
 workflow(2).
-workflow(11).
+workflow(10).
 
 % FACT: function(program_id).
 function(15).
@@ -37,86 +37,118 @@ has_subprogram(2, 6).
 has_subprogram(2, 7).
 has_subprogram(2, 8).
 has_subprogram(2, 9).
-has_subprogram(2, 10).
-has_subprogram(1, 11).
-has_subprogram(11, 12).
-has_subprogram(11, 13).
-has_subprogram(11, 14).
+has_subprogram(1, 10).
+has_subprogram(10, 11).
+has_subprogram(10, 12).
+has_subprogram(10, 13).
+has_subprogram(10, 14).
 
 % FACT: port(port_id, port_type, port_name, qualified_port_name, port_annotation_id, data_id).
-port(1, 'in', 'input1_data', 'clean_name_date_log<-input1_data', 2, 1).
-port(2, 'in', 'localDB_data', 'clean_name_date_log<-localDB_data', 4, 2).
-port(3, 'out', 'log1_data', 'clean_name_date_log->log1_data', 6, 3).
-port(4, 'out', 'output2_data', 'clean_name_date_log->output2_data', 8, 4).
-port(5, 'out', 'log2_data', 'clean_name_date_log->log2_data', 10, 5).
-port(6, 'in', 'localDB_data', 'clean_name_date_log.name_val<-localDB_data', 13, 6).
-port(7, 'in', 'input1_data', 'clean_name_date_log.name_val<-input1_data', 15, 7).
-port(8, 'out', 'output1_data', 'clean_name_date_log.name_val->output1_data', 17, 8).
-port(9, 'out', 'log1_data', 'clean_name_date_log.name_val->log1_data', 19, 9).
-port(10, 'in', 'localDB_data', 'clean_name_date_log.name_val.read_records_from_localDB<-localDB_data', 22, 10).
-port(11, 'out', 'localDB_scientificName_lst', 'clean_name_date_log.name_val.read_records_from_localDB->localDB_scientificName_lst', 25, 11).
-port(12, 'in', 'input1_data', 'clean_name_date_log.name_val.read_input1_data_records<-input1_data', 28, 12).
-port(13, 'out', 'original1_record', 'clean_name_date_log.name_val.read_input1_data_records->original1_record', 30, 13).
-port(14, 'out', 'record_num', 'clean_name_date_log.name_val.read_input1_data_records->record_num', 31, 14).
-port(15, 'in', 'original1_record', 'clean_name_date_log.name_val.extract_scientificName_and_authorship<-original1_record', 35, 13).
-port(16, 'out', 'original_scientificName', 'clean_name_date_log.name_val.extract_scientificName_and_authorship->original_scientificName', 36, 15).
-port(17, 'out', 'original_authorship', 'clean_name_date_log.name_val.extract_scientificName_and_authorship->original_authorship', 37, 16).
-port(18, 'in', 'original_scientificName', 'clean_name_date_log.name_val.find_matching_localDB_record<-original_scientificName', 40, 15).
-port(19, 'in', 'localDB_scientificName_lst', 'clean_name_date_log.name_val.find_matching_localDB_record<-localDB_scientificName_lst', 41, 11).
-port(20, 'OUT', 'matching_localDB_record', 'clean_name_date_log.name_val.find_matching_localDB_record->matching_localDB_record', 43, 17).
-port(21, 'in', 'original_scientificName', 'clean_name_date_log.name_val.update_scientificName<-original_scientificName', 46, 15).
-port(22, 'in', 'matching_localDB_record', 'clean_name_date_log.name_val.update_scientificName<-matching_localDB_record', 47, 17).
-port(23, 'out', 'updated_scientificName', 'clean_name_date_log.name_val.update_scientificName->updated_scientificName', 48, 18).
-port(24, 'in', 'matching_localDB_record', 'clean_name_date_log.name_val.update_authorship<-matching_localDB_record', 51, 17).
-port(25, 'in', 'original_authorship', 'clean_name_date_log.name_val.update_authorship<-original_authorship', 52, 16).
-port(26, 'out', 'updated_authorship', 'clean_name_date_log.name_val.update_authorship->updated_authorship', 53, 19).
-port(27, 'in', 'updated_scientificName', 'clean_name_date_log.name_val.compose_output1_record<-updated_scientificName', 56, 18).
-port(28, 'in', 'updated_authorship', 'clean_name_date_log.name_val.compose_output1_record<-updated_authorship', 57, 19).
-port(29, 'out', 'output1_record', 'clean_name_date_log.name_val.compose_output1_record->output1_record', 58, 20).
-port(30, 'in', 'output1_record', 'clean_name_date_log.name_val.write_output_data<-output1_record', 61, 20).
-port(31, 'in', 'record_num', 'clean_name_date_log.name_val.write_output_data<-record_num', 62, 14).
-port(32, 'out', 'output1_data', 'clean_name_date_log.name_val.write_output_data->output1_data', 64, 21).
-port(33, 'out', 'log1_data', 'clean_name_date_log.name_val.write_output_data->log1_data', 66, 22).
-port(34, 'in', 'output1_data', 'clean_name_date_log.date_val<-output1_data', 71, 8).
-port(35, 'out', 'output2_data', 'clean_name_date_log.date_val->output2_data', 73, 23).
-port(36, 'out', 'log2_data', 'clean_name_date_log.date_val->log2_data', 75, 24).
-port(37, 'in', 'input2_data', 'clean_name_date_log.date_val.read2_input_data_records<-input2_data', 78, 25).
-port(38, 'out', 'original2_record', 'clean_name_date_log.date_val.read2_input_data_records->original2_record', 80, 26).
-port(39, 'in', 'original2_record', 'clean_name_date_log.date_val.extract_eventDate<-original2_record', 83, 26).
-port(40, 'out', 'original2_eventDate', 'clean_name_date_log.date_val.extract_eventDate->original2_eventDate', 84, 27).
-port(41, 'in', 'original2_eventDate', 'clean_name_date_log.date_val.clean_eventDate<-original2_eventDate', 87, 27).
-port(42, 'out', 'log2_data', 'clean_name_date_log.date_val.clean_eventDate->log2_data', 88, 28).
-port(43, 'out', 'output2_data', 'clean_name_date_log.date_val.clean_eventDate->output2_data', 90, 29).
-port(44, 'param', 'lst', 'exactmatch<-lst', 96, 30).
-port(45, 'param', 'label_str', 'exactmatch<-label_str', 97, 31).
-port(48, 'param', 'lst', 'fuzzymatch<-lst', 102, 30).
-port(49, 'param', 'label_str', 'fuzzymatch<-label_str', 103, 31).
-port(51, 'param', 'message', 'timestamp<-message', 107, 35).
+port(1, "in", "input1_data", "clean_name_date_log<-input1_data", 2, 1).
+port(2, "param", "local_authority_source", "clean_name_date_log<-local_authority_source", 4, 2).
+port(3, "out", "log1_data", "clean_name_date_log->log1_data", 6, 3).
+port(4, "out", "output2_data", "clean_name_date_log->output2_data", 8, 4).
+port(5, "out", "log2_data", "clean_name_date_log->log2_data", 10, 5).
+port(6, "param", "local_authority_source", "clean_name_date_log.validate_scientificName_field_of_data<-local_authority_source", 13, 6).
+port(7, "in", "input1_data", "clean_name_date_log.validate_scientificName_field_of_data<-input1_data", 15, 7).
+port(8, "out", "output1_data", "clean_name_date_log.validate_scientificName_field_of_data->output1_data", 17, 8).
+port(9, "out", "log1_data", "clean_name_date_log.validate_scientificName_field_of_data->log1_data", 19, 9).
+port(10, "param", "local_authority_source", "clean_name_date_log.validate_scientificName_field_of_data.read_scientificName<-local_authority_source", 22, 10).
+port(11, "out", "local_authority_source_scientificName_lst", "clean_name_date_log.validate_scientificName_field_of_data.read_scientificName->local_authority_source_scientificName_lst", 25, 11).
+port(12, "in", "input1_data", "clean_name_date_log.validate_scientificName_field_of_data.read_input1_data_records<-input1_data", 28, 12).
+port(13, "out", "original_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.read_input1_data_records->original_scientificName", 30, 13).
+port(14, "out", "original_authorship", "clean_name_date_log.validate_scientificName_field_of_data.read_input1_data_records->original_authorship", 32, 14).
+port(15, "out", "original_catalogNumber", "clean_name_date_log.validate_scientificName_field_of_data.read_input1_data_records->original_catalogNumber", 34, 15).
+port(16, "out", "original_others", "clean_name_date_log.validate_scientificName_field_of_data.read_input1_data_records->original_others", 36, 16).
+port(17, "in", "original_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.find_matching_local_authority_source_record<-original_scientificName", 40, 13).
+port(18, "param", "local_authority_source_scientificName_lst", "clean_name_date_log.validate_scientificName_field_of_data.find_matching_local_authority_source_record<-local_authority_source_scientificName_lst", 42, 11).
+port(19, "OUT", "matching_local_authority_source_record", "clean_name_date_log.validate_scientificName_field_of_data.find_matching_local_authority_source_record->matching_local_authority_source_record", 44, 17).
+port(20, "in", "original_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.update_scientificName<-original_scientificName", 47, 13).
+port(21, "in", "matching_local_authority_source_record", "clean_name_date_log.validate_scientificName_field_of_data.update_scientificName<-matching_local_authority_source_record", 49, 17).
+port(22, "out", "updated_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.update_scientificName->updated_scientificName", 50, 18).
+port(23, "in", "matching_local_authority_source_record", "clean_name_date_log.validate_scientificName_field_of_data.update_authorship<-matching_local_authority_source_record", 53, 17).
+port(24, "in", "original_authorship", "clean_name_date_log.validate_scientificName_field_of_data.update_authorship<-original_authorship", 54, 14).
+port(25, "out", "updated_authorship", "clean_name_date_log.validate_scientificName_field_of_data.update_authorship->updated_authorship", 56, 19).
+port(26, "param", "input1_data_file_name", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-input1_data_file_name", 59, 20).
+port(27, "param", "original_catalogNumber", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-original_catalogNumber", 61, 15).
+port(28, "param", "local_authority_source", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-local_authority_source", 63, 10).
+port(29, "in", "original_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-original_scientificName", 65, 13).
+port(30, "in", "original_authorship", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-original_authorship", 67, 14).
+port(31, "in", "updated_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-updated_scientificName", 69, 18).
+port(32, "in", "updated_authorship", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data<-updated_authorship", 70, 19).
+port(33, "out", "log1_data", "clean_name_date_log.validate_scientificName_field_of_data.write_log1_data->log1_data", 71, 21).
+port(34, "in", "input1_data", "clean_name_date_log.validate_scientificName_field_of_data.write_output1_data<-input1_data", 75, 12).
+port(35, "in", "updated_scientificName", "clean_name_date_log.validate_scientificName_field_of_data.write_output1_data<-updated_scientificName", 77, 18).
+port(36, "in", "updated_authorship", "clean_name_date_log.validate_scientificName_field_of_data.write_output1_data<-updated_authorship", 78, 19).
+port(37, "out", "output1_data", "clean_name_date_log.validate_scientificName_field_of_data.write_output1_data->output1_data", 79, 22).
+port(38, "in", "output1_data", "clean_name_date_log.validate_evenDate_field_of_data<-output1_data", 84, 8).
+port(39, "out", "output2_data", "clean_name_date_log.validate_evenDate_field_of_data->output2_data", 86, 23).
+port(40, "out", "log2_data", "clean_name_date_log.validate_evenDate_field_of_data->log2_data", 88, 24).
+port(41, "in", "input2_data", "clean_name_date_log.validate_evenDate_field_of_data.read_input2_data_records<-input2_data", 91, 25).
+port(42, "out", "original2_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.read_input2_data_records->original2_eventDate", 93, 26).
+port(43, "out", "original2_catalogNumber", "clean_name_date_log.validate_evenDate_field_of_data.read_input2_data_records->original2_catalogNumber", 95, 27).
+port(44, "out", "original2_others", "clean_name_date_log.validate_evenDate_field_of_data.read_input2_data_records->original2_others", 97, 28).
+port(45, "in", "original2_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.clean_eventDate<-original2_eventDate", 101, 26).
+port(46, "out", "updated2_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.clean_eventDate->updated2_eventDate", 103, 29).
+port(47, "param", "input2_data_file_name", "clean_name_date_log.validate_evenDate_field_of_data.write_log2_data<-input2_data_file_name", 107, 30).
+port(48, "param", "original2_catalogNumber", "clean_name_date_log.validate_evenDate_field_of_data.write_log2_data<-original2_catalogNumber", 109, 27).
+port(49, "in", "original2_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.write_log2_data<-original2_eventDate", 111, 26).
+port(50, "in", "updated2_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.write_log2_data<-updated2_eventDate", 113, 29).
+port(51, "out", "log2_data", "clean_name_date_log.validate_evenDate_field_of_data.write_log2_data->log2_data", 115, 31).
+port(52, "in", "input2_data", "clean_name_date_log.validate_evenDate_field_of_data.write_output2_data<-input2_data", 119, 25).
+port(53, "in", "updated2_eventDate", "clean_name_date_log.validate_evenDate_field_of_data.write_output2_data<-updated2_eventDate", 120, 29).
+port(54, "out", "output2_data", "clean_name_date_log.validate_evenDate_field_of_data.write_output2_data->output2_data", 122, 32).
+port(55, "param", "lst", "exactmatch<-lst", 128, 33).
+port(56, "param", "label_str", "exactmatch<-label_str", 129, 34).
+port(59, "param", "lst", "fuzzymatch<-lst", 134, 33).
+port(60, "param", "label_str", "fuzzymatch<-label_str", 135, 34).
+port(62, "param", "message", "timestamp<-message", 139, 38).
 
 % FACT: port_alias(port_id, alias).
-port_alias(14, 'record_id').
-port_alias(31, 'record_id').
+port_alias(13, "scientificName").
+port_alias(14, "authorship").
+port_alias(15, "catalogNumber").
+port_alias(16, "others").
+port_alias(17, "scientificName").
+port_alias(20, "scientificName").
+port_alias(24, "authorship").
+port_alias(27, "catalogNumber").
+port_alias(29, "scientificName").
+port_alias(30, "authorship").
+port_alias(42, "eventDate").
+port_alias(43, "catalogNumber").
+port_alias(44, "others").
+port_alias(45, "eventDate").
+port_alias(46, "updated_eventDate").
+port_alias(48, "catalogNumber").
+port_alias(49, "eventDate").
+port_alias(50, "updated_eventDate").
+port_alias(53, "updated_eventDate").
 
 % FACT: port_uri_template(port_id, uri).
-port_uri_template(1, 'file:{input1_data_file_name}').
-port_uri_template(2, '{localDB_data_file_name}').
-port_uri_template(3, 'file:{log1_data_file_name}').
-port_uri_template(4, 'file:{output2_data_file_name}').
-port_uri_template(5, 'file:{log2_data_file_name}').
-port_uri_template(6, '{localDB_data_file_name}').
-port_uri_template(7, 'file:{input1_data_file_name}').
-port_uri_template(8, 'file:{output1_data_file_name}').
-port_uri_template(9, 'file:{log1_data_file_name}').
-port_uri_template(10, '{localDB_data_file_name}').
-port_uri_template(12, 'file:{input1_data_file_name}').
-port_uri_template(32, 'file:{output1_data_file_name}').
-port_uri_template(33, 'file:{log1_data_file_name}').
-port_uri_template(34, 'file:{output1_data_file_name}').
-port_uri_template(35, 'file:{output2_data_file_name}').
-port_uri_template(36, 'file:{log2_data_file_name}').
-port_uri_template(37, 'file:{output1_data_file_name}').
-port_uri_template(42, 'file:{log2_data_file_name}').
-port_uri_template(43, 'file:{output2_data_file_name}').
+port_uri_template(1, "file:{input1_data_file_name}").
+port_uri_template(2, "{local_authority_source_file_name}").
+port_uri_template(3, "file:{log1_data_file_name}").
+port_uri_template(4, "file:{output2_data_file_name}").
+port_uri_template(5, "file:{log2_data_file_name}").
+port_uri_template(6, "{local_authority_source_file_name}").
+port_uri_template(7, "file:{input1_data_file_name}").
+port_uri_template(8, "file:{output1_data_file_name}").
+port_uri_template(9, "file:{log1_data_file_name}").
+port_uri_template(10, "{local_authority_source_file_name}").
+port_uri_template(12, "file:{input1_data_file_name}").
+port_uri_template(26, "file:{input1_data_file_name}").
+port_uri_template(28, "file:{local_authority_source_file_name}").
+port_uri_template(33, "file:{log1_data_file_name}").
+port_uri_template(34, "file:{input1_data_file_name}").
+port_uri_template(37, "file:{output1_data_file_name}").
+port_uri_template(38, "file:{output1_data_file_name}").
+port_uri_template(39, "file:{output2_data_file_name}").
+port_uri_template(40, "file:{log2_data_file_name}").
+port_uri_template(41, "file:{output1_data_file_name}").
+port_uri_template(47, "file:{output1_data_file_name}").
+port_uri_template(51, "file:{log2_data_file_name}").
+port_uri_template(54, "file:{output2_data_file_name}").
 
 % FACT: has_in_port(block_id, port_id).
 has_in_port(1, 1).
@@ -125,26 +157,36 @@ has_in_port(2, 6).
 has_in_port(2, 7).
 has_in_port(3, 10).
 has_in_port(4, 12).
-has_in_port(5, 15).
-has_in_port(6, 18).
-has_in_port(6, 19).
-has_in_port(7, 21).
-has_in_port(7, 22).
-has_in_port(8, 24).
-has_in_port(8, 25).
-has_in_port(9, 27).
-has_in_port(9, 28).
-has_in_port(10, 30).
-has_in_port(10, 31).
-has_in_port(11, 34).
-has_in_port(12, 37).
-has_in_port(13, 39).
-has_in_port(14, 41).
-has_in_port(15, 44).
-has_in_port(15, 45).
-has_in_port(16, 48).
-has_in_port(16, 49).
-has_in_port(17, 51).
+has_in_port(5, 17).
+has_in_port(5, 18).
+has_in_port(6, 20).
+has_in_port(6, 21).
+has_in_port(7, 23).
+has_in_port(7, 24).
+has_in_port(8, 26).
+has_in_port(8, 27).
+has_in_port(8, 28).
+has_in_port(8, 29).
+has_in_port(8, 30).
+has_in_port(8, 31).
+has_in_port(8, 32).
+has_in_port(9, 34).
+has_in_port(9, 35).
+has_in_port(9, 36).
+has_in_port(10, 38).
+has_in_port(11, 41).
+has_in_port(12, 45).
+has_in_port(13, 47).
+has_in_port(13, 48).
+has_in_port(13, 49).
+has_in_port(13, 50).
+has_in_port(14, 52).
+has_in_port(14, 53).
+has_in_port(15, 55).
+has_in_port(15, 56).
+has_in_port(16, 59).
+has_in_port(16, 60).
+has_in_port(17, 62).
 
 % FACT: has_out_port(block_id, port_id).
 has_out_port(1, 3).
@@ -155,185 +197,220 @@ has_out_port(2, 9).
 has_out_port(3, 11).
 has_out_port(4, 13).
 has_out_port(4, 14).
-has_out_port(5, 16).
-has_out_port(5, 17).
-has_out_port(6, 20).
-has_out_port(7, 23).
-has_out_port(8, 26).
-has_out_port(9, 29).
-has_out_port(10, 32).
-has_out_port(10, 33).
-has_out_port(11, 35).
-has_out_port(11, 36).
-has_out_port(12, 38).
-has_out_port(13, 40).
-has_out_port(14, 42).
-has_out_port(14, 43).
+has_out_port(4, 15).
+has_out_port(4, 16).
+has_out_port(5, 19).
+has_out_port(6, 22).
+has_out_port(7, 25).
+has_out_port(8, 33).
+has_out_port(9, 37).
+has_out_port(10, 39).
+has_out_port(10, 40).
+has_out_port(11, 42).
+has_out_port(11, 43).
+has_out_port(11, 44).
+has_out_port(12, 46).
+has_out_port(13, 51).
+has_out_port(14, 54).
 
 % FACT: data(data_id, data_name, qualified_data_name).
-data(1, 'input1_data', '[input1_data]').
-data(2, 'localDB_data', '[localDB_data]').
-data(3, 'log1_data', '[log1_data]').
-data(4, 'output2_data', '[output2_data]').
-data(5, 'log2_data', '[log2_data]').
-data(6, 'localDB_data', 'clean_name_date_log[localDB_data]').
-data(7, 'input1_data', 'clean_name_date_log[input1_data]').
-data(8, 'output1_data', 'clean_name_date_log[output1_data]').
-data(9, 'log1_data', 'clean_name_date_log[log1_data]').
-data(23, 'output2_data', 'clean_name_date_log[output2_data]').
-data(24, 'log2_data', 'clean_name_date_log[log2_data]').
-data(10, 'localDB_data', 'clean_name_date_log.name_val[localDB_data]').
-data(11, 'localDB_scientificName_lst', 'clean_name_date_log.name_val[localDB_scientificName_lst]').
-data(12, 'input1_data', 'clean_name_date_log.name_val[input1_data]').
-data(13, 'original1_record', 'clean_name_date_log.name_val[original1_record]').
-data(14, 'record_id', 'clean_name_date_log.name_val[record_id]').
-data(15, 'original_scientificName', 'clean_name_date_log.name_val[original_scientificName]').
-data(16, 'original_authorship', 'clean_name_date_log.name_val[original_authorship]').
-data(17, 'matching_localDB_record', 'clean_name_date_log.name_val[matching_localDB_record]').
-data(18, 'updated_scientificName', 'clean_name_date_log.name_val[updated_scientificName]').
-data(19, 'updated_authorship', 'clean_name_date_log.name_val[updated_authorship]').
-data(20, 'output1_record', 'clean_name_date_log.name_val[output1_record]').
-data(21, 'output1_data', 'clean_name_date_log.name_val[output1_data]').
-data(22, 'log1_data', 'clean_name_date_log.name_val[log1_data]').
-data(25, 'input2_data', 'clean_name_date_log.date_val[input2_data]').
-data(26, 'original2_record', 'clean_name_date_log.date_val[original2_record]').
-data(27, 'original2_eventDate', 'clean_name_date_log.date_val[original2_eventDate]').
-data(28, 'log2_data', 'clean_name_date_log.date_val[log2_data]').
-data(29, 'output2_data', 'clean_name_date_log.date_val[output2_data]').
+data(1, "input1_data", "[input1_data]").
+data(2, "local_authority_source", "[local_authority_source]").
+data(3, "log1_data", "[log1_data]").
+data(4, "output2_data", "[output2_data]").
+data(5, "log2_data", "[log2_data]").
+data(6, "local_authority_source", "clean_name_date_log[local_authority_source]").
+data(7, "input1_data", "clean_name_date_log[input1_data]").
+data(8, "output1_data", "clean_name_date_log[output1_data]").
+data(9, "log1_data", "clean_name_date_log[log1_data]").
+data(23, "output2_data", "clean_name_date_log[output2_data]").
+data(24, "log2_data", "clean_name_date_log[log2_data]").
+data(10, "local_authority_source", "clean_name_date_log.validate_scientificName_field_of_data[local_authority_source]").
+data(11, "local_authority_source_scientificName_lst", "clean_name_date_log.validate_scientificName_field_of_data[local_authority_source_scientificName_lst]").
+data(12, "input1_data", "clean_name_date_log.validate_scientificName_field_of_data[input1_data]").
+data(13, "scientificName", "clean_name_date_log.validate_scientificName_field_of_data[scientificName]").
+data(14, "authorship", "clean_name_date_log.validate_scientificName_field_of_data[authorship]").
+data(15, "catalogNumber", "clean_name_date_log.validate_scientificName_field_of_data[catalogNumber]").
+data(16, "others", "clean_name_date_log.validate_scientificName_field_of_data[others]").
+data(17, "matching_local_authority_source_record", "clean_name_date_log.validate_scientificName_field_of_data[matching_local_authority_source_record]").
+data(18, "updated_scientificName", "clean_name_date_log.validate_scientificName_field_of_data[updated_scientificName]").
+data(19, "updated_authorship", "clean_name_date_log.validate_scientificName_field_of_data[updated_authorship]").
+data(20, "input1_data_file_name", "clean_name_date_log.validate_scientificName_field_of_data[input1_data_file_name]").
+data(21, "log1_data", "clean_name_date_log.validate_scientificName_field_of_data[log1_data]").
+data(22, "output1_data", "clean_name_date_log.validate_scientificName_field_of_data[output1_data]").
+data(25, "input2_data", "clean_name_date_log.validate_evenDate_field_of_data[input2_data]").
+data(26, "eventDate", "clean_name_date_log.validate_evenDate_field_of_data[eventDate]").
+data(27, "catalogNumber", "clean_name_date_log.validate_evenDate_field_of_data[catalogNumber]").
+data(28, "others", "clean_name_date_log.validate_evenDate_field_of_data[others]").
+data(29, "updated_eventDate", "clean_name_date_log.validate_evenDate_field_of_data[updated_eventDate]").
+data(30, "input2_data_file_name", "clean_name_date_log.validate_evenDate_field_of_data[input2_data_file_name]").
+data(31, "log2_data", "clean_name_date_log.validate_evenDate_field_of_data[log2_data]").
+data(32, "output2_data", "clean_name_date_log.validate_evenDate_field_of_data[output2_data]").
 
 % FACT: channel(channel_id, data_id).
-channel(26, 3).
-channel(27, 4).
-channel(28, 5).
-channel(29, 6).
-channel(30, 7).
-channel(31, 8).
-channel(32, 1).
-channel(33, 2).
-channel(34, 9).
-channel(35, 23).
-channel(36, 24).
+channel(35, 3).
+channel(36, 4).
+channel(37, 5).
+channel(38, 6).
+channel(39, 7).
+channel(40, 8).
+channel(41, 1).
+channel(42, 2).
+channel(43, 9).
+channel(44, 23).
+channel(45, 24).
 channel(1, 8).
 channel(2, 9).
 channel(3, 10).
-channel(4, 12).
-channel(5, 13).
-channel(6, 15).
-channel(7, 15).
-channel(8, 11).
-channel(9, 17).
-channel(10, 17).
-channel(11, 16).
-channel(12, 18).
-channel(13, 19).
-channel(14, 20).
-channel(15, 14).
-channel(16, 6).
-channel(17, 7).
-channel(18, 21).
-channel(19, 22).
-channel(20, 23).
-channel(21, 24).
-channel(22, 26).
-channel(23, 27).
-channel(24, 29).
-channel(25, 28).
+channel(4, 10).
+channel(5, 12).
+channel(6, 12).
+channel(7, 13).
+channel(8, 13).
+channel(9, 13).
+channel(10, 11).
+channel(11, 17).
+channel(12, 17).
+channel(13, 14).
+channel(14, 14).
+channel(15, 15).
+channel(16, 18).
+channel(17, 18).
+channel(18, 19).
+channel(19, 19).
+channel(20, 6).
+channel(21, 6).
+channel(22, 7).
+channel(23, 7).
+channel(24, 22).
+channel(25, 21).
+channel(26, 23).
+channel(27, 24).
+channel(28, 26).
+channel(29, 26).
+channel(30, 27).
+channel(31, 29).
+channel(32, 29).
+channel(33, 32).
+channel(34, 31).
 
 % FACT: port_connects_to_channel(port_id, channel_id).
-port_connects_to_channel(9, 26).
-port_connects_to_channel(35, 27).
-port_connects_to_channel(36, 28).
-port_connects_to_channel(6, 29).
-port_connects_to_channel(7, 30).
-port_connects_to_channel(8, 31).
-port_connects_to_channel(34, 31).
-port_connects_to_channel(7, 32).
-port_connects_to_channel(6, 33).
-port_connects_to_channel(9, 34).
-port_connects_to_channel(35, 35).
-port_connects_to_channel(36, 36).
-port_connects_to_channel(32, 1).
+port_connects_to_channel(9, 35).
+port_connects_to_channel(39, 36).
+port_connects_to_channel(40, 37).
+port_connects_to_channel(6, 38).
+port_connects_to_channel(7, 39).
+port_connects_to_channel(8, 40).
+port_connects_to_channel(38, 40).
+port_connects_to_channel(7, 41).
+port_connects_to_channel(6, 42).
+port_connects_to_channel(9, 43).
+port_connects_to_channel(39, 44).
+port_connects_to_channel(40, 45).
+port_connects_to_channel(37, 1).
 port_connects_to_channel(33, 2).
 port_connects_to_channel(10, 3).
-port_connects_to_channel(12, 4).
-port_connects_to_channel(13, 5).
-port_connects_to_channel(15, 5).
-port_connects_to_channel(16, 6).
-port_connects_to_channel(18, 6).
-port_connects_to_channel(16, 7).
-port_connects_to_channel(21, 7).
-port_connects_to_channel(11, 8).
-port_connects_to_channel(19, 8).
-port_connects_to_channel(20, 9).
-port_connects_to_channel(22, 9).
-port_connects_to_channel(20, 10).
-port_connects_to_channel(24, 10).
-port_connects_to_channel(17, 11).
-port_connects_to_channel(25, 11).
+port_connects_to_channel(28, 4).
+port_connects_to_channel(12, 5).
+port_connects_to_channel(34, 6).
+port_connects_to_channel(13, 7).
+port_connects_to_channel(17, 7).
+port_connects_to_channel(13, 8).
+port_connects_to_channel(20, 8).
+port_connects_to_channel(13, 9).
+port_connects_to_channel(29, 9).
+port_connects_to_channel(11, 10).
+port_connects_to_channel(18, 10).
+port_connects_to_channel(19, 11).
+port_connects_to_channel(21, 11).
+port_connects_to_channel(19, 12).
 port_connects_to_channel(23, 12).
-port_connects_to_channel(27, 12).
-port_connects_to_channel(26, 13).
-port_connects_to_channel(28, 13).
-port_connects_to_channel(29, 14).
+port_connects_to_channel(14, 13).
+port_connects_to_channel(24, 13).
+port_connects_to_channel(14, 14).
 port_connects_to_channel(30, 14).
-port_connects_to_channel(14, 15).
-port_connects_to_channel(31, 15).
-port_connects_to_channel(10, 16).
-port_connects_to_channel(12, 17).
+port_connects_to_channel(15, 15).
+port_connects_to_channel(27, 15).
+port_connects_to_channel(22, 16).
+port_connects_to_channel(31, 16).
+port_connects_to_channel(22, 17).
+port_connects_to_channel(35, 17).
+port_connects_to_channel(25, 18).
 port_connects_to_channel(32, 18).
-port_connects_to_channel(33, 19).
-port_connects_to_channel(43, 20).
-port_connects_to_channel(42, 21).
-port_connects_to_channel(38, 22).
-port_connects_to_channel(39, 22).
-port_connects_to_channel(40, 23).
-port_connects_to_channel(41, 23).
-port_connects_to_channel(43, 24).
-port_connects_to_channel(42, 25).
+port_connects_to_channel(25, 19).
+port_connects_to_channel(36, 19).
+port_connects_to_channel(10, 20).
+port_connects_to_channel(28, 21).
+port_connects_to_channel(12, 22).
+port_connects_to_channel(34, 23).
+port_connects_to_channel(37, 24).
+port_connects_to_channel(33, 25).
+port_connects_to_channel(54, 26).
+port_connects_to_channel(51, 27).
+port_connects_to_channel(42, 28).
+port_connects_to_channel(45, 28).
+port_connects_to_channel(42, 29).
+port_connects_to_channel(49, 29).
+port_connects_to_channel(43, 30).
+port_connects_to_channel(48, 30).
+port_connects_to_channel(46, 31).
+port_connects_to_channel(50, 31).
+port_connects_to_channel(46, 32).
+port_connects_to_channel(53, 32).
+port_connects_to_channel(54, 33).
+port_connects_to_channel(51, 34).
 
 % FACT: inflow_connects_to_channel(port_id, channel_id).
-inflow_connects_to_channel(2, 29).
-inflow_connects_to_channel(1, 30).
-inflow_connects_to_channel(1, 32).
-inflow_connects_to_channel(2, 33).
+inflow_connects_to_channel(2, 38).
+inflow_connects_to_channel(1, 39).
+inflow_connects_to_channel(1, 41).
+inflow_connects_to_channel(2, 42).
 inflow_connects_to_channel(6, 3).
-inflow_connects_to_channel(7, 4).
-inflow_connects_to_channel(6, 16).
-inflow_connects_to_channel(7, 17).
+inflow_connects_to_channel(6, 4).
+inflow_connects_to_channel(7, 5).
+inflow_connects_to_channel(7, 6).
+inflow_connects_to_channel(6, 20).
+inflow_connects_to_channel(6, 21).
+inflow_connects_to_channel(7, 22).
+inflow_connects_to_channel(7, 23).
 
 % FACT: outflow_connects_to_channel(port_id, channel_id).
-outflow_connects_to_channel(3, 26).
-outflow_connects_to_channel(4, 27).
-outflow_connects_to_channel(5, 28).
-outflow_connects_to_channel(3, 34).
-outflow_connects_to_channel(4, 35).
-outflow_connects_to_channel(5, 36).
+outflow_connects_to_channel(3, 35).
+outflow_connects_to_channel(4, 36).
+outflow_connects_to_channel(5, 37).
+outflow_connects_to_channel(3, 43).
+outflow_connects_to_channel(4, 44).
+outflow_connects_to_channel(5, 45).
 outflow_connects_to_channel(8, 1).
 outflow_connects_to_channel(9, 2).
-outflow_connects_to_channel(8, 18).
-outflow_connects_to_channel(9, 19).
-outflow_connects_to_channel(35, 20).
-outflow_connects_to_channel(36, 21).
-outflow_connects_to_channel(35, 24).
-outflow_connects_to_channel(36, 25).
+outflow_connects_to_channel(8, 24).
+outflow_connects_to_channel(9, 25).
+outflow_connects_to_channel(39, 26).
+outflow_connects_to_channel(40, 27).
+outflow_connects_to_channel(39, 33).
+outflow_connects_to_channel(40, 34).
 
 % FACT: uri_variable(uri_variable_id, variable_name, port_id).
-uri_variable(1, 'input1_data_file_name', 1).
-uri_variable(2, 'localDB_data_file_name', 2).
-uri_variable(3, 'log1_data_file_name', 3).
-uri_variable(4, 'output2_data_file_name', 4).
-uri_variable(5, 'log2_data_file_name', 5).
-uri_variable(6, 'localDB_data_file_name', 6).
-uri_variable(7, 'input1_data_file_name', 7).
-uri_variable(8, 'output1_data_file_name', 8).
-uri_variable(9, 'log1_data_file_name', 9).
-uri_variable(10, 'localDB_data_file_name', 10).
-uri_variable(11, 'input1_data_file_name', 12).
-uri_variable(12, 'output1_data_file_name', 32).
-uri_variable(13, 'log1_data_file_name', 33).
-uri_variable(14, 'output1_data_file_name', 34).
-uri_variable(15, 'output2_data_file_name', 35).
-uri_variable(16, 'log2_data_file_name', 36).
-uri_variable(17, 'output1_data_file_name', 37).
-uri_variable(18, 'log2_data_file_name', 42).
-uri_variable(19, 'output2_data_file_name', 43).
+uri_variable(1, "input1_data_file_name", 1).
+uri_variable(2, "local_authority_source_file_name", 2).
+uri_variable(3, "log1_data_file_name", 3).
+uri_variable(4, "output2_data_file_name", 4).
+uri_variable(5, "log2_data_file_name", 5).
+uri_variable(6, "local_authority_source_file_name", 6).
+uri_variable(7, "input1_data_file_name", 7).
+uri_variable(8, "output1_data_file_name", 8).
+uri_variable(9, "log1_data_file_name", 9).
+uri_variable(10, "local_authority_source_file_name", 10).
+uri_variable(11, "input1_data_file_name", 12).
+uri_variable(12, "input1_data_file_name", 26).
+uri_variable(13, "local_authority_source_file_name", 28).
+uri_variable(14, "log1_data_file_name", 33).
+uri_variable(15, "input1_data_file_name", 34).
+uri_variable(16, "output1_data_file_name", 37).
+uri_variable(17, "output1_data_file_name", 38).
+uri_variable(18, "output2_data_file_name", 39).
+uri_variable(19, "log2_data_file_name", 40).
+uri_variable(20, "output1_data_file_name", 41).
+uri_variable(21, "output1_data_file_name", 47).
+uri_variable(22, "log2_data_file_name", 51).
+uri_variable(23, "output2_data_file_name", 54).
