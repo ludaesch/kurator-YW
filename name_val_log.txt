@@ -1,66 +1,66 @@
-2016-05-11 18:05:49  Reading input records from 'demo_input.csv'.
+2016-05-13 13:30:22  Reading input records from 'demo_input.csv'.
 
-2016-05-11 18:05:49  Reading input record 001.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-11 18:05:49  localDB EXACT match was SUCCESSFUL.
-2016-05-11 18:05:49  UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'.
-2016-05-11 18:05:49  ACCEPTED record 001.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:184232'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-13 13:30:22  local authority source EXACT match was SUCCESSFUL.
+2016-05-13 13:30:22  UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'.
+2016-05-13 13:30:22  ACCEPTED record 'MCZ:Mala:184232'.
 
-2016-05-11 18:05:49  Reading input record 002.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-11 18:05:49  localDB EXACT match was SUCCESSFUL.
-2016-05-11 18:05:49  ACCEPTED record 002.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:223575'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-13 13:30:22  local authority source EXACT match was SUCCESSFUL.
+2016-05-13 13:30:22  ACCEPTED record 'MCZ:Mala:223575'.
 
-2016-05-11 18:05:49  Reading input record 003.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'magellanicus placopecten'.
-2016-05-11 18:05:49  EXACT match FAILED.
-2016-05-11 18:05:49  Trying localDB FUZZY match for scientific name: 'magellanicus placopecten'.
-2016-05-11 18:05:49  localDB FUZZY match FAILED.
-2016-05-11 18:05:49  REJECTED record 003.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:247327'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'magellanicus placopecten'.
+2016-05-13 13:30:22  EXACT match FAILED.
+2016-05-13 13:30:22  Trying local authority source FUZZY match for scientific name: 'magellanicus placopecten'.
+2016-05-13 13:30:22  local_authority_source FUZZY match FAILED.
+2016-05-13 13:30:22  REJECTED record 'MCZ:Mala:247327'.
 
-2016-05-11 18:05:49  Reading input record 004.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-11 18:05:49  localDB EXACT match was SUCCESSFUL.
-2016-05-11 18:05:49  UPDATING scientific name authorship from '' to '(Gmelin, 1791)'.
-2016-05-11 18:05:49  ACCEPTED record 004.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:98960'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-13 13:30:22  local authority source EXACT match was SUCCESSFUL.
+2016-05-13 13:30:22  UPDATING scientific name authorship from '' to '(Gmelin, 1791)'.
+2016-05-13 13:30:22  ACCEPTED record 'MCZ:Mala:98960'.
 
-2016-05-11 18:05:49  Reading input record 005.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-11 18:05:49  localDB EXACT match was SUCCESSFUL.
-2016-05-11 18:05:49  ACCEPTED record 005.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:139031'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-13 13:30:22  local authority source EXACT match was SUCCESSFUL.
+2016-05-13 13:30:22  ACCEPTED record 'MCZ:Mala:139031'.
 
-2016-05-11 18:05:49  Reading input record 006.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: ''.
-2016-05-11 18:05:49  EXACT match FAILED.
-2016-05-11 18:05:49  Trying localDB FUZZY match for scientific name: ''.
-2016-05-11 18:05:49  localDB FUZZY match FAILED.
-2016-05-11 18:05:49  REJECTED record 006.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:249963'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: ''.
+2016-05-13 13:30:22  EXACT match FAILED.
+2016-05-13 13:30:22  Trying local authority source FUZZY match for scientific name: ''.
+2016-05-13 13:30:22  local_authority_source FUZZY match FAILED.
+2016-05-13 13:30:22  REJECTED record 'MCZ:Mala:249963'.
 
-2016-05-11 18:05:49  Reading input record 007.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Placopcten magellanicus'.
-2016-05-11 18:05:49  EXACT match FAILED.
-2016-05-11 18:05:49  Trying localDB FUZZY match for scientific name: 'Placopcten magellanicus'.
-2016-05-11 18:05:49  localDB FUZZY match FAILED.
-2016-05-11 18:05:49  REJECTED record 007.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:223592'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Placopcten magellanicus'.
+2016-05-13 13:30:22  EXACT match FAILED.
+2016-05-13 13:30:22  Trying local authority source FUZZY match for scientific name: 'Placopcten magellanicus'.
+2016-05-13 13:30:22  local_authority_source FUZZY match FAILED.
+2016-05-13 13:30:22  REJECTED record 'MCZ:Mala:223592'.
 
-2016-05-11 18:05:49  Reading input record 008.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-11 18:05:49  localDB EXACT match was SUCCESSFUL.
-2016-05-11 18:05:49  ACCEPTED record 008.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:87168'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-13 13:30:22  local authority source EXACT match was SUCCESSFUL.
+2016-05-13 13:30:22  ACCEPTED record 'MCZ:Mala:87168'.
 
-2016-05-11 18:05:49  Reading input record 009.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Nodipecten nodsus'.
-2016-05-11 18:05:49  EXACT match FAILED.
-2016-05-11 18:05:49  Trying localDB FUZZY match for scientific name: 'Nodipecten nodsus'.
-2016-05-11 18:05:49  localDB FUZZY match FAILED.
-2016-05-11 18:05:49  REJECTED record 009.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:74068'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Nodipecten nodsus'.
+2016-05-13 13:30:22  EXACT match FAILED.
+2016-05-13 13:30:22  Trying local authority source FUZZY match for scientific name: 'Nodipecten nodsus'.
+2016-05-13 13:30:22  local_authority_source FUZZY match FAILED.
+2016-05-13 13:30:22  REJECTED record 'MCZ:Mala:74068'.
 
-2016-05-11 18:05:49  Reading input record 010.
-2016-05-11 18:05:49  Trying localDB EXACT match for scientific name: 'Pecten nodosus'.
-2016-05-11 18:05:49  EXACT match FAILED.
-2016-05-11 18:05:49  Trying localDB FUZZY match for scientific name: 'Pecten nodosus'.
-2016-05-11 18:05:49  localDB FUZZY match FAILED.
-2016-05-11 18:05:49  REJECTED record 010.
+2016-05-13 13:30:22  Reading input record 'MCZ:Mala:74068'.
+2016-05-13 13:30:22  Trying local authority source EXACT match for scientific name: 'Pecten nodosus'.
+2016-05-13 13:30:22  EXACT match FAILED.
+2016-05-13 13:30:22  Trying local authority source FUZZY match for scientific name: 'Pecten nodosus'.
+2016-05-13 13:30:22  local_authority_source FUZZY match FAILED.
+2016-05-13 13:30:22  REJECTED record 'MCZ:Mala:74068'.
 
-2016-05-11 18:05:49  Wrote 5 accepted records to 'demo_output_name_val.csv'.
-2016-05-11 18:05:49  Wrote 5 rejected records to 'demo_output_name_val.csv'.
+2016-05-13 13:30:22  Wrote 5 accepted records to 'demo_output_name_val.csv'.
+2016-05-13 13:30:22  Wrote 5 rejected records to 'demo_output_name_val.csv'.
