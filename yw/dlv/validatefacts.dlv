@@ -57,20 +57,20 @@ field_name(17,'higherGeography').
 
 
 % FACT: log_annotation(annotation_id, source_id, line_number, tag, keyword, value)
-log_annotation(1, 1, 40, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}")
-log_annotation(2, 1, 114, "log", "@log", "{timestamp} Reading input record {original_catalogNumber}")
-log_annotation(3, 1, 134, "log", "@log", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}")
-log_annotation(4, 1, 141, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}")
-log_annotation(5, 1, 149, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}")
-log_annotation(6, 1, 150, "log", "@log", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}")
-log_annotation(7, 1, 157, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}")
-log_annotation(8, 1, 162, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}")
-log_annotation(9, 1, 173, "log", "@log", "{timestamp} {final_result} record {original_catalogNumber}")
-log_annotation(10, 1, 222, "log", "@log", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}")
-log_annotation(11, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}")
-log_annotation(12, 1, 247, "log", "@log", "{timestamp} {final_result} the record {original_catalogNumber}")
-log_annotation(13, 1, 272, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}")
-log_annotation(14, 1, 273, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}")
+log_annotation(1, 1, 40, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}").
+log_annotation(2, 1, 114, "log", "@log", "{timestamp} Reading input record {original_catalogNumber}").
+log_annotation(3, 1, 134, "log", "@log", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}").
+log_annotation(4, 1, 141, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
+log_annotation(5, 1, 149, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
+log_annotation(6, 1, 150, "log", "@log", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}").
+log_annotation(7, 1, 157, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
+log_annotation(8, 1, 162, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
+log_annotation(9, 1, 173, "log", "@log", "{timestamp} {final_result} record {original_catalogNumber}").
+log_annotation(10, 1, 222, "log", "@log", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
+log_annotation(11, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}").
+log_annotation(12, 1, 247, "log", "@log", "{timestamp} {final_result} the record {original_catalogNumber}").
+log_annotation(13, 1, 272, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
+log_annotation(14, 1, 273, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
 
 
 
