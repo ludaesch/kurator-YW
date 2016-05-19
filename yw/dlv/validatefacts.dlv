@@ -17,7 +17,7 @@ external_check_type(2, 2, 'remote source).
 
 % FACT: source_used(external_check_type_name, source_used_id, source_used_name).
 source_used('local source', 1, 'local_authority_source').
-source_used('remote source', 2, '_authority_source').
+source_used('remote source', 2, 'remote_authority_source').
 
 
 % FACT: matching_method(matching_method_id, matching_method_name).
@@ -54,8 +54,6 @@ field_name(17,'higherGeography').
 
 
 
-
-
 % FACT: log_annotation(annotation_id, source_id, line_number, tag, keyword, value)
 log_annotation(1, 1, 40, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}").
 log_annotation(2, 1, 114, "log", "@log", "{timestamp} Reading input record {original_catalogNumber}").
@@ -72,7 +70,41 @@ log_annotation(12, 1, 247, "log", "@log", "{timestamp} {final_result} the record
 log_annotation(13, 1, 272, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
 log_annotation(14, 1, 273, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
 
+% FACT: log_statement(log_statement_id, statement_tag, statement_template)
+log_template(1, "reading_file_statement", "{timestamp} Reading input records from {input1_data_file_name}').
+log_template(2, "reading_record_statement", "{timestamp} Reading input record {original_catalogNumber}").
+log_template(3, "trying_match_statement", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}").
+log_template(4, "matching_result_statement", "{timestamp} {matching_method} match was {MATCHING_RESULT}"). 
+log_template(4, "record_final_validation_statement", "{timestamp} {final_result} record {original_catalogNumber}").
+log_teamplate(5, "updating_record_statement", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
+log_tempate(6, "log_summary_statement", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}"). 
 
 
+% FACT: log_entry(log_entry_id, log_statement_id,statement_connecton???).
 
+
+% FACT: record_result(record_id, final_result).
+record_result("MCZ:Mala:184232", "ACCEPTED").
+record_result("MCZ:Mala:223575", "ACCEPTED").
+record_result("MCZ:Mala:98960", "ACCEPTED").
+record_result("MCZ:Mala:139031", "ACCEPTED").
+record_result("MCZ:Mala:223592", "ACCEPTED").
+record_result("MCZ:Mala:87168", "ACCEPTED").
+record_result("MCZ:Mala:74068", "ACCEPTED").
+record_result("MCZ:Mala:74068", "ACCEPTED").
+record_result("MCZ:Mala:247327", "UNABLE to determine the validity").
+record_result("MCZ:Mala:249963", "UNABLE to determine the validity").
+
+% FACT: record_update(record_id, field_name, old_value, new_value).
+record_update("MCZ:Mala:184232", "scientificNameAuthorship", "Gmelin, 1791", "(Gmelin,     1791)").
+record_update("MCZ:Mala:98960", "scientificNameAuthorship", " ", "(Gmelin, 1791)").
+record_update("MCZ:Mala:223592", "scientificName", "Placopcten magellanicus", "Placopecten magellanicus").
+record_update("MCZ:Mala:223592", "scientificNameAuthorship", "Gmellin", "(Gmelin, 1791)").
+record_update("MCZ:Mala:74068", "scientificName", "Nodipecten nodsus", "Nodipecten nodosus").
+record_update("MCZ:Mala:74068", "scientificName", "Pecten nodosus", "Nodipecten nodosus").
+
+%FACT: validate_provenance(record_id, field_name, check_type, source_used, matching_method, match_result). 
+validate_provenance("MCZ:Mala:184232", "scientificName", "external check", "local_authority_source", "EXACT").
+
+% RULE:
 
