@@ -1,7 +1,7 @@
 digraph Workflow {
 rankdir=TB
 fontname=Courier; fontsize=18; labelloc=t
-label="clean_name_date_log.validate_evenDate_field_of_data"
+label="clean_name_and_date_workflow.validate_eventDate_field_of_data"
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
@@ -10,8 +10,8 @@ clean_eventDate
 write_log2_data
 write_output2_data
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
-output2_data [shape=record rankdir=LR label="{<f0> output2_data |<f1> file\:\{output2_data_file_name\}}"];
-log2_data [shape=record rankdir=LR label="{<f0> log2_data |<f1> file\:\{log2_data_file_name\}}"];
+output2_data [shape=record rankdir=LR label="{<f0> output2_data |<f1> file\:'demo_output_name_date_val.csv'}"];
+log2_data [shape=record rankdir=LR label="{<f0> log2_data |<f1> file\:'date_val_log.txt'}"];
 eventDate
 updated_eventDate
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]

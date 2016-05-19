@@ -1,7 +1,7 @@
 digraph Workflow {
 rankdir=TB
 fontname=Courier; fontsize=18; labelloc=t
-label="clean_name_date_log.validate_scientificName_field_of_data"
+label="clean_name_and_date_workflow.validate_scientificName_field_of_data"
 subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
 subgraph cluster_workflow_box_inner { label=""; color=white
 node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
@@ -13,16 +13,16 @@ update_authorship
 write_log1_data
 write_output1_data
 node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
-output1_data [shape=record rankdir=LR label="{<f0> output1_data |<f1> file\:\{output1_data_file_name\}}"];
-log1_data [shape=record rankdir=LR label="{<f0> log1_data |<f1> file\:\{log1_data_file_name\}}"];
-input1_data [shape=record rankdir=LR label="{<f0> input1_data |<f1> file\:\{input1_data_file_name\}}"];
+output1_data [shape=record rankdir=LR label="{<f0> output1_data |<f1> file\:'demo_output_name_val.csv'}"];
+log1_data [shape=record rankdir=LR label="{<f0> log1_data |<f1> file\:'name_val_log.txt'}"];
+input1_data [shape=record rankdir=LR label="{<f0> input1_data |<f1> file\:'demo_input.csv'}"];
 scientificName
 matching_local_authority_source_record
 authorship
 updated_scientificName
 updated_authorship
 node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
-local_authority_source [shape=record rankdir=LR label="{<f0> local_authority_source |<f1> \{local_authority_source_file_name\}}"];
+local_authority_source [shape=record rankdir=LR label="{<f0> local_authority_source |<f1> 'demo_localDB.csv'}"];
 local_authority_source_scientificName_lst
 catalogNumber
 read_scientificName -> local_authority_source_scientificName_lst
