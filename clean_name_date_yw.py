@@ -11,7 +11,7 @@ import editdist
 @begin clean_name_and_date_workflow
 @in input1_data @uri file:'demo_input.csv'
 @param local_authority_source @uri file:'demo_localDB.csv'
-@out log1_data @uri file:'name_val_log.txt'
+@out name_val_log @uri file:'name_val_log.txt'
 @out output2_data  @uri file:'demo_output_name_date_val.csv'
 @out log2_data @uri file:'date_val_log.txt'
 """
@@ -21,14 +21,14 @@ import editdist
 @param local_authority_source @uri 'demo_localDB.csv'
 @in input1_data @uri file:'demo_input.csv'
 @out output1_data  @uri file:'demo_output_name_val.csv'
-@out log1_data @uri file:'name_val_log.txt'
+@out name_val_log @uri file:'name_val_log.txt'
 """
 def validate_scientificName_field_of_data():  
     
     input1_data_file_name='demo_input.csv',
     local_authority_source_file_name='demo_localDB.csv',
     output1_data_file_name='demo_output_name_val.csv',
-    log1_data_file_name='name_val_log.txt'
+    name_val_log_file_name='name_val_log.txt'
     
     accepted_record_count = 0
     rejected_record_count = 0
@@ -37,10 +37,16 @@ def validate_scientificName_field_of_data():
 
     # create log file 
     """
-    @log {timestamp} Reading input records from {input1_data_file_name}
+    @begin initialize_run
+    @out name_val_log @uri file:'name_val_log.txt'
+        @log "{timestamp} Reading input records from {input1_data_file_name}"
     """
-    log1_data = open(log1_data_file_name,'w')    
-    log1_data.write(timestamp("Reading input records from '{0}'.\n".format(input1_data_file_name)))
+    name_val_log = open(name_val_log_file_name,'w')    
+    name_val_log.write(timestamp("Reading input records from '{0}'.\n".format(input1_data_file_name)))
+    
+    """
+    @end initialize_run
+    """
     
     """
     @begin read_scientificName
@@ -55,12 +61,12 @@ def validate_scientificName_field_of_data():
     local_authority_source_fieldnames = local_authority_source.fieldnames
     
     # find corresponding column position for specified header
-    scientificName_pos = fieldmatch(local_authority_source_fieldnames,'name')
-    authorship_pos = fieldmatch(local_authority_source_fieldnames,'author')
-    eventDate_pos = fieldmatch(local_authority_source_fieldnames,'date')
-    locality_pos = fieldmatch(local_authority_source_fieldnames,'locality')
-    state_pos = fieldmatch(local_authority_source_fieldnames,'state')
-    geography_pos = fieldmatch(local_authority_source_fieldnames,'geography')
+    scientificName_pos = fieldmatch(local_authority_source_fieldnames,'name')[1]
+    authorship_pos = fieldmatch(local_authority_source_fieldnames,'author')[1]
+    eventDate_pos = fieldmatch(local_authority_source_fieldnames,'date')[1]
+    locality_pos = fieldmatch(local_authority_source_fieldnames,'locality')[1]
+    state_pos = fieldmatch(local_authority_source_fieldnames,'state')[1]
+    geography_pos = fieldmatch(local_authority_source_fieldnames,'geography')[1]
        
     # iterate over local_authority_source data records
     local_authority_source_record_num = 0
@@ -86,6 +92,8 @@ def validate_scientificName_field_of_data():
     @out original_authorship @as authorship
     @out original_catalogNumber @as catalogNumber
     @out original_others @as others
+    @out name_val_log @uri file:'name_val_log.txt'
+      @log "{timestamp} Reading input record {original_catalogNumber}"
     """
     # create CSV reader for input records
     input1_data = csv.DictReader(open('demo_input.csv', 'r'),
@@ -109,12 +117,9 @@ def validate_scientificName_field_of_data():
         original_catalogNumber = original1_record['id']
         original_scientificName = original1_record['scientificName']
         original_authorship = original1_record['scientificNameAuthorship']
-        
-        """
-        @log {timestamp} Reading input record {original_catalogNumber} 
-        """
-        log1_data.write('\n')
-        log1_data.write(timestamp("Reading input record '{0}'.\n".format(original_catalogNumber)))
+
+        name_val_log.write('\n')
+        name_val_log.write(timestamp("Reading input record '{0}'.\n".format(original_catalogNumber)))
         """
         @end read_input1_data_records
         """
@@ -124,55 +129,58 @@ def validate_scientificName_field_of_data():
         @in original_scientificName @as scientificName
         @param local_authority_source_scientificName_lst
         @call exactmatch
-        @OUT matching_local_authority_source_record
+        @out matching_local_authority_source_record
+        @out final_result
+        @out name_val_log @uri file:'name_val_log.txt'
+            @log "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}"
+            @log "{timestamp} {match_method} match was {match_result}"
         """
-        local_authority_source_match_result = None
+        matching_method = None
         
         
         # first try exact match of the scientific name against local_authority_source
-        """
-        @log {timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}
-        """
-        log1_data.write(timestamp("Trying local authority source EXACT match for scientific name: '{0}'.\n".format(original_scientificName)))
-        matching_local_authority_source_record = exactmatch(local_authority_source_scientificName_lst, original_scientificName)
-        
-        if matching_local_authority_source_record is not None:
-            """
-            @log {timestamp} {matching_method} match was {MATCHING_RESULT}
-            """
-            log1_data.write(timestamp('EXACT match was SUCCESSFUL.\n'))
-            local_authority_source_match_result = 'exact'
+        check_type = "external check"
+        source_used = "remote_authority_source"
+        match_method = "exact"
+        name_val_log.write(timestamp("Trying local authority source EXACT match for scientific name: '{0}'.\n".format(original_scientificName)))
+        matching_local_authority_source_record = exactmatch(local_authority_source_scientificName_lst, original_scientificName)[1]
+        match_result = exactmatch(local_authority_source_scientificName_lst, original_scientificName)[0]
+        if match_result == "SUCCESSFUL":
+            name_val_log.write(timestamp('EXACT match was SUCCESSFUL.\n'))
+            matching_method = 'exact'
+            final_result = match_result
 
         # otherwise try a fuzzy match
         else:
-            """
-            @log {timestamp} {matching_method} match was {MATCHING_RESULT}
-            @log {timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}
-            """
-            log1_data.write(timestamp('EXACT match FAILED.\n'))
-            log1_data.write(timestamp("Trying local authority source FUZZY match for scientific name: '{0}'.\n".format(original_scientificName)))
-            matching_local_authority_source_record = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)
-            
-            if matching_local_authority_source_record is not None:
-                """@log {timestamp} {matching_method} match was {MATCHING_RESULT}"""
-                log1_data.write(timestamp('FUZZY match was SUCCESSFUL.\n'))
-                local_authority_source_match_result = 'fuzzy'
+            match_method = "fuzzy"
+            name_val_log.write(timestamp('EXACT match FAILED.\n'))
+            name_val_log.write(timestamp("Trying local authority source FUZZY match for scientific name: '{0}'.\n".format(original_scientificName)))
+            matching_local_authority_source_record = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)[1]
+            match_result = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)[0]
+            if match_result == "SUCCESSFUL":
+                name_val_log.write(timestamp('FUZZY match was SUCCESSFUL.\n'))
+                matching_method = 'fuzzy'
+                final_result = match_result
             else:
-                """
-                @log {timestamp} {matching_method} match was {MATCHING_RESULT}
-                """
-                log1_data.write(timestamp('FUZZY match FAILED.\n'))   
+                name_val_log.write(timestamp('FUZZY match FAILED.\n'))   
+                final_result= match_result
         """
         @end find_matching_local_authority_source_record
         """
 
     #########################################################
         # reject the currect record if not matched successfully against local_authority_source
-        if local_authority_source_match_result is None:
-            """
-            @log {timestamp} {final_result} record {original_catalogNumber}
-            """
-            log1_data.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(original_catalogNumber)))
+        """
+        @begin log_rejected_record
+        @param original_catalogNumber @as catalogNumber
+        @in final_result
+        @out rejected_record_count
+        @out name_val_log @uri file:'name_val_log.txt'
+            @log "{timestamp} {final_result} record {original_catalogNumber}"
+        """
+        if match_result != "SUCCESSFUL":
+            final_result = "UNABLE to determine the validity"
+            name_val_log.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(original_catalogNumber)))
             rejected_record_count += 1
             
             # write output record to output file
@@ -180,7 +188,11 @@ def validate_scientificName_field_of_data():
             output1_record_count += 1
             
             # skip to processing of next record in input file
-            continue                
+            continue
+            """
+            @end log_rejected_record
+            """
+  
      #############################################################
         """
         @begin update_scientificName
@@ -191,7 +203,7 @@ def validate_scientificName_field_of_data():
         updated_scientificName = None
         
         # get scientific name from local_authority_source record if the taxon name match was fuzzy
-        if local_authority_source_match_result == 'fuzzy':
+        if matching_method == 'fuzzy':
             updated_scientificName = matching_local_authority_source_record
         """
         @end update_scientificName
@@ -217,39 +229,46 @@ def validate_scientificName_field_of_data():
 
     #####################################################################
         # compose_output1_record
+        """
+        @begin log_updated_record
+        @in updated_scientificName
+        @in update_authorship
+        @in original_scientificName @as scientificName
+        @in original_authorship @as authorship
+        @out name_val_log @uri file:'name_val_log.txt'
+            @log "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}"
+        """
         if updated_scientificName is not None:
-            """
-            @log {timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}
-            """
-            log1_data.write(timestamp("UPDATING scientific name from '{0}' to '{1}'.\n".format(
-                     original_scientificName, updated_scientificName)))
+            field_name = "scientificName"
+            original_value = original_scientificName
+            updated_value = updated_scientificName
+            name_val_log.write(timestamp("UPDATING scientific name from '{0}' to '{1}'.\n".format(
+                     original_value, updated_value)))
             output1_record['scientificName'] = updated_scientificName
             
         if updated_authorship is not None:
-            """
-            @log {timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}
-            """
-            log1_data.write(timestamp("UPDATING scientific name authorship from '{0}' to '{1}'.\n".format(
-                original_authorship, updated_authorship)))
+            field_name = "scientificName"
+            original_value = original_authorship
+            updated_value = updated_authorship
+            name_val_log.write(timestamp("UPDATING scientific name authorship from '{0}' to '{1}'.\n".format(
+                original_value, updated_value)))
             output1_record['scientificNameAuthorship'] = updated_authorship
-
+        """
+        @end log_updated_record
+        """
     #####################################################################
         """
-        @begin write_log1_data
-        @param input1_data_file_name  @uri file:'demo_input.csv'
+        @begin log_accepted_record
         @param original_catalogNumber @as catalogNumber
-        @param local_authority_source @uri file:'demo_localDB.csv' 
-        @in original_scientificName @as scientificName
-        @in original_authorship @as authorship
-        @in updated_scientificName
-        @in updated_authorship
-        @out log1_data @uri file:'name_val_log.txt'
-        @log {timestamp} {final_result} record {original_catalogNumber}
+        @in final_result
+        @out accepted_record_count
+        @out name_val_log @uri file:'name_val_log.txt'
+            @log "{timestamp} {final_result} record {original_catalogNumber}"
         """
-        log1_data.write(timestamp("ACCEPTED record '{0}'.\n".format(original_catalogNumber)))
+        name_val_log.write(timestamp("ACCEPTED record '{0}'.\n".format(original_catalogNumber)))
         accepted_record_count += 1
         """
-        @end write_log1_data
+        @end log_accepted_record
         """
         
         # write output record to output file
@@ -266,14 +285,22 @@ def validate_scientificName_field_of_data():
         @end write_output1_data
         """
 
+    """
+    @begin log_summary 
+    @in accepted_record_count
+    @in rejected_record_count
+    @out name_val_log @uri file:'name_val_log.txt'
+        @log "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"
+        @log "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"
+    """   
     print
-    log1_data.write("\n")
+    name_val_log.write("\n")
+    name_val_log.write(timestamp("Wrote {0} ACCEPTED records to {1}.\n".format(accepted_record_count, output1_data_file_name)))
+    name_val_log.write(timestamp("Wrote {0} UNABLE-to-determine-validity records to {1}.\n".format(rejected_record_count, output1_data_file_name)))
     """
-    @log {timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}
-    @log {timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}
+    @end log_summary
     """
-    log1_data.write(timestamp("Wrote {0} accepted records to {1}.\n".format(accepted_record_count, output1_data_file_name)))
-    log1_data.write(timestamp("Wrote {0} UNABLE-to-determine-validity records to {1}.\n".format(rejected_record_count, output1_data_file_name)))
+
 """
 @end validate_scientificName_field_of_data
 """
@@ -490,15 +517,14 @@ def validate_eventDate_field_of_data():
 @return None            
 """
 def exactmatch(lst, label_str):
-    match_result = None
+    match_result = "FAILED"
     matching_record = None
     for key in lst:
         if key.lower() == label_str.lower():
-            match_result = 'exact'
+            match_result = 'SUCCESSFUL'
             matching_record = key
-            return key
-        else:
-            return None
+            break
+    return [match_result,matching_record]
 """
 @end exactmatch
 """
@@ -510,7 +536,7 @@ def exactmatch(lst, label_str):
 @return [match_result, str1[x_longest - longest: x_longest], x_longest - longest]            
 """
 def fuzzymatch(str1, str2):
-    match_result = None
+    match_result = "FAILED"
     len1 = len(str1)
     len2 = len(str2)
     str1 = str1.lower()
@@ -530,7 +556,7 @@ def fuzzymatch(str1, str2):
                 counter[i][j] = 0
     
     if longest > min(len(str1),len(str2))/2:
-        match_result = 'fuzzy'
+        match_result = 'SUCCESSFUL'
     
     return [match_result, str1[x_longest - longest: x_longest], x_longest - longest]
     
@@ -546,13 +572,13 @@ def fuzzymatch(str1, str2):
 @return match_str            
  """
 def fieldmatch(lst, str2):
-    match_str = None
+    matching_str = None
     for str in lst: 
         match_result = fuzzymatch(str, str2)[0]
-        if match_result == 'fuzzy':
-            match_str = str
+        if match_result == 'SUCCESSFUL':
+            matching_str = str
             break
-    return match_str
+    return [match_result,matching_str]
 """
 @end fieldmatch
 """   

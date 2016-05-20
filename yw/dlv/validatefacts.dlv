@@ -20,9 +20,9 @@ source_used('local source', 1, 'local_authority_source').
 source_used('remote source', 2, 'remote_authority_source').
 
 
-% FACT: matching_method(matching_method_id, matching_method_name).
-matching_method(1, 'EXACT'}.
-matching_method(2, 'FUZZY'}.
+% FACT: match_method(match_method_id, match_method_name).
+match_method(1, 'EXACT'}.
+match_method(2, 'FUZZY'}.
 
 
 % FACT: match_result(match_result_id, match_result_name).
@@ -55,32 +55,33 @@ field_name(17,'higherGeography').
 
 
 % FACT: log_annotation(annotation_id, source_id, line_number, tag, keyword, value)
-log_annotation(1, 1, 40, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}").
-log_annotation(2, 1, 114, "log", "@log", "{timestamp} Reading input record {original_catalogNumber}").
-log_annotation(3, 1, 134, "log", "@log", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}").
-log_annotation(4, 1, 141, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
-log_annotation(5, 1, 149, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
-log_annotation(6, 1, 150, "log", "@log", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}").
-log_annotation(7, 1, 157, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
-log_annotation(8, 1, 162, "log", "@log", "{timestamp} {matching_method} match was {MATCHING_RESULT}").
-log_annotation(9, 1, 173, "log", "@log", "{timestamp} {final_result} record {original_catalogNumber}").
-log_annotation(10, 1, 222, "log", "@log", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
-log_annotation(11, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}").
-log_annotation(12, 1, 247, "log", "@log", "{timestamp} {final_result} the record {original_catalogNumber}").
-log_annotation(13, 1, 272, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
-log_annotation(14, 1, 273, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
+log_annotation(201, 1, 40, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}").
+log_annotation(202, 1, 114, "log", "@log", "{timestamp} Reading input record {original_catalogNumber}").
+log_annotation(203, 1, 134, "log", "@log", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
+log_annotation(204, 1, 141, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+log_annotation(205, 1, 149, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+log_annotation(206, 1, 150, "log", "@log", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
+log_annotation(207, 1, 157, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+log_annotation(208, 1, 162, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+log_annotation(209, 1, 173, "log", "@log", "{timestamp} {final_result} record {original_catalogNumber}").
+log_annotation(210, 1, 222, "log", "@log", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
+log_annotation(211, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}").
+log_annotation(212, 1, 247, "log", "@log", "{timestamp} {final_result} the record {original_catalogNumber}").
+log_annotation(213, 1, 272, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
+log_annotation(214, 1, 273, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
 
-% FACT: log_statement(log_statement_id, statement_tag, statement_template)
-log_template(1, "reading_file_statement", "{timestamp} Reading input records from {input1_data_file_name}').
-log_template(2, "reading_record_statement", "{timestamp} Reading input record {original_catalogNumber}").
-log_template(3, "trying_match_statement", "{timestamp} Trying {check_type} {source_used} {matching_method} match for {field_name}: {original_scientificName}").
-log_template(4, "matching_result_statement", "{timestamp} {matching_method} match was {MATCHING_RESULT}"). 
-log_template(4, "record_final_validation_statement", "{timestamp} {final_result} record {original_catalogNumber}").
-log_teamplate(5, "updating_record_statement", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
-log_tempate(6, "log_summary_statement", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}"). 
+% FACT: log_template(log_template_id, template_tag, template_text)
+log_template(1, "reading_file_template", "{timestamp} Reading input records from {input1_data_file_name}').
+log_template(2, "reading_record_template", "{timestamp} Reading input record {original_catalogNumber}").
+log_template(3, "trying_match_template", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
+log_template(4, "matching_result_template", "{timestamp} {match_method} match was {match_result}"). 
+log_template(5, "record_final_validation_template", "{timestamp} {final_result} record {original_catalogNumber}").
+log_template(6, "updating_record_template", "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}").
+log_template(7, "log_summary_template", "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"). 
+log_template(8, "log_summary_template", "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"). 
 
 
-% FACT: log_entry(log_entry_id, log_statement_id,statement_connecton???).
+% FACT: log_entry(log_entry_id, log_template_id,template_connecton???).
 
 
 % FACT: record_result(record_id, final_result).
@@ -103,7 +104,7 @@ record_update("MCZ:Mala:223592", "scientificNameAuthorship", "Gmellin", "(Gmelin
 record_update("MCZ:Mala:74068", "scientificName", "Nodipecten nodsus", "Nodipecten nodosus").
 record_update("MCZ:Mala:74068", "scientificName", "Pecten nodosus", "Nodipecten nodosus").
 
-%FACT: validate_provenance(record_id, field_name, check_type, source_used, matching_method, match_result). 
+%FACT: validate_provenance(record_id, field_name, check_type, source_used, match_method, match_result). 
 validate_provenance("MCZ:Mala:184232", "scientificName", "external check", "local_authority_source", "EXACT").
 
 % RULE:
