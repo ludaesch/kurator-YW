@@ -1,70 +1,70 @@
-2016-05-19 10:16:46  Reading input records from '('demo_input.csv',)'.
+2016-05-26 16:24:52  Reading input records from '('demo_input.csv',)'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:184232'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-19 10:16:46  EXACT match was SUCCESSFUL.
-2016-05-19 10:16:46  UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:184232'.
+2016-05-26 16:24:52  Reading input record '25671466'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-26 16:24:52  EXACT match was SUCCESSFUL.
+2016-05-26 16:24:52  UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'.
+2016-05-26 16:24:52  ACCEPTED record '25671466'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:223575'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-19 10:16:46  EXACT match was SUCCESSFUL.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:223575'.
+2016-05-26 16:24:52  Reading input record '98817547'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-26 16:24:52  EXACT match was SUCCESSFUL.
+2016-05-26 16:24:52  ACCEPTED record '98817547'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:247327'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'magellanicus placopecten'.
-2016-05-19 10:16:46  EXACT match FAILED.
-2016-05-19 10:16:46  Trying local authority source FUZZY match for scientific name: 'magellanicus placopecten'.
-2016-05-19 10:16:46  FUZZY match FAILED.
-2016-05-19 10:16:46  UNABLE to determine the validity record 'MCZ:Mala:247327'.
+2016-05-26 16:24:52  Reading input record '73601975'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'magellanicus placopecten'.
+2016-05-26 16:24:52  EXACT match FAILED.
+2016-05-26 16:24:52  Trying local authority source FUZZY match for scientific name: 'magellanicus placopecten'.
+2016-05-26 16:24:52  FUZZY match FAILED.
+2016-05-26 16:24:52  UNABLE to determine the validity record '73601975'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:98960'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-19 10:16:46  EXACT match was SUCCESSFUL.
-2016-05-19 10:16:46  UPDATING scientific name authorship from '' to '(Gmelin, 1791)'.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:98960'.
+2016-05-26 16:24:52  Reading input record '27888163'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-26 16:24:52  EXACT match was SUCCESSFUL.
+2016-05-26 16:24:52  UPDATING scientific name authorship from '' to '(Gmelin, 1791)'.
+2016-05-26 16:24:52  ACCEPTED record '27888163'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:139031'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-19 10:16:46  EXACT match was SUCCESSFUL.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:139031'.
+2016-05-26 16:24:52  Reading input record '25220140'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-26 16:24:52  EXACT match was SUCCESSFUL.
+2016-05-26 16:24:52  ACCEPTED record '25220140'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:249963'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: ''.
-2016-05-19 10:16:46  EXACT match FAILED.
-2016-05-19 10:16:46  Trying local authority source FUZZY match for scientific name: ''.
-2016-05-19 10:16:46  FUZZY match FAILED.
-2016-05-19 10:16:46  UNABLE to determine the validity record 'MCZ:Mala:249963'.
+2016-05-26 16:24:52  Reading input record '23408786'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: ''.
+2016-05-26 16:24:52  EXACT match FAILED.
+2016-05-26 16:24:52  Trying local authority source FUZZY match for scientific name: ''.
+2016-05-26 16:24:52  FUZZY match FAILED.
+2016-05-26 16:24:52  UNABLE to determine the validity record '23408786'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:223592'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Placopcten magellanicus'.
-2016-05-19 10:16:46  EXACT match FAILED.
-2016-05-19 10:16:46  Trying local authority source FUZZY match for scientific name: 'Placopcten magellanicus'.
-2016-05-19 10:16:46  FUZZY match was SUCCESSFUL.
-2016-05-19 10:16:46  UPDATING scientific name from 'Placopcten magellanicus' to 'Placopecten magellanicus'.
-2016-05-19 10:16:46  UPDATING scientific name authorship from 'Gmellin' to '(Gmelin, 1791)'.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:223592'.
+2016-05-26 16:24:52  Reading input record '18006440'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Placopcten magellanicus'.
+2016-05-26 16:24:52  EXACT match FAILED.
+2016-05-26 16:24:52  Trying local authority source FUZZY match for scientific name: 'Placopcten magellanicus'.
+2016-05-26 16:24:52  FUZZY match was SUCCESSFUL.
+2016-05-26 16:24:52  UPDATING scientific name from 'Placopcten magellanicus' to 'Placopecten magellanicus'.
+2016-05-26 16:24:52  UPDATING scientific name authorship from 'Gmellin' to '(Gmelin, 1791)'.
+2016-05-26 16:24:52  ACCEPTED record '18006440'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:87168'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
-2016-05-19 10:16:46  EXACT match was SUCCESSFUL.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:87168'.
+2016-05-26 16:24:52  Reading input record '14319266'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Placopecten magellanicus'.
+2016-05-26 16:24:52  EXACT match was SUCCESSFUL.
+2016-05-26 16:24:52  ACCEPTED record '14319266'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:74068'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Nodipecten nodsus'.
-2016-05-19 10:16:46  EXACT match FAILED.
-2016-05-19 10:16:46  Trying local authority source FUZZY match for scientific name: 'Nodipecten nodsus'.
-2016-05-19 10:16:46  FUZZY match was SUCCESSFUL.
-2016-05-19 10:16:46  UPDATING scientific name from 'Nodipecten nodsus' to 'Nodipecten nodosus'.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:74068'.
+2016-05-26 16:24:52  Reading input record '90079875'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Nodipecten nodsus'.
+2016-05-26 16:24:52  EXACT match FAILED.
+2016-05-26 16:24:52  Trying local authority source FUZZY match for scientific name: 'Nodipecten nodsus'.
+2016-05-26 16:24:52  FUZZY match was SUCCESSFUL.
+2016-05-26 16:24:52  UPDATING scientific name from 'Nodipecten nodsus' to 'Nodipecten nodosus'.
+2016-05-26 16:24:52  ACCEPTED record '90079875'.
 
-2016-05-19 10:16:46  Reading input record 'MCZ:Mala:74068'.
-2016-05-19 10:16:46  Trying local authority source EXACT match for scientific name: 'Pecten nodosus'.
-2016-05-19 10:16:46  EXACT match FAILED.
-2016-05-19 10:16:46  Trying local authority source FUZZY match for scientific name: 'Pecten nodosus'.
-2016-05-19 10:16:46  FUZZY match was SUCCESSFUL.
-2016-05-19 10:16:46  UPDATING scientific name from 'Pecten nodosus' to 'Nodipecten nodosus'.
-2016-05-19 10:16:46  ACCEPTED record 'MCZ:Mala:74068'.
+2016-05-26 16:24:52  Reading input record '17477488'.
+2016-05-26 16:24:52  Trying local authority source EXACT match for scientific name: 'Pecten nodosus'.
+2016-05-26 16:24:52  EXACT match FAILED.
+2016-05-26 16:24:52  Trying local authority source FUZZY match for scientific name: 'Pecten nodosus'.
+2016-05-26 16:24:52  FUZZY match was SUCCESSFUL.
+2016-05-26 16:24:52  UPDATING scientific name from 'Pecten nodosus' to 'Nodipecten nodosus'.
+2016-05-26 16:24:52  ACCEPTED record '17477488'.
 
-2016-05-19 10:16:46  Wrote 8 accepted records to ('demo_output_name_val.csv',).
-2016-05-19 10:16:46  Wrote 2 UNABLE-to-determine-validity records to ('demo_output_name_val.csv',).
+2016-05-26 16:24:52  Wrote 8 ACCEPTED records to ('demo_output_name_val.csv',).
+2016-05-26 16:24:52  Wrote 2 UNABLE-to-determine-validity records to ('demo_output_name_val.csv',).

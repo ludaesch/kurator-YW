@@ -3,7 +3,7 @@ import csv
 import time
 from datetime import datetime
 import re
-import editdist
+import uuid
 
 #######################################################################
 
@@ -23,6 +23,7 @@ import editdist
 @out output1_data  @uri file:'demo_output_name_val.csv'
 @out name_val_log @uri file:'name_val_log.txt'
 """
+
 def validate_scientificName_field_of_data():  
     
     input1_data_file_name='demo_input.csv',
@@ -90,10 +91,10 @@ def validate_scientificName_field_of_data():
     @in input1_data @uri file:'demo_input.csv'
     @out original_scientificName @as scientificName
     @out original_authorship @as authorship
-    @out original_catalogNumber @as catalogNumber
+    @out RecordID 
     @out original_others @as others
     @out name_val_log @uri file:'name_val_log.txt'
-      @log "{timestamp} Reading input record {original_catalogNumber}"
+      @log "{timestamp} Reading input record {RecordID}"
     """
     # create CSV reader for input records
     input1_data = csv.DictReader(open('demo_input.csv', 'r'),
@@ -101,6 +102,7 @@ def validate_scientificName_field_of_data():
 
     # iterate over input data records
     record_num = 0
+    RecordID_lst = []
     
     # open file for storing output data if not already open
     output1_data = csv.DictWriter(open('demo_output_name_val.csv', 'w'), 
@@ -109,6 +111,8 @@ def validate_scientificName_field_of_data():
     output1_data.writeheader()
    
     for original1_record in input1_data:
+        RecordID = str(uuid.uuid4().fields[-1])[:8]
+        RecordID_lst.append(RecordID)
         output1_record = original1_record
         record_num += 1
         print
@@ -119,7 +123,7 @@ def validate_scientificName_field_of_data():
         original_authorship = original1_record['scientificNameAuthorship']
 
         name_val_log.write('\n')
-        name_val_log.write(timestamp("Reading input record '{0}'.\n".format(original_catalogNumber)))
+        name_val_log.write(timestamp("Reading input record '{0}'.\n".format(RecordID)))
         """
         @end read_input1_data_records
         """
@@ -141,25 +145,25 @@ def validate_scientificName_field_of_data():
         # first try exact match of the scientific name against local_authority_source
         check_type = "external check"
         source_used = "remote_authority_source"
-        match_method = "exact"
+        match_method = "EXACT"
         name_val_log.write(timestamp("Trying local authority source EXACT match for scientific name: '{0}'.\n".format(original_scientificName)))
         matching_local_authority_source_record = exactmatch(local_authority_source_scientificName_lst, original_scientificName)[1]
         match_result = exactmatch(local_authority_source_scientificName_lst, original_scientificName)[0]
         if match_result == "SUCCESSFUL":
             name_val_log.write(timestamp('EXACT match was SUCCESSFUL.\n'))
-            matching_method = 'exact'
+            matching_method = match_method
             final_result = match_result
 
         # otherwise try a fuzzy match
         else:
-            match_method = "fuzzy"
+            match_method = "FUZZY"
             name_val_log.write(timestamp('EXACT match FAILED.\n'))
             name_val_log.write(timestamp("Trying local authority source FUZZY match for scientific name: '{0}'.\n".format(original_scientificName)))
             matching_local_authority_source_record = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)[1]
             match_result = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)[0]
             if match_result == "SUCCESSFUL":
                 name_val_log.write(timestamp('FUZZY match was SUCCESSFUL.\n'))
-                matching_method = 'fuzzy'
+                matching_method = match_method
                 final_result = match_result
             else:
                 name_val_log.write(timestamp('FUZZY match FAILED.\n'))   
@@ -172,15 +176,15 @@ def validate_scientificName_field_of_data():
         # reject the currect record if not matched successfully against local_authority_source
         """
         @begin log_rejected_record
-        @param original_catalogNumber @as catalogNumber
+        @param RecordID 
         @in final_result
         @out rejected_record_count
         @out name_val_log @uri file:'name_val_log.txt'
-            @log "{timestamp} {final_result} record {original_catalogNumber}"
+            @log "{timestamp} {final_result} record {RecordID}"
         """
         if match_result != "SUCCESSFUL":
             final_result = "UNABLE to determine the validity"
-            name_val_log.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(original_catalogNumber)))
+            name_val_log.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(RecordID)))
             rejected_record_count += 1
             
             # write output record to output file
@@ -203,7 +207,7 @@ def validate_scientificName_field_of_data():
         updated_scientificName = None
         
         # get scientific name from local_authority_source record if the taxon name match was fuzzy
-        if matching_method == 'fuzzy':
+        if matching_method == 'FUZZY':
             updated_scientificName = matching_local_authority_source_record
         """
         @end update_scientificName
@@ -247,7 +251,7 @@ def validate_scientificName_field_of_data():
             output1_record['scientificName'] = updated_scientificName
             
         if updated_authorship is not None:
-            field_name = "scientificName"
+            field_name = "scientificNameAuthorship"
             original_value = original_authorship
             updated_value = updated_authorship
             name_val_log.write(timestamp("UPDATING scientific name authorship from '{0}' to '{1}'.\n".format(
@@ -259,13 +263,13 @@ def validate_scientificName_field_of_data():
     #####################################################################
         """
         @begin log_accepted_record
-        @param original_catalogNumber @as catalogNumber
+        @param RecordID
         @in final_result
         @out accepted_record_count
         @out name_val_log @uri file:'name_val_log.txt'
-            @log "{timestamp} {final_result} record {original_catalogNumber}"
+            @log "{timestamp} {final_result} record {RecordID}"
         """
-        name_val_log.write(timestamp("ACCEPTED record '{0}'.\n".format(original_catalogNumber)))
+        name_val_log.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
         accepted_record_count += 1
         """
         @end log_accepted_record
@@ -300,7 +304,7 @@ def validate_scientificName_field_of_data():
     """
     @end log_summary
     """
-
+    return RecordID_lst
 """
 @end validate_scientificName_field_of_data
 """
@@ -335,7 +339,7 @@ def validate_eventDate_field_of_data():
     @begin read_input2_data_records
     @in input2_data  @uri file:'demo_output_name_val.csv'
     @out original2_eventDate @as eventDate
-    @out original2_catalogNumber @as catalogNumber
+    @out RecordID 
     @out original2_others @as others
     """
     input2_data = csv.DictReader(open('demo_output_name_val.csv', 'r'),
@@ -352,7 +356,9 @@ def validate_eventDate_field_of_data():
     output2_data.writeheader()
     output2_record_count = 0
     
-    for original2_record in input2_data:
+    RecordID_lst = validate_scientificName_field_of_data()
+    for original2_record, ReID in zip(input2_data, RecordID_lst):
+        RecordID = ReID
         output2_record = original2_record
         record2_num += 1
         print
@@ -362,10 +368,10 @@ def validate_eventDate_field_of_data():
         original2_catalogNumber = original2_record['id']
 
         """
-        @log {timestamp} Reading input record {original2_catalogNumber} 
+        @log {timestamp} Reading input record {RecordID} 
         """
         log2_data.write('\n')
-        log2_data.write(timestamp("Reading input record '{0}'.\n".format(original2_catalogNumber)))        
+        log2_data.write(timestamp("Reading input record '{0}'.\n".format(RecordID)))        
         """
         @end read_input2_data_records
         """
@@ -436,9 +442,9 @@ def validate_eventDate_field_of_data():
         # write into files
         if match2_result is None:
             """
-            @log {timestamp} UNABLE to determine the validity of the record {original2_catalogNumber}
+            @log {timestamp} UNABLE to determine the validity of the record {RecordID}
             """
-            log2_data.write(timestamp("UNABLE to determine the validity of the record '{0}'.\n".format(original2_catalogNumber)))
+            log2_data.write(timestamp("UNABLE to determine the validity of the record '{0}'.\n".format(RecordID)))
             rejected2_record_count += 1
         
             # write output record to output file
@@ -452,7 +458,7 @@ def validate_eventDate_field_of_data():
             """
             @begin write_log2_data
             @param input2_data_file_name  @uri file:'demo_output_name_val.csv'
-            @param original2_catalogNumber @as catalogNumber
+            @param RecordID 
             @in original2_eventDate @as eventDate
             @in updated2_eventDate @as updated_eventDate
             @out log2_data @uri file:'date_val_log.txt'             
@@ -460,9 +466,9 @@ def validate_eventDate_field_of_data():
             """
             log2_data.write(timestamp("Updating event date format from '{0}' to '{1}'.\n".format(
                      original2_eventDate, updated2_eventDate)))
-            log2_data.write(timestamp("ACCEPTED record '{0}'.\n".format(original2_catalogNumber)))
+            log2_data.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
             """
-            @log {timestamp} ACCEPTED record {original2_catalogNumber}
+            @log {timestamp} ACCEPTED record {RecordID}
             @end write_log2_data
             """
             
@@ -483,10 +489,10 @@ def validate_eventDate_field_of_data():
         else:
             """
             @log {timestamp} Compliant with ISO date format.
-            @log {timestamp} ACCEPTED record {original2_catalogNumber}.
+            @log {timestamp} ACCEPTED record {RecordID}.
             """
             log2_data.write(timestamp('Compliant with ISO date format.\n'))
-            log2_data.write(timestamp("ACCEPTED record '{0}'.\n".format(original2_catalogNumber)))
+            log2_data.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
             accepted2_record_count += 1
             output2_data.writerow(output2_record)
             output2_record_count += 1
@@ -601,5 +607,4 @@ def timestamp(message):
 
 if __name__ == '__main__':
     """ Demo of clean_name_and_date_workflow script """
-    validate_scientificName_field_of_data()
     validate_eventDate_field_of_data()
