@@ -1,0 +1,175 @@
+% FACT: log_variable_value(log_entry_id, log_variable_id, log_variable_value).
+log_variable_value(1, 1, "demo_input.csv").
+
+log_variable_value(2, 2, "25671466").
+log_variable_value(3, 3, "local source").
+log_variable_value(3, 4, "local authority source").
+log_variable_value(3, 5, "EXACT").
+log_variable_value(3, 6, "scientificName").
+log_variable_value(3, 7, "Placopecten magellanicus").
+log_variable_value(4, 8, "EXACT").
+log_variable_value(4, 9, "SUCESSFUL").
+log_variable_value(5, 10, "scientificNameAuthorship").
+log_variable_value(5, 11, "Gmelin, 1791").
+log_variable_value(5, 12, "(Gmelin, 1791)").
+log_variable_value(6, 13, "ACCEPTED").
+log_variable_value(6, 14, "25671466").
+
+log_variable_value(7, 15, "98817547").
+log_variable_value(8, 16, "local source").
+log_variable_value(8, 17, "local authority source").
+log_variable_value(8, 18, "EXACT").
+log_variable_value(8, 19, "scientificName").
+log_variable_value(8, 20, "Placopecten magellanicus").
+log_variable_value(9, 21, "EXACT").
+log_variable_value(9, 22, "SUCESSFUL").
+log_variable_value(10, 23, "ACCEPTED").
+log_variable_value(10, 24, "98817547").
+
+log_variable_value(11, 25, "73601975").
+log_variable_value(12, 26, "local source").
+log_variable_value(12, 27, "local authority source").
+log_variable_value(12, 28, "EXACT").
+log_variable_value(12, 29, "scientificName").
+log_variable_value(12, 30, "magellanicus placopecten").
+log_variable_value(13, 31, "EXACT").
+log_variable_value(13, 32, "FAILED").
+log_variable_value(14, 33, "local source").
+log_variable_value(14, 34, "local authority source").
+log_variable_value(14, 35, "FUZZY").
+log_variable_value(14, 36, "scientificName").
+log_variable_value(14, 37, "magellanicus placopecten").
+log_variable_value(15, 38, "FUZZY").
+log_variable_value(15, 39, "FAILED").
+log_variable_value(16, 40, "UNABLE to determine the validity").
+log_variable_value(16, 41, "73601975").
+
+log_variable_value(17, 42, "27888163").
+log_variable_value(18, 43, "local source").
+log_variable_value(18, 44, "local authority source").
+log_variable_value(18, 45, "EXACT").
+log_variable_value(18, 46, "scientificName").
+log_variable_value(18, 47, "Placopecten magellanicus").
+log_variable_value(19, 48, "EXACT").
+log_variable_value(19, 49, "SUCESSFUL").
+log_variable_value(20, 50, "scientificNameAuthorship").
+log_variable_value(20, 51, "").
+log_variable_value(20, 52, "(Gmelin, 1791)").
+log_variable_value(21, 53, "ACCEPTED").
+log_variable_value(21, 54, "27888163").
+
+log_variable_value(22, 55, "25220140").
+log_variable_value(23, 56, "local source").
+log_variable_value(23, 57, "local authority source").
+log_variable_value(23, 58, "EXACT").
+log_variable_value(23, 59, "scientificName").
+log_variable_value(23, 60, "Placopecten magellanicus").
+log_variable_value(24, 61, "EXACT").
+log_variable_value(24, 62, "SUCESSFUL").
+log_variable_value(25, 63, "ACCEPTED").
+log_variable_value(25, 64, "25220140").
+
+log_variable_value(26, 65, "23408786").
+log_variable_value(27, 66, "local source").
+log_variable_value(27, 67, "local authority source").
+log_variable_value(27, 68, "EXACT").
+log_variable_value(27, 69, "scientificName").
+log_variable_value(27, 70, "").
+log_variable_value(28, 71, "EXACT").
+log_variable_value(28, 72, "FAILED").
+log_variable_value(29, 73, "local source").
+log_variable_value(29, 74, "local authority source").
+log_variable_value(29, 75, "FUZZY").
+log_variable_value(29, 76, "scientificName").
+log_variable_value(29, 77, "").
+log_variable_value(30, 78, "FUZZY").
+log_variable_value(30, 79, "FAILED").
+log_variable_value(31, 80, "UNABLE to determine the validity").
+log_variable_value(31, 81, "23408786").
+
+log_variable_value(32, 82, "18006440").
+log_variable_value(33, 83, "local source").
+log_variable_value(33, 84, "local authority source").
+log_variable_value(33, 85, "EXACT").
+log_variable_value(33, 86, "scientificName").
+log_variable_value(33, 87, "Placopcten magellanicus").
+log_variable_value(34, 88, "EXACT").
+log_variable_value(34, 89, "FAILED").
+log_variable_value(35, 90, "local source").
+log_variable_value(35, 91, "local authority source").
+log_variable_value(35, 92, "FUZZY").
+log_variable_value(35, 93, "scientificName").
+log_variable_value(35, 94, "Placopcten magellanicus").
+log_variable_value(36, 95, "FUZZY").
+log_variable_value(36, 96, "SUCESSFUL").
+log_variable_value(37, 97, "scientificName").
+log_variable_value(37, 98, "Placopcten magellanicus").
+log_variable_value(37, 99, "Placopecten magellanicus").
+log_variable_value(38, 100, "scientificNameAuthorship").
+log_variable_value(38, 101, "Gmellin").
+log_variable_value(38, 102, "(Gmelin, 1791)").
+log_variable_value(39, 103, "ACCEPTED").
+log_variable_value(39, 104, "18006440").
+
+log_variable_value(40, 105, "14319266").
+log_variable_value(41, 106, "local source").
+log_variable_value(41, 107, "local authority source").
+log_variable_value(41, 108, "EXACT").
+log_variable_value(41, 109, "scientificName").
+log_variable_value(41, 110, "Placopecten magellanicus").
+log_variable_value(42, 111, "EXACT").
+log_variable_value(42, 112, "SUCCESSFUL").
+log_variable_value(43, 113, "ACCEPTED").
+log_variable_value(43, 114, "14319266").
+
+
+log_variable_value(44, 115, "90079875").
+log_variable_value(45, 116, "local source").
+log_variable_value(45, 117, "local authority source").
+log_variable_value(45, 118, "EXACT").
+log_variable_value(45, 119, "scientificName").
+log_variable_value(45, 120, "Nodipecten nodsus").
+log_variable_value(46, 121, "EXACT").
+log_variable_value(46, 122, "FAILED").
+log_variable_value(47, 123, "local source").
+log_variable_value(47, 124, "local authority source").
+log_variable_value(47, 125, "FUZZY").
+log_variable_value(47, 126, "scientificName").
+log_variable_value(47, 127, "Nodipecten nodsus").
+log_variable_value(48, 128, "FUZZY").
+log_variable_value(48, 129, "SUCESSFUL").
+log_variable_value(49, 130, "scientificName").
+log_variable_value(49, 131, "Nodipecten nodsus").
+log_variable_value(49, 132, "Nodipecten nodosus").
+log_variable_value(50, 133, "ACCEPTED").
+log_variable_value(50, 134, "90079875").
+
+log_variable_value(51, 135, "17477488").
+log_variable_value(52, 136, "local source").
+log_variable_value(52, 137, "local authority source").
+log_variable_value(52, 138, "EXACT").
+log_variable_value(52, 139, "scientificName").
+log_variable_value(52, 140, "Pecten nodosus").
+log_variable_value(53, 141, "EXACT").
+log_variable_value(53, 142, "FAILED").
+log_variable_value(54, 143, "local source").
+log_variable_value(54, 144, "local authority source").
+log_variable_value(54, 145, "FUZZY").
+log_variable_value(54, 146, "scientificName").
+log_variable_value(54, 147, "Pecten nodosus").
+log_variable_value(55, 148, "FUZZY").
+log_variable_value(55, 149, "SUCESSFUL").
+log_variable_value(56, 150, "scientificName").
+log_variable_value(56, 151, "Pecten nodosus").
+log_variable_value(56, 152, "Nodipecten nodosus").
+log_variable_value(57, 153, "ACCEPTED").
+log_variable_value(57, 154, "17477488").
+
+log_variable_value(58, 155, "8").
+log_variable_value(58, 156, "demo_output_name_val.csv").
+log_variable_value(59, 157, "2").
+log_variable_value(59, 158, "demo_output_name_val.csv").
+
+
+
+

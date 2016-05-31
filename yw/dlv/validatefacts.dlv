@@ -16,13 +16,17 @@ external_check_type(2, 1, 'local source).
 external_check_type(2, 2, 'remote source).
 
 % FACT: source_used(external_check_type_name, source_used_id, source_used_name).
-source_used('local source', 1, 'local_authority_source').
-source_used('remote source', 2, 'remote_authority_source').
+source_used('local source', 1, "local authority source").
+source_used('remote source', 2, "remote authority source").
 
 
 % FACT: match_method(match_method_id, match_method_name).
 match_method(1, 'EXACT'}.
 match_method(2, 'FUZZY'}.
+
+% FACT: matching_method(matching_method_id, matching_method_name).
+matching_method(1, 'EXACT'}.
+matching_method(2, 'FUZZY'}.
 
 
 % FACT: match_result(match_result_id, match_result_name).
@@ -51,37 +55,289 @@ field_name(14,'locality').
 field_name(15,'stateProvince').
 field_name(16,'country').
 field_name(17,'higherGeography').
+field_name(18,'RecordID').
 
 
 
-% FACT: log_annotation(annotation_id, source_id, line_number, tag, keyword, value)
-log_annotation(201, 1, 40, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}").
-log_annotation(202, 1, 114, "log", "@log", "{timestamp} Reading input record {original_catalogNumber}").
-log_annotation(203, 1, 134, "log", "@log", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
-log_annotation(204, 1, 141, "log", "@log", "{timestamp} {match_method} match was {match_result}").
-log_annotation(205, 1, 149, "log", "@log", "{timestamp} {match_method} match was {match_result}").
-log_annotation(206, 1, 150, "log", "@log", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
-log_annotation(207, 1, 157, "log", "@log", "{timestamp} {match_method} match was {match_result}").
-log_annotation(208, 1, 162, "log", "@log", "{timestamp} {match_method} match was {match_result}").
-log_annotation(209, 1, 173, "log", "@log", "{timestamp} {final_result} record {original_catalogNumber}").
-log_annotation(210, 1, 222, "log", "@log", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
-log_annotation(211, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}").
-log_annotation(212, 1, 247, "log", "@log", "{timestamp} {final_result} the record {original_catalogNumber}").
-log_annotation(213, 1, 272, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
-log_annotation(214, 1, 273, "log", "@log", "{timestamp} Wrote {accepted_record_count} {final_result} records to {output1_data_file_name}").
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value)
+annotation(201, 1, 43, "log", "@log", "{timestamp} Reading input records from {input1_data_file_name}").
+annotation(202, 1, 97, "log", "@log", "{timestamp} Reading input record {RecordID}").
+annotation(203, 1, 139, "log", "@log", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
+annotation(204, 1, 140, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+% annotation(205, 1, 149, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+% annotation(206, 1, 150, "log", "@log", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
+% annotation(207, 1, 157, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+% annotation(208, 1, 162, "log", "@log", "{timestamp} {match_method} match was {match_result}").
+annotation(209, 1, 183, "log", "@log", "{timestamp} {final_result} record {RecordID}").
+% annotation(210, 1, 222, "log", "@log", "{timestamp} UPDATING {field_name} from {original_scientificName} to {updated_scientificName}").
+% annotation(211, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}").
+annotation(215, 1, 243, "log", "@log", "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}").
+annotation(212, 1, 270, "log", "@log", "{timestamp} {final_result} record {RecordID}").
+annotation(213, 1, 297, "log", "@log", "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"
+annotation(214, 1, 278, "log", "@log", "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"
 
-% FACT: log_template(log_template_id, template_tag, template_text)
-log_template(1, "reading_file_template", "{timestamp} Reading input records from {input1_data_file_name}').
-log_template(2, "reading_record_template", "{timestamp} Reading input record {original_catalogNumber}").
-log_template(3, "trying_match_template", "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
-log_template(4, "matching_result_template", "{timestamp} {match_method} match was {match_result}"). 
-log_template(5, "record_final_validation_template", "{timestamp} {final_result} record {original_catalogNumber}").
-log_template(6, "updating_record_template", "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}").
-log_template(7, "log_summary_template", "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"). 
-log_template(8, "log_summary_template", "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"). 
+% FACT: log_template(log_template_id, port_id, entry_template)
+log_template(1, 4, "{timestamp} Reading input records from {input1_data_file_name}").
+log_template(2, 9, "{timestamp} Reading input record {RecordID}").
+log_template(3, 39, "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
+log_template(4, 49, "{timestamp} {match_method} match was {match_result}"). 
+log_template(5, 83, "{timestamp} {final_result} record {RecordID}").
+log_template(6, 35, "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}").
+log_template(7, 54, "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"). 
+log_template(8, 33, "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"). 
 
 
-% FACT: log_entry(log_entry_id, log_template_id,template_connecton???).
+% % FACT: log_entry(log_entry_id, log_template_id,template_connecton???).
+% FACT: log_entry(log_entry_id, log_template_id).
+log_entry(1, 1).
+
+log_entry(2, 2).
+log_entry(3, 3).
+log_entry(4, 4).
+log_entry(5, 6).
+log_entry(6, 5).
+
+log_entry(7, 2).
+log_entry(8, 3).
+log_entry(9, 4).
+log_entry(10, 5).
+
+log_entry(11, 2).
+log_entry(12, 3).
+log_entry(13, 4).
+log_entry(14, 3).
+log_entry(15, 4).
+log_entry(16, 5).
+
+log_entry(17, 2).
+log_entry(18, 3).
+log_entry(19, 4).
+log_entry(20, 6).
+log_entry(21, 5).
+
+log_entry(22, 2).
+log_entry(23, 3).
+log_entry(24, 4).
+log_entry(25, 5).
+
+log_entry(26, 2).
+log_entry(27, 3).
+log_entry(28, 4).
+log_entry(29, 3).
+log_entry(30, 4).
+log_entry(31, 5).
+
+log_entry(32, 2).
+log_entry(33, 3).
+log_entry(34, 4).
+log_entry(35, 3).
+log_entry(36, 4).
+log_entry(37, 6).
+log_entry(38, 6).
+log_entry(39, 5).
+
+log_entry(40, 2).
+log_entry(41, 3).
+log_entry(42, 4).
+log_entry(43, 5).
+
+log_entry(44, 2).
+log_entry(45, 3).
+log_entry(46, 4).
+log_entry(47, 3).
+log_entry(48, 4).
+log_entry(49, 6).
+log_entry(50, 5).
+
+log_entry(51, 2).
+log_entry(52, 3).
+log_entry(53, 4).
+log_entry(54, 3).
+log_entry(55, 4).
+log_entry(56, 6).
+log_entry(57, 5).
+
+log_entry(58, 7).
+log_entry(59, 8).
+
+
+% % FACT: log_variable(log_variable_id, variable_name, log_template_id).
+% log_variable(1,input1_data_file_name, 1).
+% log_variable(2, '{RecordID', 2).
+% log_variable(3, '{RecordID', 2).
+
+% FACT: log_variable_value(log_entry_id, log_variable_id, log_variable_value).
+log_variable_value(1, 1, "demo_input.csv").
+
+log_variable_value(2, 2, "25671466").
+log_variable_value(3, 3, "local source").
+log_variable_value(3, 4, "local authority source").
+log_variable_value(3, 5, "EXACT").
+log_variable_value(3, 6, "scientificName").
+log_variable_value(3, 7, "Placopecten magellanicus").
+log_variable_value(4, 8, "EXACT").
+log_variable_value(4, 9, "SUCESSFUL").
+log_variable_value(5, 10, "scientificNameAuthorship").
+log_variable_value(5, 11, "Gmelin, 1791").
+log_variable_value(5, 12, "(Gmelin, 1791)").
+log_variable_value(6, 13, "ACCEPTED").
+log_variable_value(6, 14, "25671466").
+
+log_variable_value(7, 15, "98817547").
+log_variable_value(8, 16, "local source").
+log_variable_value(8, 17, "local authority source").
+log_variable_value(8, 18, "EXACT").
+log_variable_value(8, 19, "scientificName").
+log_variable_value(8, 20, "Placopecten magellanicus").
+log_variable_value(9, 21, "EXACT").
+log_variable_value(9, 22, "SUCESSFUL").
+log_variable_value(10, 23, "ACCEPTED").
+log_variable_value(10, 24, "98817547").
+
+log_variable_value(11, 25, "73601975").
+log_variable_value(12, 26, "local source").
+log_variable_value(12, 27, "local authority source").
+log_variable_value(12, 28, "EXACT").
+log_variable_value(12, 29, "scientificName").
+log_variable_value(12, 30, "magellanicus placopecten").
+log_variable_value(13, 31, "EXACT").
+log_variable_value(13, 32, "FAILED").
+log_variable_value(14, 33, "local source").
+log_variable_value(14, 34, "local authority source").
+log_variable_value(14, 35, "FUZZY").
+log_variable_value(14, 36, "scientificName").
+log_variable_value(14, 37, "magellanicus placopecten").
+log_variable_value(15, 38, "FUZZY").
+log_variable_value(15, 39, "FAILED").
+log_variable_value(16, 40, "UNABLE to determine the validity").
+log_variable_value(16, 41, "73601975").
+
+log_variable_value(17, 42, "27888163").
+log_variable_value(18, 43, "local source").
+log_variable_value(18, 44, "local authority source").
+log_variable_value(18, 45, "EXACT").
+log_variable_value(18, 46, "scientificName").
+log_variable_value(18, 47, "Placopecten magellanicus").
+log_variable_value(19, 48, "EXACT").
+log_variable_value(19, 49, "SUCESSFUL").
+log_variable_value(20, 50, "scientificNameAuthorship").
+log_variable_value(20, 51, "").
+log_variable_value(20, 52, "(Gmelin, 1791)").
+log_variable_value(21, 53, "ACCEPTED").
+log_variable_value(21, 54, "27888163").
+
+log_variable_value(22, 55, "25220140").
+log_variable_value(23, 56, "local source").
+log_variable_value(23, 57, "local authority source").
+log_variable_value(23, 58, "EXACT").
+log_variable_value(23, 59, "scientificName").
+log_variable_value(23, 60, "Placopecten magellanicus").
+log_variable_value(24, 61, "EXACT").
+log_variable_value(24, 62, "SUCESSFUL").
+log_variable_value(25, 63, "ACCEPTED").
+log_variable_value(25, 64, "25220140").
+
+log_variable_value(26, 65, "23408786").
+log_variable_value(27, 66, "local source").
+log_variable_value(27, 67, "local authority source").
+log_variable_value(27, 68, "EXACT").
+log_variable_value(27, 69, "scientificName").
+log_variable_value(27, 70, "").
+log_variable_value(28, 71, "EXACT").
+log_variable_value(28, 72, "FAILED").
+log_variable_value(29, 73, "local source").
+log_variable_value(29, 74, "local authority source").
+log_variable_value(29, 75, "FUZZY").
+log_variable_value(29, 76, "scientificName").
+log_variable_value(29, 77, "").
+log_variable_value(30, 78, "FUZZY").
+log_variable_value(30, 79, "FAILED").
+log_variable_value(31, 80, "UNABLE to determine the validity").
+log_variable_value(31, 81, "23408786").
+
+log_variable_value(32, 82, "18006440").
+log_variable_value(33, 83, "local source").
+log_variable_value(33, 84, "local authority source").
+log_variable_value(33, 85, "EXACT").
+log_variable_value(33, 86, "scientificName").
+log_variable_value(33, 87, "Placopcten magellanicus").
+log_variable_value(34, 88, "EXACT").
+log_variable_value(34, 89, "FAILED").
+log_variable_value(35, 90, "local source").
+log_variable_value(35, 91, "local authority source").
+log_variable_value(35, 92, "FUZZY").
+log_variable_value(35, 93, "scientificName").
+log_variable_value(35, 94, "Placopcten magellanicus").
+log_variable_value(36, 95, "FUZZY").
+log_variable_value(36, 96, "SUCESSFUL").
+log_variable_value(37, 97, "scientificName").
+log_variable_value(37, 98, "Placopcten magellanicus").
+log_variable_value(37, 99, "Placopecten magellanicus").
+log_variable_value(38, 100, "scientificNameAuthorship").
+log_variable_value(38, 101, "Gmellin").
+log_variable_value(38, 102, "(Gmelin, 1791)").
+log_variable_value(39, 103, "ACCEPTED").
+log_variable_value(39, 104, "18006440").
+
+log_variable_value(40, 105, "14319266").
+log_variable_value(41, 106, "local source").
+log_variable_value(41, 107, "local authority source").
+log_variable_value(41, 108, "EXACT").
+log_variable_value(41, 109, "scientificName").
+log_variable_value(41, 110, "Placopecten magellanicus").
+log_variable_value(42, 111, "EXACT").
+log_variable_value(42, 112, "SUCCESSFUL").
+log_variable_value(43, 113, "ACCEPTED").
+log_variable_value(43, 114, "14319266").
+
+
+log_variable_value(44, 115, "90079875").
+log_variable_value(45, 116, "local source").
+log_variable_value(45, 117, "local authority source").
+log_variable_value(45, 118, "EXACT").
+log_variable_value(45, 119, "scientificName").
+log_variable_value(45, 120, "Nodipecten nodsus").
+log_variable_value(46, 121, "EXACT").
+log_variable_value(46, 122, "FAILED").
+log_variable_value(47, 123, "local source").
+log_variable_value(47, 124, "local authority source").
+log_variable_value(47, 125, "FUZZY").
+log_variable_value(47, 126, "scientificName").
+log_variable_value(47, 127, "Nodipecten nodsus").
+log_variable_value(48, 128, "FUZZY").
+log_variable_value(48, 129, "SUCESSFUL").
+log_variable_value(49, 130, "scientificName").
+log_variable_value(49, 131, "Nodipecten nodsus").
+log_variable_value(49, 132, "Nodipecten nodosus").
+log_variable_value(50, 133, "ACCEPTED").
+log_variable_value(50, 134, "90079875").
+
+log_variable_value(51, 135, "17477488").
+log_variable_value(52, 136, "local source").
+log_variable_value(52, 137, "local authority source").
+log_variable_value(52, 138, "EXACT").
+log_variable_value(52, 139, "scientificName").
+log_variable_value(52, 140, "Pecten nodosus").
+log_variable_value(53, 141, "EXACT").
+log_variable_value(53, 142, "FAILED").
+log_variable_value(54, 143, "local source").
+log_variable_value(54, 144, "local authority source").
+log_variable_value(54, 145, "FUZZY").
+log_variable_value(54, 146, "scientificName").
+log_variable_value(54, 147, "Pecten nodosus").
+log_variable_value(55, 148, "FUZZY").
+log_variable_value(55, 149, "SUCESSFUL").
+log_variable_value(56, 150, "scientificName").
+log_variable_value(56, 151, "Pecten nodosus").
+log_variable_value(56, 152, "Nodipecten nodosus").
+log_variable_value(57, 153, "ACCEPTED").
+log_variable_value(57, 154, "17477488").
+
+log_variable_value(58, 155, "8").
+log_variable_value(58, 156, "demo_output_name_val.csv").
+log_variable_value(59, 157, "2").
+log_variable_value(59, 158, "demo_output_name_val.csv").
+
 
 
 % FACT: record_result(record_id, final_result).
