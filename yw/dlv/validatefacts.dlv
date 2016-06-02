@@ -1,61 +1,61 @@
 
 % FACT: check_type(check_type_id, check_type_name).
-check_type(1, 'self check').
-check_type(2, 'external check').
+check_type(1, "self check").
+check_type(2, "external check").
 
 % FACT: self_check_type(check_type_id, self_check_tpye_id, self_check_type_name).
-self_check_type(1, 1, 'text standard').
-self_check_type(1, 2, 'date standard').
-self_check_type(1, 3, 'time standard').
-self_check_type(1, 4, 'number standard').
-self_check_type(1, 5, 'authorship standard').
+self_check_type(1, 1, "text standard").
+self_check_type(1, 2, "date standard").
+self_check_type(1, 3, "time standard").
+self_check_type(1, 4, "number standard").
+self_check_type(1, 5, "authorship standard").
 
 
 % FACT: external_check_type(check_type_id, external_check_tpye_id, external_check_type_name).
-external_check_type(2, 1, 'local source).
-external_check_type(2, 2, 'remote source).
+external_check_type(2, 1, "local source").
+external_check_type(2, 2, "remote source").
 
 % FACT: source_used(external_check_type_name, source_used_id, source_used_name).
-source_used('local source', 1, "local authority source").
-source_used('remote source', 2, "remote authority source").
+source_used("local source", 1, "local authority source").
+source_used("remote source", 2, "remote authority source").
 
 
 % FACT: match_method(match_method_id, match_method_name).
-match_method(1, 'EXACT'}.
-match_method(2, 'FUZZY'}.
+match_method(1, "EXACT").
+match_method(2, "FUZZY").
 
 % FACT: matching_method(matching_method_id, matching_method_name).
-matching_method(1, 'EXACT'}.
-matching_method(2, 'FUZZY'}.
+matching_method(1, "EXACT").
+matching_method(2, "FUZZY").
 
 
 % FACT: match_result(match_result_id, match_result_name).
-match_result(1, 'SUCESSFUL').
-match_result(2, 'FAILED').
+match_result(1, "SUCESSFUL").
+match_result(2, "FAILED").
 
 % FACT: final_result(final_result_id, final_result_name).
-final_result(1, 'UNABLE to determine the validity').
-final_result(2, 'ACCEPTED').
+final_result(1, "UNABLE to determine the validity").
+final_result(2, "ACCEPTED").
 
 % FACT: field_name(field_name_id, field_name_value).
-field_name(1,'catalogNumber').
-field_name(2,'scientificName').
-field_name(3,'scientificNameAuthorship').
-field_name(4,'specificEpithet').
-field_name(5,'genus').
-field_name(6,'family').
-field_name(7,'order').
-field_name(8,'class').
-field_name(9,'phylum').
-field_name(10,'kingdom').
-field_name(11,'recordedBy').
-field_name(12,'eventDate').
-field_name(13,'verbatimEventDate').
-field_name(14,'locality').
-field_name(15,'stateProvince').
-field_name(16,'country').
-field_name(17,'higherGeography').
-field_name(18,'RecordID').
+field_name(1,"catalogNumber").
+field_name(2,"scientificName").
+field_name(3,"scientificNameAuthorship").
+field_name(4,"specificEpithet").
+field_name(5,"genus").
+field_name(6,"family").
+field_name(7,"order").
+field_name(8,"class").
+field_name(9,"phylum").
+field_name(10,"kingdom").
+field_name(11,"recordedBy").
+field_name(12,"eventDate").
+field_name(13,"verbatimEventDate").
+field_name(14,"locality").
+field_name(15,"stateProvince").
+field_name(16,"country").
+field_name(17,"higherGeography").
+field_name(18,"RecordID").
 
 
 
@@ -73,10 +73,10 @@ annotation(209, 1, 183, "log", "@log", "{timestamp} {final_result} record {Recor
 % annotation(211, 1, 230, "log", "@log", "{timestamp} UPDATING {field_name} from {original_authorship} to {updated_authorship}").
 annotation(215, 1, 243, "log", "@log", "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}").
 annotation(212, 1, 270, "log", "@log", "{timestamp} {final_result} record {RecordID}").
-annotation(213, 1, 297, "log", "@log", "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"
+annotation(213, 1, 297, "log", "@log", "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}").
 annotation(214, 1, 278, "log", "@log", "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"
 
-% FACT: log_template(log_template_id, port_id, entry_template)
+% FACT: log_template(log_template_id, port_id, entry_template).
 log_template(1, 4, "{timestamp} Reading input records from {input1_data_file_name}").
 log_template(2, 9, "{timestamp} Reading input record {RecordID}").
 log_template(3, 39, "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}").
@@ -163,8 +163,8 @@ log_entry(59, 8).
 
 % % FACT: log_variable(log_variable_id, variable_name, log_template_id).
 % log_variable(1,input1_data_file_name, 1).
-% log_variable(2, '{RecordID', 2).
-% log_variable(3, '{RecordID', 2).
+% log_variable(2, "{RecordID", 2).
+% log_variable(3, "{RecordID", 2).
 
 % FACT: log_variable_value(log_entry_id, log_variable_id, log_variable_value).
 log_variable_value(1, 1, "demo_input.csv").
@@ -340,7 +340,7 @@ log_variable_value(59, 158, "demo_output_name_val.csv").
 
 
 
-% FACT: record_result(record_id, final_result).
+% FACT: record_result(RecordID, final_result).
 record_result("MCZ:Mala:184232", "ACCEPTED").
 record_result("MCZ:Mala:223575", "ACCEPTED").
 record_result("MCZ:Mala:98960", "ACCEPTED").
@@ -352,16 +352,19 @@ record_result("MCZ:Mala:74068", "ACCEPTED").
 record_result("MCZ:Mala:247327", "UNABLE to determine the validity").
 record_result("MCZ:Mala:249963", "UNABLE to determine the validity").
 
-% FACT: record_update(record_id, field_name, old_value, new_value).
-record_update("MCZ:Mala:184232", "scientificNameAuthorship", "Gmelin, 1791", "(Gmelin,     1791)").
-record_update("MCZ:Mala:98960", "scientificNameAuthorship", " ", "(Gmelin, 1791)").
-record_update("MCZ:Mala:223592", "scientificName", "Placopcten magellanicus", "Placopecten magellanicus").
-record_update("MCZ:Mala:223592", "scientificNameAuthorship", "Gmellin", "(Gmelin, 1791)").
-record_update("MCZ:Mala:74068", "scientificName", "Nodipecten nodsus", "Nodipecten nodosus").
-record_update("MCZ:Mala:74068", "scientificName", "Pecten nodosus", "Nodipecten nodosus").
+% RULE 
+record_update(RecordID, updated_field, old_value, new_value) :-
+	log_template(log_template_id, _, "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}"), log_entry(_, log_template_id)
+	
+% FACT: record_update(RecordID, field_name, old_value, new_value).
+% record_update("MCZ:Mala:184232", "scientificNameAuthorship", "Gmelin, 1791", "(Gmelin, 1791)").
+% record_update("MCZ:Mala:98960", "scientificNameAuthorship", " ", "(Gmelin, 1791)").
+% record_update("MCZ:Mala:223592", "scientificName", "Placopcten magellanicus", "Placopecten magellanicus").
+% record_update("MCZ:Mala:223592", "scientificNameAuthorship", "Gmellin", "(Gmelin, 1791)").
+% record_update("MCZ:Mala:74068", "scientificName", "Nodipecten nodsus", "Nodipecten nodosus").
+% record_update("MCZ:Mala:74068", "scientificName", "Pecten nodosus", "Nodipecten nodosus").
 
-%FACT: validate_provenance(record_id, field_name, check_type, source_used, match_method, match_result). 
-validate_provenance("MCZ:Mala:184232", "scientificName", "external check", "local_authority_source", "EXACT").
+%FACT: validate_provenance(RecordID, field_name, check_type, source_used, match_method, match_result). 
+% validate_provenance("MCZ:Mala:184232", "scientificName", "external check", "local_authority_source", "EXACT").
 
-% RULE:
 
