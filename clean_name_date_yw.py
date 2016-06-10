@@ -30,6 +30,8 @@ def validate_scientificName_field_of_data():
     local_authority_source_file_name='demo_localDB.csv',
     output1_data_file_name='demo_output_name_val.csv',
     name_val_log_file_name='name_val_log.txt'
+    record_id_file_name = "record_id.txt"
+    
     
     accepted_record_count = 0
     rejected_record_count = 0
@@ -109,10 +111,12 @@ def validate_scientificName_field_of_data():
                                       input1_data.fieldnames, 
                                       delimiter=',')
     output1_data.writeheader()
-   
+    record_id_data = open(record_id_file_name,'w')    
+       
     for original1_record in input1_data:
         RecordID = str(uuid.uuid4().fields[-1])[:8]
         RecordID_lst.append(RecordID)
+        record_id_data.write(RecordID + '\n')
         output1_record = original1_record
         record_num += 1
         print
@@ -304,7 +308,7 @@ def validate_scientificName_field_of_data():
     """
     @end log_summary
     """
-    return RecordID_lst
+    
 """
 @end validate_scientificName_field_of_data
 """
@@ -318,6 +322,7 @@ def validate_scientificName_field_of_data():
 def validate_eventDate_field_of_data():
     
     input2_data_file_name='demo_output_name_val.csv',
+    record_id_file_name = "record_id.txt"
     output2_data_file_name='demo_output_name_date_val.csv',
     log2_data_file_name='date_val_log.txt'
     
@@ -344,7 +349,12 @@ def validate_eventDate_field_of_data():
     """
     input2_data = csv.DictReader(open('demo_output_name_val.csv', 'r'),
                                 delimiter=',')
-
+    RecordID_lst = []
+    record_id_data = open(record_id_file_name, 'r') 
+    """RecordIDstr = record_id_data.read()"""
+    for line in record_id_data:
+        RecordID_lst.append(line)
+    
     # iterate over input data records
     record2_num = 0
     
@@ -356,7 +366,6 @@ def validate_eventDate_field_of_data():
     output2_data.writeheader()
     output2_record_count = 0
     
-    RecordID_lst = validate_scientificName_field_of_data()
     for original2_record, ReID in zip(input2_data, RecordID_lst):
         RecordID = ReID
         output2_record = original2_record
@@ -607,4 +616,5 @@ def timestamp(message):
 
 if __name__ == '__main__':
     """ Demo of clean_name_and_date_workflow script """
+    validate_scientificName_field_of_data()
     validate_eventDate_field_of_data()

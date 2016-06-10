@@ -1,51 +1,71 @@
-2016-05-26 16:24:52  Reading input records from '('demo_output_name_val.csv',)'.
+2016-06-10 12:48:41  Reading input records from '('demo_output_name_val.csv',)'.
 
-2016-05-26 16:24:52  Reading input record '25671466'.
-2016-05-26 16:24:52  Checking ISO date format (YYYY-MM-DD) for event date: '5/27/50'.
-2016-05-26 16:24:52  Not compliant with ISO date format.
-2016-05-26 16:24:52  Updating event date format from '5/27/50' to '1950-05-27'.
-2016-05-26 16:24:52  ACCEPTED record '25671466'.
+2016-06-10 12:48:41  Reading input record '22189129
+'.
+2016-06-10 12:48:41  Checking ISO date format (YYYY-MM-DD) for event date: '5/27/50'.
+2016-06-10 12:48:41  Not compliant with ISO date format.
+2016-06-10 12:48:41  Updating event date format from '5/27/50' to '1950-05-27'.
+2016-06-10 12:48:41  ACCEPTED record '22189129
+'.
 
-2016-05-26 16:24:52  Reading input record '98817547'.
-2016-05-26 16:24:52  Checking ISO date format (YYYY-MM-DD) for event date: '1880-01-01/1880-12-31'.
-2016-05-26 16:24:52  Compliant with ISO date format.
-2016-05-26 16:24:52  ACCEPTED record '98817547'.
+2016-06-10 12:48:41  Reading input record '19694940
+'.
+2016-06-10 12:48:41  Checking ISO date format (YYYY-MM-DD) for event date: '1880-01-01/1880-12-31'.
+2016-06-10 12:48:41  Compliant with ISO date format.
+2016-06-10 12:48:41  ACCEPTED record '19694940
+'.
 
-2016-05-26 16:24:52  Reading input record '73601975'.
-2016-05-26 16:24:52  Checking ISO date format (YYYY-MM-DD) for event date: '1963-09-01/1963-09-30'.
-2016-05-26 16:24:52  Compliant with ISO date format.
-2016-05-26 16:24:52  ACCEPTED record '73601975'.
+2016-06-10 12:48:41  Reading input record '26964822
+'.
+2016-06-10 12:48:41  Checking ISO date format (YYYY-MM-DD) for event date: '1963-09-01/1963-09-30'.
+2016-06-10 12:48:41  Compliant with ISO date format.
+2016-06-10 12:48:41  ACCEPTED record '26964822
+'.
 
-2016-05-26 16:24:52  Reading input record '27888163'.
-2016-05-26 16:24:52  Checking ISO date format (YYYY-MM-DD) for event date: '1931-09-01/1931-09-30'.
-2016-05-26 16:24:52  Compliant with ISO date format.
-2016-05-26 16:24:52  ACCEPTED record '27888163'.
+2016-06-10 12:48:41  Reading input record '10522008
+'.
+2016-06-10 12:48:41  Checking ISO date format (YYYY-MM-DD) for event date: '1931-09-01/1931-09-30'.
+2016-06-10 12:48:41  Compliant with ISO date format.
+2016-06-10 12:48:41  ACCEPTED record '10522008
+'.
 
-2016-05-26 16:24:52  Reading input record '25220140'.
-2016-05-26 16:24:52  Checking ISO date format (YYYY-MM-DD) for event date: '1880-01-01/1880-12-31'.
-2016-05-26 16:24:52  Compliant with ISO date format.
-2016-05-26 16:24:52  ACCEPTED record '25220140'.
+2016-06-10 12:48:41  Reading input record '57412906
+'.
+2016-06-10 12:48:41  Checking ISO date format (YYYY-MM-DD) for event date: '1880-01-01/1880-12-31'.
+2016-06-10 12:48:41  Compliant with ISO date format.
+2016-06-10 12:48:41  ACCEPTED record '57412906
+'.
 
-2016-05-26 16:24:52  Reading input record '23408786'.
-2016-05-26 16:24:52  Checking ISO date format (YYYY-MM-DD) for event date: '1904-06-01/1904-06-30'.
-2016-05-26 16:24:52  Compliant with ISO date format.
-2016-05-26 16:24:52  ACCEPTED record '23408786'.
+2016-06-10 12:48:41  Reading input record '22145475
+'.
+2016-06-10 12:48:41  Checking ISO date format (YYYY-MM-DD) for event date: '1904-06-01/1904-06-30'.
+2016-06-10 12:48:41  Compliant with ISO date format.
+2016-06-10 12:48:41  ACCEPTED record '22145475
+'.
 
-2016-05-26 16:24:52  Reading input record '18006440'.
-2016-05-26 16:24:52  Trying validating event date: ''.
-2016-05-26 16:24:52  UNABLE to determine the validity of the record '18006440'.
+2016-06-10 12:48:41  Reading input record '21578820
+'.
+2016-06-10 12:48:41  Trying validating event date: ''.
+2016-06-10 12:48:41  UNABLE to determine the validity of the record '21578820
+'.
 
-2016-05-26 16:24:52  Reading input record '14319266'.
-2016-05-26 16:24:52  Trying validating event date: ''.
-2016-05-26 16:24:52  UNABLE to determine the validity of the record '14319266'.
+2016-06-10 12:48:41  Reading input record '26563277
+'.
+2016-06-10 12:48:41  Trying validating event date: ''.
+2016-06-10 12:48:41  UNABLE to determine the validity of the record '26563277
+'.
 
-2016-05-26 16:24:52  Reading input record '90079875'.
-2016-05-26 16:24:52  Trying validating event date: ''.
-2016-05-26 16:24:52  UNABLE to determine the validity of the record '90079875'.
+2016-06-10 12:48:41  Reading input record '22701564
+'.
+2016-06-10 12:48:41  Trying validating event date: ''.
+2016-06-10 12:48:41  UNABLE to determine the validity of the record '22701564
+'.
 
-2016-05-26 16:24:52  Reading input record '17477488'.
-2016-05-26 16:24:52  Trying validating event date: ''.
-2016-05-26 16:24:52  UNABLE to determine the validity of the record '17477488'.
+2016-06-10 12:48:41  Reading input record '20852840
+'.
+2016-06-10 12:48:41  Trying validating event date: ''.
+2016-06-10 12:48:41  UNABLE to determine the validity of the record '20852840
+'.
 
-2016-05-26 16:24:52  Wrote 6 accepted records to ('demo_output_name_date_val.csv',).
-2016-05-26 16:24:52  Wrote 4 UNABLE-to-determine-validity records to ('demo_output_name_date_val.csv',).
+2016-06-10 12:48:41  Wrote 6 accepted records to ('demo_output_name_date_val.csv',).
+2016-06-10 12:48:41  Wrote 4 UNABLE-to-determine-validity records to ('demo_output_name_date_val.csv',).
