@@ -9,19 +9,19 @@ import uuid
 
 """
 @begin clean_name_and_date_workflow
-@in input1_data @uri file:'demo_input.csv'
-@param local_authority_source @uri file:'demo_localDB.csv'
-@out name_val_log @uri file:'name_val_log.txt'
-@out output2_data  @uri file:'demo_output_name_date_val.csv'
-@out log2_data @uri file:'date_val_log.txt'
+@in input1_data @uri file: demo_input.csv
+@param local_authority_source @uri file: demo_localDB.csv
+@out name_val_log @uri file: name_val_log.txt
+@out output2_data  @uri file: demo_output_name_date_val.csv
+@out log2_data @uri file: date_val_log.txt
 """
 
 """
 @begin validate_scientificName_field_of_data
-@param local_authority_source @uri 'demo_localDB.csv'
-@in input1_data @uri file:'demo_input.csv'
-@out output1_data  @uri file:'demo_output_name_val.csv'
-@out name_val_log @uri file:'name_val_log.txt'
+@param local_authority_source @uri demo_localDB.csv
+@in input1_data @uri file: demo_input.csv
+@out output1_data  @uri file: demo_output_name_val.csv
+@out name_val_log @uri file: name_val_log.txt
 """
 
 def validate_scientificName_field_of_data():  
@@ -41,8 +41,8 @@ def validate_scientificName_field_of_data():
     # create log file 
     """
     @begin initialize_run
-    @out name_val_log @uri file:'name_val_log.txt'
-        @log "{timestamp} Reading input records from {input1_data_file_name}"
+    @out name_val_log @uri file: name_val_log.txt
+        @log {timestamp} Reading input records from {input1_data_file_name}
     """
     name_val_log = open(name_val_log_file_name,'w')    
     name_val_log.write(timestamp("Reading input records from '{0}'.\n".format(input1_data_file_name)))
@@ -53,7 +53,7 @@ def validate_scientificName_field_of_data():
     
     """
     @begin read_scientificName
-    @param local_authority_source @uri 'demo_localDB.csv'
+    @param local_authority_source @uri demo_localDB.csv
     @call fieldmatch
     @out local_authority_source_scientificName_lst
     """
@@ -90,13 +90,13 @@ def validate_scientificName_field_of_data():
     
     """
     @begin read_input1_data_records
-    @in input1_data @uri file:'demo_input.csv'
+    @in input1_data @uri file: demo_input.csv
     @out original_scientificName @as scientificName
     @out original_authorship @as authorship
     @out RecordID 
     @out original_others @as others
-    @out name_val_log @uri file:'name_val_log.txt'
-      @log "{timestamp} Reading input record {RecordID}"
+    @out name_val_log @uri file: name_val_log.txt
+      @log {timestamp} Reading input record {RecordID}
     """
     # create CSV reader for input records
     input1_data = csv.DictReader(open('demo_input.csv', 'r'),
@@ -139,9 +139,9 @@ def validate_scientificName_field_of_data():
         @call exactmatch
         @out matching_local_authority_source_record
         @out final_result
-        @out name_val_log @uri file:'name_val_log.txt'
-            @log "{timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}"
-            @log "{timestamp} {match_method} match was {match_result}"
+        @out name_val_log @uri file: name_val_log.txt
+            @log {timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}
+            @log {timestamp} {match_method} match was {match_result}
         """
         matching_method = None
         
@@ -183,8 +183,8 @@ def validate_scientificName_field_of_data():
         @param RecordID 
         @in final_result
         @out rejected_record_count
-        @out name_val_log @uri file:'name_val_log.txt'
-            @log "{timestamp} {final_result} record {RecordID}"
+        @out name_val_log @uri file: name_val_log.txt
+            @log {timestamp} {final_result} record {RecordID}
         """
         if match_result != "SUCCESSFUL":
             final_result = "UNABLE to determine the validity"
@@ -243,8 +243,8 @@ def validate_scientificName_field_of_data():
         @in update_authorship
         @in original_scientificName @as scientificName
         @in original_authorship @as authorship
-        @out name_val_log @uri file:'name_val_log.txt'
-            @log "{timestamp} UPDATING {field_name} from {original_value} to {updated_value}"
+        @out name_val_log @uri file: name_val_log.txt
+            @log {timestamp} UPDATING {field_name} from {original_value} to {updated_value}
         """
         if updated_scientificName is not None:
             field_name = "scientificName"
@@ -270,8 +270,8 @@ def validate_scientificName_field_of_data():
         @param RecordID
         @in final_result
         @out accepted_record_count
-        @out name_val_log @uri file:'name_val_log.txt'
-            @log "{timestamp} {final_result} record {RecordID}"
+        @out name_val_log @uri file: name_val_log.txt
+            @log {timestamp} {final_result} record {RecordID}
         """
         name_val_log.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
         accepted_record_count += 1
@@ -282,10 +282,10 @@ def validate_scientificName_field_of_data():
         # write output record to output file
         """
         @begin write_output1_data
-        @in input1_data @uri file:'demo_input.csv'
+        @in input1_data @uri file: demo_input.csv
         @in updated_scientificName
         @in updated_authorship
-        @out output1_data  @uri file:'demo_output_name_val.csv'
+        @out output1_data  @uri file: demo_output_name_val.csv
         """
         output1_data.writerow(output1_record)
         output1_record_count += 1
@@ -297,9 +297,9 @@ def validate_scientificName_field_of_data():
     @begin log_summary 
     @in accepted_record_count
     @in rejected_record_count
-    @out name_val_log @uri file:'name_val_log.txt'
-        @log "{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}"
-        @log "{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}"
+    @out name_val_log @uri file: name_val_log.txt
+        @log {timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}
+        @log {timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}
     """   
     print
     name_val_log.write("\n")
@@ -315,9 +315,9 @@ def validate_scientificName_field_of_data():
 
 """
 @begin validate_eventDate_field_of_data
-@in output1_data  @uri file:'demo_output_name_val.csv'
-@out output2_data  @uri file:'demo_output_name_date_val.csv'
-@out log2_data @uri file:'date_val_log.txt'
+@in output1_data  @uri file: demo_output_name_val.csv
+@out output2_data  @uri file: demo_output_name_date_val.csv
+@out log2_data @uri file: date_val_log.txt
 """
 def validate_eventDate_field_of_data():
     
@@ -342,7 +342,7 @@ def validate_eventDate_field_of_data():
     # create CSV reader for input records
     """
     @begin read_input2_data_records
-    @in input2_data  @uri file:'demo_output_name_val.csv'
+    @in input2_data  @uri file: demo_output_name_val.csv
     @out original2_eventDate @as eventDate
     @out RecordID 
     @out original2_others @as others
@@ -466,11 +466,11 @@ def validate_eventDate_field_of_data():
         if updated2_eventDate is not None:
             """
             @begin write_log2_data
-            @param input2_data_file_name  @uri file:'demo_output_name_val.csv'
+            @param input2_data_file_name  @uri file: demo_output_name_val.csv
             @param RecordID 
             @in original2_eventDate @as eventDate
             @in updated2_eventDate @as updated_eventDate
-            @out log2_data @uri file:'date_val_log.txt'             
+            @out log2_data @uri file: date_val_log.txt
             @log {timestamp} Updating event date format from '{original2_eventDate}' to '{updated2_eventDate}'
             """
             log2_data.write(timestamp("Updating event date format from '{0}' to '{1}'.\n".format(
@@ -483,9 +483,9 @@ def validate_eventDate_field_of_data():
             
             """
             @begin write_output2_data
-            @in input2_data  @uri file:'demo_output_name_val.csv'
+            @in input2_data  @uri file: demo_output_name_val.csv
             @in updated2_eventDate @as updated_eventDate
-            @out output2_data  @uri file:'demo_output_name_date_val.csv' 
+            @out output2_data  @uri file: demo_output_name_date_val.csv
             """
             output2_record['eventDate'] = updated2_eventDate
             accepted2_record_count += 1   
