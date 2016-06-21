@@ -245,99 +245,95 @@ annotation_id,source_id,line_number,tag,keyword,value
 244,1,475,param,@param,RecordID
 245,1,476,in,@in,original2_eventDate
 246,1,476,as,@as,empty_eventDate
-247,1,477,out,@out,final_result
-248,1,477,as,@as,record_final_status
-249,1,478,out,@out,rejected2_record_count
-250,1,478,as,@as,unable-to-validate_record_count
-251,1,479,out,@out,date_val_log
-252,1,479,uri,@uri,file:date_val_log.txt
-253,1,479,as,@as,date_cleaning_log
-254,1,480,log,@log,{timestamp} {final_result} record {RecordID}
-255,1,493,end,@end,log_date_is_empty
-256,1,499,begin,@begin,check_ISO_date_compliant
-257,1,500,desc,@desc,Check if the eventDate is compliant with ISO date format (YYYY-MM-DD)
-258,1,501,in,@in,original2_eventDate
-259,1,501,as,@as,nonEmpty_eventDate
+247,1,477,out,@out,rejected2_record_count
+248,1,477,as,@as,unable-to-validate_record_count
+249,1,478,out,@out,date_val_log
+250,1,478,uri,@uri,file:date_val_log.txt
+251,1,478,as,@as,date_cleaning_log
+252,1,479,log,@log,{timestamp} {final_result} record {RecordID}
+253,1,492,end,@end,log_date_is_empty
+254,1,498,begin,@begin,check_ISO_date_compliant
+255,1,499,desc,@desc,Check if the eventDate is compliant with ISO date format (YYYY-MM-DD)
+256,1,500,in,@in,original2_eventDate
+257,1,500,as,@as,nonEmpty_eventDate
+258,1,501,out,@out,original2_eventDate
+259,1,501,as,@as,compliant_eventDate
 260,1,502,out,@out,original2_eventDate
-261,1,502,as,@as,compliant_eventDate
-262,1,503,out,@out,original2_eventDate
-263,1,503,as,@as,nonCompliant_eventDate
-264,1,504,out,@out,date_val_log
-265,1,504,uri,@uri,file:date_val_log.txt
-266,1,504,as,@as,date_cleaning_log
-267,1,505,log,@log,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}."
-268,1,522,end,@end,check_ISO_date_compliant
-269,1,526,begin,@begin,update_event_date
-270,1,526,desc,@desc,Update eventDate by date format conversion
-271,1,527,in,@in,original2_eventDate
-272,1,527,as,@as,nonCompliant_eventDate
-273,1,528,out,@out,updated2_eventDate
-274,1,528,as,@as,updated_eventDate
-275,1,529,out,@out,date_val_log
-276,1,529,uri,@uri,file:date_val_log.txt
-277,1,529,as,@as,date_cleaning_log
-278,1,530,log,@log,{timestamp} UPDATING {field_name} from {original_value} to {updated_value}
-279,1,567,end,@end,update_event_date
-280,1,571,begin,@begin,log_accepted_record
-281,1,571,desc,@desc,Log record final status as accepted
-282,1,572,param,@param,RecordID
-283,1,573,in,@in,updated2_eventDate
-284,1,573,as,@as,updated_eventDate
-285,1,574,in,@in,original2_eventDate
-286,1,574,as,@as,compliant_eventDate
-287,1,575,out,@out,final_result
-288,1,575,as,@as,record_final_status
-289,1,576,out,@out,accepted2_record_count
-290,1,576,as,@as,accepted_record_count
-291,1,577,out,@out,date_val_log
-292,1,577,uri,@uri,file:date_val_log.txt
-293,1,577,as,@as,date_cleaning_log
-294,1,578,log,@log,{timestamp} {final_result} record {RecordID}
-295,1,583,end,@end,log_accepted_record
-296,1,588,begin,@begin,write_data_into_file
-297,1,588,desc,@desc,Write data into a new file
-298,1,589,in,@in,original2_others
-299,1,589,as,@as,other_fields
-300,1,590,in,@in,updated2_eventDate
-301,1,590,as,@as,updated_eventDate
-302,1,591,in,@in,original2_eventDate
-303,1,591,as,@as,eventDate
-304,1,592,out,@out,output2_data
-305,1,592,uri,@uri,file:demo_output_name_date_val.csv
-306,1,592,as,@as,data_with_cleaned_names_and_dates
-307,1,597,end,@end,write_output2_data
-308,1,601,begin,@begin,log_summary
-309,1,601,desc,@desc,Summarize on all the records
-310,1,602,in,@in,accepted2_record_count
-311,1,602,as,@as,accepted_record_count
-312,1,603,in,@in,rejected2_record_count
-313,1,603,as,@as,unable-to-validate_record_count
-314,1,604,out,@out,date_val_log
-315,1,604,uri,@uri,file:date_val_log.txt
-316,1,604,as,@as,date_cleaning_log
-317,1,605,log,@log,{timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name}
-318,1,606,log,@log,{timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name}
-319,1,613,end,@end,log_summary
-320,1,617,end,@end,clean_event_date
-321,1,621,end,@end,clean_name_and_date_workflow
-322,1,625,begin,@begin,exactmatch
-323,1,626,param,@param,lst
-324,1,627,param,@param,label_str
-325,1,628,return,@return,key
-326,1,629,return,@return,None
-327,1,641,end,@end,exactmatch
-328,1,645,begin,@begin,fuzzymatch
-329,1,646,param,@param,str1
-330,1,647,param,@param,str2
-331,1,648,return,@return,"[match_result,"
-332,1,676,end,@end,fuzzymatch
-333,1,680,begin,@begin,fieldmatch
-334,1,681,param,@param,lst
-335,1,682,param,@param,str2
-336,1,683,call,@call,fuzzymatch
-337,1,684,return,@return,match_str
-338,1,695,end,@end,fieldmatch
-339,1,700,begin,@begin,timestamp
-340,1,701,param,@param,message
-341,1,702,return,@return,timestamp_message
-342,1,711,end,@end,timestamp
+261,1,502,as,@as,nonCompliant_eventDate
+262,1,503,out,@out,date_val_log
+263,1,503,uri,@uri,file:date_val_log.txt
+264,1,503,as,@as,date_cleaning_log
+265,1,504,log,@log,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}."
+266,1,521,end,@end,check_ISO_date_compliant
+267,1,525,begin,@begin,update_event_date
+268,1,525,desc,@desc,Update eventDate by date format conversion
+269,1,526,in,@in,original2_eventDate
+270,1,526,as,@as,nonCompliant_eventDate
+271,1,527,out,@out,updated2_eventDate
+272,1,527,as,@as,updated_eventDate
+273,1,528,out,@out,date_val_log
+274,1,528,uri,@uri,file:date_val_log.txt
+275,1,528,as,@as,date_cleaning_log
+276,1,529,log,@log,{timestamp} UPDATING {field_name} from {original_value} to {updated_value}
+277,1,566,end,@end,update_event_date
+278,1,570,begin,@begin,log_accepted_record
+279,1,570,desc,@desc,Log record final status as accepted
+280,1,571,param,@param,RecordID
+281,1,572,in,@in,updated2_eventDate
+282,1,572,as,@as,updated_eventDate
+283,1,573,in,@in,original2_eventDate
+284,1,573,as,@as,compliant_eventDate
+285,1,574,out,@out,accepted2_record_count
+286,1,574,as,@as,accepted_record_count
+287,1,575,out,@out,date_val_log
+288,1,575,uri,@uri,file:date_val_log.txt
+289,1,575,as,@as,date_cleaning_log
+290,1,576,log,@log,{timestamp} {final_result} record {RecordID}
+291,1,581,end,@end,log_accepted_record
+292,1,586,begin,@begin,write_data_into_file
+293,1,586,desc,@desc,Write data into a new file
+294,1,587,in,@in,original2_others
+295,1,587,as,@as,other_fields
+296,1,588,in,@in,updated2_eventDate
+297,1,588,as,@as,updated_eventDate
+298,1,589,in,@in,original2_eventDate
+299,1,589,as,@as,eventDate
+300,1,590,out,@out,output2_data
+301,1,590,uri,@uri,file:demo_output_name_date_val.csv
+302,1,590,as,@as,data_with_cleaned_names_and_dates
+303,1,595,end,@end,write_output2_data
+304,1,599,begin,@begin,log_summary
+305,1,599,desc,@desc,Summarize on all the records
+306,1,600,in,@in,accepted2_record_count
+307,1,600,as,@as,accepted_record_count
+308,1,601,in,@in,rejected2_record_count
+309,1,601,as,@as,unable-to-validate_record_count
+310,1,602,out,@out,date_val_log
+311,1,602,uri,@uri,file:date_val_log.txt
+312,1,602,as,@as,date_cleaning_log
+313,1,603,log,@log,{timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name}
+314,1,604,log,@log,{timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name}
+315,1,611,end,@end,log_summary
+316,1,615,end,@end,clean_event_date
+317,1,619,end,@end,clean_name_and_date_workflow
+318,1,623,begin,@begin,exactmatch
+319,1,624,param,@param,lst
+320,1,625,param,@param,label_str
+321,1,626,return,@return,key
+322,1,627,return,@return,None
+323,1,639,end,@end,exactmatch
+324,1,643,begin,@begin,fuzzymatch
+325,1,644,param,@param,str1
+326,1,645,param,@param,str2
+327,1,646,return,@return,"[match_result,"
+328,1,674,end,@end,fuzzymatch
+329,1,678,begin,@begin,fieldmatch
+330,1,679,param,@param,lst
+331,1,680,param,@param,str2
+332,1,681,call,@call,fuzzymatch
+333,1,682,return,@return,match_str
+334,1,693,end,@end,fieldmatch
+335,1,698,begin,@begin,timestamp
+336,1,699,param,@param,message
+337,1,700,return,@return,timestamp_message
+338,1,709,end,@end,timestamp

@@ -1,0 +1,96 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Courier; fontsize=18; labelloc=t
+label=clean_name_and_date_workflow
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+
+/* Nodes representing atomic programs in workflow */
+
+/* Style for nodes representing composite programs (sub-workflows) in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=2 fontname=Courier]
+
+/* Nodes representing composite programs (sub-workflows) in workflow */
+clean_scientific_name [shape=record rankdir=LR label="{<f0> clean_scientific_name |<f1> Clean scientificName field}"];
+clean_event_date [shape=record rankdir=LR label="{<f0> clean_event_date |<f1> Clean eventDate field}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+name_cleaning_log [shape=record rankdir=LR label="{<f0> name_cleaning_log |<f1> file\:name_val_log.txt}"];
+data_with_cleaned_names_and_dates [shape=record rankdir=LR label="{<f0> data_with_cleaned_names_and_dates |<f1> file\:demo_output_name_date_val.csv}"];
+date_cleaning_log [shape=record rankdir=LR label="{<f0> date_cleaning_log |<f1> file\:date_val_log.txt}"];
+original_dataset [shape=record rankdir=LR label="{<f0> original_dataset |<f1> file\:demo_input.csv}"];
+data_with_cleaned_names [shape=record rankdir=LR label="{<f0> data_with_cleaned_names |<f1> file\:demo_output_name_val.csv}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+local_authority_source [shape=record rankdir=LR label="{<f0> local_authority_source |<f1> file\:demo_localDB.csv}"];
+record_id_data [shape=record rankdir=LR label="{<f0> record_id_data |<f1> file\:record_id.txt}"];
+
+/* Edges representing connections between programs and channels */
+clean_scientific_name -> data_with_cleaned_names
+clean_scientific_name -> name_cleaning_log
+clean_scientific_name -> record_id_data
+local_authority_source -> clean_scientific_name
+original_dataset -> clean_scientific_name
+clean_event_date -> data_with_cleaned_names_and_dates
+clean_event_date -> date_cleaning_log
+data_with_cleaned_names -> clean_event_date
+record_id_data -> clean_event_date
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Hidden double-cluster for grouping workflow input ports */
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+original_dataset_input_port [label=""]
+local_authority_source_input_port [label=""]
+
+/* End of double-cluster for grouping workflow input ports */
+}}
+
+/* Hidden double-cluster for grouping workflow output ports */
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+name_cleaning_log_output_port [label=""]
+data_with_cleaned_names_and_dates_output_port [label=""]
+date_cleaning_log_output_port [label=""]
+
+/* End of double-cluster for grouping workflow output ports */
+}}
+
+/* Edges from input ports to channels */
+original_dataset_input_port -> original_dataset
+local_authority_source_input_port -> local_authority_source
+
+/* Edges from channels to output ports */
+name_cleaning_log -> name_cleaning_log_output_port
+data_with_cleaned_names_and_dates -> data_with_cleaned_names_and_dates_output_port
+date_cleaning_log -> date_cleaning_log_output_port
+
+/* End of top-level graph */
+}

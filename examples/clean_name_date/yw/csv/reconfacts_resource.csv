@@ -1,0 +1,8 @@
+resource_id,resource_uri
+1,demo_input.csv
+2,demo_localDB.csv
+3,name_val_log.txt
+4,demo_output_name_date_val.csv
+5,date_val_log.txt
+6,demo_output_name_val.csv
+7,record_id.txt

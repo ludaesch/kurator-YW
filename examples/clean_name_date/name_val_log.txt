@@ -1,80 +1,80 @@
-2016-06-19 19:36:10  Reading input records from 'demo_input.csv'.
+2016-06-21 14:09:21  Reading input records from 'demo_input.csv'.
 
-2016-06-19 19:36:10  Reading input record '66126746'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'.
-2016-06-19 19:36:10  ACCEPTED record '66126746'.
+2016-06-21 14:09:21  Reading input record '79865450'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  UPDATING scientific name authorship from 'Gmelin, 1791' to '(Gmelin, 1791)'.
+2016-06-21 14:09:21  ACCEPTED record '79865450'.
 
-2016-06-19 19:36:10  Reading input record '12584243'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  ACCEPTED record '12584243'.
+2016-06-21 14:09:21  Reading input record '96666621'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  ACCEPTED record '96666621'.
 
-2016-06-19 19:36:10  Reading input record '24374588'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'magellanicus placopecten'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  Trying local authority source FUZZY match for validating scientificName: 'magellanicus placopecten'.
-2016-06-19 19:36:10  FUZZY match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  UNABLE to determine the validity record '24374588'.
+2016-06-21 14:09:21  Reading input record '17748172'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'magellanicus placopecten'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  Trying local authority source FUZZY match for validating scientificName: 'magellanicus placopecten'.
+2016-06-21 14:09:21  FUZZY match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  UNABLE to determine the validity record '17748172'.
 
-2016-06-19 19:36:10  Reading input record '18657474'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  UPDATING scientific name authorship from '' to '(Gmelin, 1791)'.
-2016-06-19 19:36:10  ACCEPTED record '18657474'.
+2016-06-21 14:09:21  Reading input record '25437825'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  UPDATING scientific name authorship from '' to '(Gmelin, 1791)'.
+2016-06-21 14:09:21  ACCEPTED record '25437825'.
 
-2016-06-19 19:36:10  Reading input record '15564390'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  ACCEPTED record '15564390'.
+2016-06-21 14:09:21  Reading input record '23116027'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  ACCEPTED record '23116027'.
 
-2016-06-19 19:36:10  Reading input record '65596906'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: ''.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'YES'.
-2016-06-19 19:36:10  EXACT match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  Trying local authority source FUZZY match for validating scientificName: ''.
-2016-06-19 19:36:10  FUZZY match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  UNABLE to determine the validity record '65596906'.
+2016-06-21 14:09:21  Reading input record '21379837'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: ''.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'YES'.
+2016-06-21 14:09:21  EXACT match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  Trying local authority source FUZZY match for validating scientificName: ''.
+2016-06-21 14:09:21  FUZZY match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  UNABLE to determine the validity record '21379837'.
 
-2016-06-19 19:36:10  Reading input record '17247949'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Placopcten magellanicus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  Trying local authority source FUZZY match for validating scientificName: 'Placopcten magellanicus'.
-2016-06-19 19:36:10  FUZZY match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  UPDATING scientific name from 'Placopcten magellanicus' to 'Placopecten magellanicus'.
-2016-06-19 19:36:10  UPDATING scientific name authorship from 'Gmellin' to '(Gmelin, 1791)'.
-2016-06-19 19:36:10  ACCEPTED record '17247949'.
+2016-06-21 14:09:21  Reading input record '14661153'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Placopcten magellanicus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  Trying local authority source FUZZY match for validating scientificName: 'Placopcten magellanicus'.
+2016-06-21 14:09:21  FUZZY match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  UPDATING scientific name from 'Placopcten magellanicus' to 'Placopecten magellanicus'.
+2016-06-21 14:09:21  UPDATING scientific name authorship from 'Gmellin' to '(Gmelin, 1791)'.
+2016-06-21 14:09:21  ACCEPTED record '14661153'.
 
-2016-06-19 19:36:10  Reading input record '14157498'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  ACCEPTED record '14157498'.
+2016-06-21 14:09:21  Reading input record '88696305'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Placopecten magellanicus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  ACCEPTED record '88696305'.
 
-2016-06-19 19:36:10  Reading input record '91213620'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Nodipecten nodsus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  Trying local authority source FUZZY match for validating scientificName: 'Nodipecten nodsus'.
-2016-06-19 19:36:10  FUZZY match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  UPDATING scientific name from 'Nodipecten nodsus' to 'Nodipecten nodosus'.
-2016-06-19 19:36:10  ACCEPTED record '91213620'.
+2016-06-21 14:09:21  Reading input record '14412064'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Nodipecten nodsus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  Trying local authority source FUZZY match for validating scientificName: 'Nodipecten nodsus'.
+2016-06-21 14:09:21  FUZZY match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  UPDATING scientific name from 'Nodipecten nodsus' to 'Nodipecten nodosus'.
+2016-06-21 14:09:21  ACCEPTED record '14412064'.
 
-2016-06-19 19:36:10  Reading input record '13911570'.
-2016-06-19 19:36:10  Trying local authority source EXACT match for validating scientificName: 'Pecten nodosus'.
-2016-06-19 19:36:10  Checking if scientificName value is Emmpty: 'NO'.
-2016-06-19 19:36:10  EXACT match FAILED, compliant with local authority source: NO.
-2016-06-19 19:36:10  Trying local authority source FUZZY match for validating scientificName: 'Pecten nodosus'.
-2016-06-19 19:36:10  FUZZY match was SUCCESSFUL, compliant with local authority source: YES.
-2016-06-19 19:36:10  UPDATING scientific name from 'Pecten nodosus' to 'Nodipecten nodosus'.
-2016-06-19 19:36:10  ACCEPTED record '13911570'.
+2016-06-21 14:09:21  Reading input record '80908828'.
+2016-06-21 14:09:21  Trying local authority source EXACT match for validating scientificName: 'Pecten nodosus'.
+2016-06-21 14:09:21  Checking if scientificName value is Emmpty: 'NO'.
+2016-06-21 14:09:21  EXACT match FAILED, compliant with local authority source: NO.
+2016-06-21 14:09:21  Trying local authority source FUZZY match for validating scientificName: 'Pecten nodosus'.
+2016-06-21 14:09:21  FUZZY match was SUCCESSFUL, compliant with local authority source: YES.
+2016-06-21 14:09:21  UPDATING scientific name from 'Pecten nodosus' to 'Nodipecten nodosus'.
+2016-06-21 14:09:21  ACCEPTED record '80908828'.
 
-2016-06-19 19:36:10  Wrote 8 ACCEPTED records to demo_output_name_val.csv.
-2016-06-19 19:36:10  Wrote 2 UNABLE-to-determine-validity records to demo_output_name_val.csv.
+2016-06-21 14:09:21  Wrote 8 ACCEPTED records to demo_output_name_val.csv.
+2016-06-21 14:09:21  Wrote 2 UNABLE-to-determine-validity records to demo_output_name_val.csv.

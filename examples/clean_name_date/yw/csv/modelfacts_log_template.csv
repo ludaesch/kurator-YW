@@ -15,9 +15,9 @@ log_template_id,port_id,entry_template,log_annotation_id
 14,77,{timestamp} Reading input record {RecordID},226
 15,81,{timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value},239
 16,81,{timestamp} Checking if {field_name} value is Empty: {check_result},240
-17,86,{timestamp} {final_result} record {RecordID},254
-18,90,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}.",267
-19,93,{timestamp} UPDATING {field_name} from {original_value} to {updated_value},278
-20,99,{timestamp} {final_result} record {RecordID},294
-21,106,{timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name},317
-22,106,{timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name},318
+17,85,{timestamp} {final_result} record {RecordID},252
+18,89,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}.",265
+19,92,{timestamp} UPDATING {field_name} from {original_value} to {updated_value},276
+20,97,{timestamp} {final_result} record {RecordID},290
+21,104,{timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name},313
+22,104,{timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name},314

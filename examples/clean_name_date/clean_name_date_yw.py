@@ -474,7 +474,6 @@ def clean_event_date():
         @begin log_date_is_empty @desc Log records of empty event date with final status as unable to validate
         @param RecordID 
         @in original2_eventDate @as empty_eventDate
-        @out final_result @as record_final_status
         @out rejected2_record_count @as unable-to-validate_record_count
         @out date_val_log @uri file:date_val_log.txt @as date_cleaning_log
             @log {timestamp} {final_result} record {RecordID}
@@ -572,7 +571,6 @@ def clean_event_date():
         @param RecordID
         @in updated2_eventDate @as updated_eventDate
         @in original2_eventDate @as compliant_eventDate
-        @out final_result @as record_final_status
         @out accepted2_record_count @as accepted_record_count
         @out date_val_log @uri file:date_val_log.txt @as date_cleaning_log
             @log {timestamp} {final_result} record {RecordID}
