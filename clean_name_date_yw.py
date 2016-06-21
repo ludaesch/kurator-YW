@@ -9,43 +9,45 @@ import uuid
 
 """
 @begin clean_name_and_date_workflow
-@in input1_data @uri file: demo_input.csv
-@param local_authority_source @uri file: demo_localDB.csv
-@out name_val_log @uri file: name_val_log.txt
-@out output2_data  @uri file: demo_output_name_date_val.csv
-@out log2_data @uri file: date_val_log.txt
+@in input1_data @uri file:demo_input.csv
+@param local_authority_source @uri file:demo_localDB.csv
+@out name_val_log @uri file:name_val_log.txt
+@out output2_data  @uri file:demo_output_name_date_val.csv
+@out date_val_log @uri file:date_val_log.txt
 """
 
 """
 @begin validate_scientificName_field_of_data
-@param local_authority_source @uri demo_localDB.csv
-@in input1_data @uri file: demo_input.csv
-@out output1_data  @uri file: demo_output_name_val.csv
-@out name_val_log @uri file: name_val_log.txt
+@param local_authority_source @uri file:demo_localDB.csv
+@in input1_data @uri file:demo_input.csv
+@out output1_data  @uri file:demo_output_name_val.csv
+@out name_val_log @uri file:name_val_log.txt
+@out record_id_data @uri file:record_id.txt
 """
 
 def validate_scientificName_field_of_data():  
     
-    input1_data_file_name='demo_input.csv',
-    local_authority_source_file_name='demo_localDB.csv',
-    output1_data_file_name='demo_output_name_val.csv',
+    input1_data_file_name='demo_input.csv'
+    local_authority_source_file_name='demo_localDB.csv'
+    output1_data_file_name='demo_output_name_val.csv'
     name_val_log_file_name='name_val_log.txt'
     record_id_file_name = "record_id.txt"
     
-    
     accepted_record_count = 0
-    rejected_record_count = 0
+    rejected_record_count = 0 
     log_record_count = 0
     output1_record_count = 0
+    match_result = None
+    final_result = None
 
     # create log file 
     """
     @begin initialize_run
-    @out name_val_log @uri file: name_val_log.txt
+    @out name_val_log @uri file:name_val_log.txt
         @log {timestamp} Reading input records from {input1_data_file_name}
     """
     name_val_log = open(name_val_log_file_name,'w')    
-    name_val_log.write(timestamp("Reading input records from '{0}'.\n".format(input1_data_file_name)))
+    name_val_log.write(timestamp("Reading input records from '{0}'.\n".format(input1_data_file_name))) 
     
     """
     @end initialize_run
@@ -53,7 +55,7 @@ def validate_scientificName_field_of_data():
     
     """
     @begin read_scientificName
-    @param local_authority_source @uri demo_localDB.csv
+    @param local_authority_source @uri file:demo_localDB.csv
     @call fieldmatch
     @out local_authority_source_scientificName_lst
     """
@@ -90,12 +92,13 @@ def validate_scientificName_field_of_data():
     
     """
     @begin read_input1_data_records
-    @in input1_data @uri file: demo_input.csv
+    @in input1_data @uri file:demo_input.csv
     @out original_scientificName @as scientificName
     @out original_authorship @as authorship
     @out RecordID 
     @out original_others @as others
-    @out name_val_log @uri file: name_val_log.txt
+    @out record_id_data @uri file:record_id.txt
+    @out name_val_log @uri file:name_val_log.txt
       @log {timestamp} Reading input record {RecordID}
     """
     # create CSV reader for input records
@@ -122,7 +125,7 @@ def validate_scientificName_field_of_data():
         print
 
         # extract values of fields to be validated
-        original_catalogNumber = original1_record['id']
+        # original_catalogNumber = original1_record['id']
         original_scientificName = original1_record['scientificName']
         original_authorship = original1_record['scientificNameAuthorship']
 
@@ -131,47 +134,100 @@ def validate_scientificName_field_of_data():
         """
         @end read_input1_data_records
         """
+ 
+        """
+        @begin check_empty_value
+        @in original_scientificName @as scientificName
+        @out check_result
+        @out original_scientificName @as empty_scientificName
+        @out original_scientificName @as nonEmpty_scientificName
+        @out name_val_log @uri file:name_val_log.txt
+                          @log {timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
+                          @log {timestamp} Checking if {field_name} value is Empty: {check_result}
+         """
+        check_type = "external check"
+        source_used = "local_authority_source"
+        match_method = "EXACT"
+        field_name = "scientificName"
+        field_name_value = original_scientificName
+        name_val_log.write(timestamp("Trying local authority source EXACT match for validating scientificName: '{0}'.\n".format(original_scientificName))) 
+        # reject the currect record if no value
+        if len(original_scientificName) < 1:
+            check_result = "YES"
+            match_result = None
+        else:
+            check_result = "NO"
+            match_result = "FAILED"
+        name_val_log.write(timestamp("Checking if scientificName value is Emmpty: '{0}'.\n".format(check_result)))
+        """
+        @end check_empty_value
+        """
+        
+        """
+        @begin log_rejected_record
+        @param RecordID 
+        @in original_scientificName @as empty_scientificName
+        @in check_result
+        @out final_result
+        @out rejected_record_count
+        @out name_val_log @uri file:name_val_log.txt
+            @log {timestamp} {final_result} record {RecordID}
+        """
+        if check_result is None:
+            final_result = "UNABLE to determine the validity"
+            name_val_log.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(RecordID)))
+            rejected_record_count += 1
+            
+            # write output record to output file
+            output1_data.writerow(output1_record)
+            output1_record_count += 1
+            # skip to processing of next record in input file
+            continue
+            """
+            @end log_rejected_record
+            """
+        else:
+            final_result = None
         
         """   
         @begin find_matching_local_authority_source_record 
-        @in original_scientificName @as scientificName
+        @in original_scientificName @as nonEmpty_scientificName
         @param local_authority_source_scientificName_lst
         @call exactmatch
-        @out matching_local_authority_source_record
+        @call fieldmatch
+        @out match_result
+        @out matching_local_authority_source_record @as exactMatching_local_authority_source_record
+        @out matching_local_authority_source_record @as fuzzyMatching_local_authority_source_record
+        @out matching_local_authority_source_record @as nonMatching_local_authority_source_record
         @out final_result
-        @out name_val_log @uri file: name_val_log.txt
-            @log {timestamp} Trying {check_type} {source_used} {match_method} match for {field_name}: {original_scientificName}
-            @log {timestamp} {match_method} match was {match_result}
+        @out matching_method
+        @out name_val_log @uri file:name_val_log.txt
+            @log {timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
+            @log {timestamp} {match_method} match was {match_result}, compliant with {source_used}: {compliant_result}.
         """
         matching_method = None
-        
-        
         # first try exact match of the scientific name against local_authority_source
-        check_type = "external check"
-        source_used = "remote_authority_source"
-        match_method = "EXACT"
-        name_val_log.write(timestamp("Trying local authority source EXACT match for scientific name: '{0}'.\n".format(original_scientificName)))
         matching_local_authority_source_record = exactmatch(local_authority_source_scientificName_lst, original_scientificName)[1]
         match_result = exactmatch(local_authority_source_scientificName_lst, original_scientificName)[0]
         if match_result == "SUCCESSFUL":
-            name_val_log.write(timestamp('EXACT match was SUCCESSFUL.\n'))
+            name_val_log.write(timestamp('EXACT match was SUCCESSFUL, compliant with local authority source: YES.\n'))
             matching_method = match_method
-            final_result = match_result
+            final_result = "ACCEPTED"
 
         # otherwise try a fuzzy match
         else:
             match_method = "FUZZY"
-            name_val_log.write(timestamp('EXACT match FAILED.\n'))
-            name_val_log.write(timestamp("Trying local authority source FUZZY match for scientific name: '{0}'.\n".format(original_scientificName)))
+            name_val_log.write(timestamp('EXACT match FAILED, compliant with local authority source: NO.\n'))
+            name_val_log.write(timestamp("Trying local authority source FUZZY match for validating scientificName: '{0}'.\n".format(original_scientificName)))
             matching_local_authority_source_record = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)[1]
             match_result = fieldmatch(local_authority_source_scientificName_lst, original_scientificName)[0]
             if match_result == "SUCCESSFUL":
-                name_val_log.write(timestamp('FUZZY match was SUCCESSFUL.\n'))
+                name_val_log.write(timestamp('FUZZY match was SUCCESSFUL, compliant with local authority source: YES.\n'))
                 matching_method = match_method
-                final_result = match_result
+                final_result = "ACCEPTED"
             else:
-                name_val_log.write(timestamp('FUZZY match FAILED.\n'))   
-                final_result= match_result
+                name_val_log.write(timestamp('FUZZY match FAILED, compliant with local authority source: NO.\n'))   
+                final_result= "UNABLE to determine the validity"
         """
         @end find_matching_local_authority_source_record
         """
@@ -179,15 +235,15 @@ def validate_scientificName_field_of_data():
     #########################################################
         # reject the currect record if not matched successfully against local_authority_source
         """
-        @begin log_rejected_record
+        @begin log_rejected_unmatching_record
         @param RecordID 
-        @in final_result
+        @in original_scientificName @as nonEmpty_scientificName
+        @in matching_local_authority_source_record @as nonMatching_local_authority_source_record
         @out rejected_record_count
-        @out name_val_log @uri file: name_val_log.txt
+        @out name_val_log @uri file:name_val_log.txt
             @log {timestamp} {final_result} record {RecordID}
         """
-        if match_result != "SUCCESSFUL":
-            final_result = "UNABLE to determine the validity"
+        if final_result == "UNABLE to determine the validity":
             name_val_log.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(RecordID)))
             rejected_record_count += 1
             
@@ -198,14 +254,14 @@ def validate_scientificName_field_of_data():
             # skip to processing of next record in input file
             continue
             """
-            @end log_rejected_record
+            @end log_rejected_unmatching_record
             """
   
      #############################################################
         """
         @begin update_scientificName
-        @in original_scientificName @as scientificName
-        @in matching_local_authority_source_record
+        @in original_scientificName @as nonEmpty_scientificName
+        @param matching_local_authority_source_record @as fuzzyMatching_local_authority_source_record
         @out updated_scientificName
         """
         updated_scientificName = None
@@ -220,7 +276,7 @@ def validate_scientificName_field_of_data():
     #####################################################################
         """
         @begin update_authorship
-        @in matching_local_authority_source_record
+        @param matching_local_authority_source_record @as fuzzyMatching_local_authority_source_record
         @in original_authorship @as authorship
         @out updated_authorship
         """
@@ -240,10 +296,10 @@ def validate_scientificName_field_of_data():
         """
         @begin log_updated_record
         @in updated_scientificName
-        @in update_authorship
-        @in original_scientificName @as scientificName
+        @in updated_authorship
         @in original_authorship @as authorship
-        @out name_val_log @uri file: name_val_log.txt
+        @in original_scientificName @as nonEmpty_scientificName
+        @out name_val_log @uri file:name_val_log.txt
             @log {timestamp} UPDATING {field_name} from {original_value} to {updated_value}
         """
         if updated_scientificName is not None:
@@ -269,8 +325,9 @@ def validate_scientificName_field_of_data():
         @begin log_accepted_record
         @param RecordID
         @in final_result
+        @param original_scientificName @as nonEmpty_scientificName
         @out accepted_record_count
-        @out name_val_log @uri file: name_val_log.txt
+        @out name_val_log @uri file:name_val_log.txt
             @log {timestamp} {final_result} record {RecordID}
         """
         name_val_log.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
@@ -282,10 +339,13 @@ def validate_scientificName_field_of_data():
         # write output record to output file
         """
         @begin write_output1_data
-        @in input1_data @uri file: demo_input.csv
+        @in original_others @as others
+        @in original_scientificName @as empty_scientificName
+        @in original_scientificName @as nonEmpty_scientificName
+        @in original_authorship @as authorship
         @in updated_scientificName
         @in updated_authorship
-        @out output1_data  @uri file: demo_output_name_val.csv
+        @out output1_data  @uri file:demo_output_name_val.csv
         """
         output1_data.writerow(output1_record)
         output1_record_count += 1
@@ -297,7 +357,7 @@ def validate_scientificName_field_of_data():
     @begin log_summary 
     @in accepted_record_count
     @in rejected_record_count
-    @out name_val_log @uri file: name_val_log.txt
+    @out name_val_log @uri file:name_val_log.txt
         @log {timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}
         @log {timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}
     """   
@@ -315,56 +375,62 @@ def validate_scientificName_field_of_data():
 
 """
 @begin validate_eventDate_field_of_data
-@in output1_data  @uri file: demo_output_name_val.csv
-@out output2_data  @uri file: demo_output_name_date_val.csv
-@out log2_data @uri file: date_val_log.txt
+@in output1_data  @uri file:demo_output_name_val.csv 
+@param record_id_data @uri file:record_id.txt
+@out output2_data  @uri file:demo_output_name_date_val.csv
+@out date_val_log @uri file:date_val_log.txt
 """
 def validate_eventDate_field_of_data():
     
-    input2_data_file_name='demo_output_name_val.csv',
+    input2_data_file_name='demo_output_name_val.csv'
     record_id_file_name = "record_id.txt"
-    output2_data_file_name='demo_output_name_date_val.csv',
-    log2_data_file_name='date_val_log.txt'
+    output2_data_file_name='demo_output_name_date_val.csv'
+    date_val_log_file_name='date_val_log.txt'
     
     accepted2_record_count = 0
     rejected2_record_count = 0
     log2_record_count = 0
     output2_record_count = 0
+    match_result = None
+    final_result = None
+    # create log file
+    """
+    @begin initialize_run
+    @out date_val_log @uri file:date_val_log.txt
+        @log {timestamp} Reading input records from {input2_data_file_name}
+    """
+    date_val_log = open(date_val_log_file_name,'w')    
+    date_val_log.write(timestamp("Reading input records from '{0}'.\n".format(input2_data_file_name)))
     
-    # create log file 
     """
-    @log {timestamp} Reading input records from {input2_data_file_name}
+    @end initialize_run
     """
-    log2_data = open(log2_data_file_name,'w')    
-    log2_data.write(timestamp("Reading input records from '{0}'.\n".format(input2_data_file_name)))
-
-    match_result = None    
-    # create CSV reader for input records
+        
     """
     @begin read_input2_data_records
-    @in input2_data  @uri file: demo_output_name_val.csv
+    @in input2_data  @uri file:demo_output_name_val.csv
+    @in record_id_data @uri file:record_id.txt
     @out original2_eventDate @as eventDate
     @out RecordID 
     @out original2_others @as others
+    @out date_val_log @uri file:date_val_log.txt
+                      @log {timestamp} Reading input record {RecordID}
     """
     input2_data = csv.DictReader(open('demo_output_name_val.csv', 'r'),
                                 delimiter=',')
-    RecordID_lst = []
-    record_id_data = open(record_id_file_name, 'r') 
-    """RecordIDstr = record_id_data.read()"""
-    for line in record_id_data:
-        RecordID_lst.append(line)
-    
     # iterate over input data records
     record2_num = 0
-    
+    RecordID_lst = []
+    record_id_data = open(record_id_file_name, 'r') 
+    for line in record_id_data:
+        line = line.rstrip('\n')
+        RecordID_lst.append(line)
     
     # open file for storing output data if not already open
     output2_data = csv.DictWriter(open('demo_output_name_date_val.csv', 'w'), 
                                       input2_data.fieldnames, 
                                       delimiter=',')
     output2_data.writeheader()
-    output2_record_count = 0
     
     for original2_record, ReID in zip(input2_data, RecordID_lst):
         RecordID = ReID
@@ -374,52 +440,106 @@ def validate_eventDate_field_of_data():
 
         # extract values of fields to be validated
         original2_eventDate = original2_record['eventDate']
-        original2_catalogNumber = original2_record['id']
 
-        """
-        @log {timestamp} Reading input record {RecordID} 
-        """
-        log2_data.write('\n')
-        log2_data.write(timestamp("Reading input record '{0}'.\n".format(RecordID)))        
+        date_val_log.write('\n')
+        date_val_log.write(timestamp("Reading input record '{0}'.\n".format(RecordID)))        
         """
         @end read_input2_data_records
         """
         
         """
-        @begin clean_eventDate
+        @begin check_empty_value
         @in original2_eventDate @as eventDate
-        @out updated2_eventDate @as updated_eventDate
+        @out check_result
+        @out original2_eventDate @as empty_eventDate
+        @out original2_eventDate @as nonEmpty_eventDate
+        @out date_val_log @uri file:date_val_log.txt
+                       @log {timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
+                       @log {timestamp} Checking if {field_name} value is Empty: {check_result}       
         """
-        updated2_eventDate = None
+        check_type = "self check"
+        source_used = "ISO date format (YYYY-MM-DD)"
+        match_method = "EXACT"
+        field_name = "eventDate"
+        field_name_value = original2_eventDate
+        date_val_log.write(timestamp("Trying validating self check ISO date format (YYYY-MM-DD) match for validating eventDate: '{0}'.\n".format(original2_eventDate)))
         # reject the currect record if no value
         if len(original2_eventDate) < 1:
-            """
-            @log {timestamp} Trying validating event date: {original2_eventDate}
-            """
-            log2_data.write(timestamp("Trying validating event date: '{0}'.\n".format(original2_eventDate)))
-            match2_result = None
-            
+            check_result = "YES"
+            match_result = None
         else:
+            check_result = "NO"
+            match_result = "FAILED"
+        date_val_log.write(timestamp("Checking if eventDate value is Emmpty: '{0}'.\n".format(check_result)))
+        """
+        @end check_empty_value
+        """
+        
+        """
+        @begin log_rejected_record
+        @param RecordID 
+        @in original2_eventDate @as empty_eventDate
+        @in check_result
+        @out final_result
+        @out rejected2_record_count @as rejected_record_count
+        @out date_val_log @uri file:date_val_log.txt
+            @log {timestamp} {final_result} record {RecordID}
+        """
+        if check_result == "YES":
+            final_result = "UNABLE to determine the validity"
+            date_val_log.write(timestamp("UNABLE to determine the validity record '{0}'.\n".format(RecordID)))
+            rejected2_record_count += 1
+            
+            # write output record to output file
+            output2_data.writerow(output2_record)
+            output2_record_count += 1
+            # skip to processing of next record in input file
+            continue
             """
-            @log {timestamp} Checking ISO date format (YYYY-MM-DD) for event date: '{original2_eventDate}'
+            @end log_rejected_record
             """
-            log2_data.write(timestamp("Checking ISO date format (YYYY-MM-DD) for event date: '{0}'.\n".format(original2_eventDate)))
+        else:
+            final_result = "ACCEPTED"
+                    
+        """
+        @begin check_ISO_compliant
+        @in original2_eventDate @as nonEmpty_eventDate
+        @out match_result
+        @out original2_eventDate @as compliant_eventDate
+        @out original2_eventDate @as nonCompliant_eventDate
+        @out date_val_log @uri file:date_val_log.txt
+                       @log {timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}.
+        """                
+        # date format: xxxx-xx-xx
+        if re.match(r'^(\d{4}\-)+(\d{1,2}\-)+(\d{1,2})$',original2_eventDate):
+            match_result = 'SUCESSFUL'
+            compliant_eventDate = original2_eventDate
+            date_val_log.write(timestamp("EXACT match was SUCESSFUL, compliant with ISO date format (YYYY-MM-DD): SUCCESSFUL\n"))
+        # date format: xxxx-xx-xx/xxxx-xx-xx
+        elif re.match(r'^(\d{4}\-)+(\d{1,2}\-)+(\d{1,2}\/)+(\d{4}\-)+(\d{1,2}\-)+(\d{1,2})$',original2_eventDate):
+            match_result = 'SUCESSFUL'
+            compliant_eventDate = original2_eventDate
+            date_val_log.write(timestamp("EXACT match was SUCESSFUL, compliant with ISO date format (YYYY-MM-DD): SUCCESSFUL\n"))
+        else: 
+            match_result = 'FAILED'
+            nonCompliant_eventDate = original2_eventDate
+            date_val_log.write(timestamp("EXACT match FAILED, compliant with ISO date format (YYYY-MM-DD): FAILED\n"))
+        """
+        @end check_ISO_compliant
+        """
             
-            # date format: xxxx-xx-xx
-            if re.match(r'^(\d{4}\-)+(\d{1,2}\-)+(\d{1,2})$',original2_eventDate):
-                match2_result = 'yes'
-            
-            # date format: xxxx-xx-xx/xxxx-xx-xx
-            elif re.match(r'^(\d{4}\-)+(\d{1,2}\-)+(\d{1,2}\/)+(\d{4}\-)+(\d{1,2}\-)+(\d{1,2})$',original2_eventDate):
-                match2_result = 'yes'
-            
-            # date format: xx/xx/xx
-            elif re.match(r'^(\d{1,2}\/)+(\d{1,2}\/)+(\d{4})$',original2_eventDate):
-                """
-                @log {timestamp} Not compliant with ISO date format.
-                """
-                log2_data.write(timestamp('Not compliant with ISO date format.\n'))
-                match2_result = 'no'
+        """
+        @begin update_eventDate
+        @in original2_eventDate @as nonCompliant_eventDate
+        @in match_result
+        @out updated2_eventDate @as updated_eventDate
+        @out date_val_log @uri file:date_val_log.txt
+                          @log {timestamp} UPDATING {field_name} from {original_value} to {updated_value} 
+        """
+        updated2_eventDate = None
+        # date format: xx/xx/xx
+        if match_result == "FAILED":
+            if re.match(r'^(\d{1,2}\/)+(\d{1,2}\/)+(\d{4})$',original2_eventDate):
                 dateparts_slash = original2_eventDate.split('/')
                 par0 = dateparts_slash[0]
                 par1 = dateparts_slash[1]  
@@ -428,12 +548,12 @@ def validate_eventDate_field_of_data():
                 par_day = par1.zfill(2)
                 par_yr = par2
                 updated2_eventDate = par_yr + '-' + par_mon + '-' + par_day
+                field_name = "eventDate"
+                original_value = original2_eventDate
+                updated_value = updated2_eventDate
+                date_val_log.write(timestamp("UPDATING eventDate from '{0}' to '{1}'.\n".format(original2_eventDate, updated2_eventDate)))
+                output2_record['eventDate'] = updated2_eventDate
             elif re.match(r'^(\d{1,2}\/)+(\d{1,2}\/)+(\d{2})$',original2_eventDate):
-                """
-                @log {timestamp} Not compliant with ISO date format.
-                """
-                log2_data.write(timestamp('Not compliant with ISO date format.\n'))
-                match2_result = 'no'
                 dateparts_slash = original2_eventDate.split('/')
                 par0 = dateparts_slash[0]
                 par1 = dateparts_slash[1]  
@@ -444,77 +564,62 @@ def validate_eventDate_field_of_data():
                 prefix_yr = '19'
                 fix_yr = prefix_yr + par2
                 updated2_eventDate = fix_yr + '-' + par_mon + '-' + par_day
+                field_name = "eventDate"
+                original_value = original2_eventDate
+                updated_value = updated2_eventDate
+                date_val_log.write(timestamp("UPDATING eventDate from '{0}' to '{1}'.\n".format(original2_eventDate, updated2_eventDate)))
+                output2_record['eventDate'] = updated2_eventDate
+                
         """
-        @end clean_eventDate        
+        @end update_eventDate       
+        """
+                
+        """
+        @begin log_accepted_record
+        @param RecordID
+        @in updated2_eventDate @as updated_eventDate
+        @in original2_eventDate @as compliant_eventDate
+        @out final_result
+        @out accepted2_record_count @as accepted_record_count
+        @out date_val_log @uri file:date_val_log.txt
+            @log {timestamp} {final_result} record {RecordID}
+        """
+        date_val_log.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))    
+        accepted2_record_count += 1  
+        """
+        @end log_accepted_record
+        """            
+        
+        # write output record to output file
+        """
+        @begin write_output2_data
+        @in original2_others @as others
+        @in updated2_eventDate @as updated_eventDate
+        @in original2_eventDate @as compliant_eventDate 
+        @in original2_eventDate @as empty_eventDate
+        @out output2_data  @uri file:demo_output_name_date_val.csv
+        """
+        output2_data.writerow(output2_record)
+        output2_record_count += 1
+        """
+        @end write_output2_data
         """
         
-        # write into files
-        if match2_result is None:
-            """
-            @log {timestamp} UNABLE to determine the validity of the record {RecordID}
-            """
-            log2_data.write(timestamp("UNABLE to determine the validity of the record '{0}'.\n".format(RecordID)))
-            rejected2_record_count += 1
-        
-            # write output record to output file
-            output2_data.writerow(output2_record)
-            output2_record_count += 1
-            
-            # skip to processing of next record in input file
-            continue
-             
-        if updated2_eventDate is not None:
-            """
-            @begin write_log2_data
-            @param input2_data_file_name  @uri file: demo_output_name_val.csv
-            @param RecordID 
-            @in original2_eventDate @as eventDate
-            @in updated2_eventDate @as updated_eventDate
-            @out log2_data @uri file: date_val_log.txt
-            @log {timestamp} Updating event date format from '{original2_eventDate}' to '{updated2_eventDate}'
-            """
-            log2_data.write(timestamp("Updating event date format from '{0}' to '{1}'.\n".format(
-                     original2_eventDate, updated2_eventDate)))
-            log2_data.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
-            """
-            @log {timestamp} ACCEPTED record {RecordID}
-            @end write_log2_data
-            """
-            
-            """
-            @begin write_output2_data
-            @in input2_data  @uri file: demo_output_name_val.csv
-            @in updated2_eventDate @as updated_eventDate
-            @out output2_data  @uri file: demo_output_name_date_val.csv
-            """
-            output2_record['eventDate'] = updated2_eventDate
-            accepted2_record_count += 1   
-            output2_data.writerow(output2_record)
-            output2_record_count += 1
-            """
-            @end write_output2_data
-            """
-
-        else:
-            """
-            @log {timestamp} Compliant with ISO date format.
-            @log {timestamp} ACCEPTED record {RecordID}.
-            """
-            log2_data.write(timestamp('Compliant with ISO date format.\n'))
-            log2_data.write(timestamp("ACCEPTED record '{0}'.\n".format(RecordID)))
-            accepted2_record_count += 1
-            output2_data.writerow(output2_record)
-            output2_record_count += 1
-
+    """
+    @begin log_summary
+    @in accepted2_record_count @as accepted_record_count
+    @in rejected2_record_count @as rejected_record_count
+    @out date_val_log @uri file:date_val_log.txt
+                   @log {timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name}
+                   @log {timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name}
+    """
     print
+    date_val_log.write("\n")
+    date_val_log.write(timestamp("Wrote {0} accepted records to {1}.\n".format(accepted2_record_count, output2_data_file_name)))
+    date_val_log.write(timestamp("Wrote {0} UNABLE-to-determine-validity records to {1}.\n".format(rejected2_record_count, output2_data_file_name)))
     """
-    @log {timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name}
-    @log {timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name}
+    @end log_summary
     """
-    log2_data.write("\n")
-    log2_data.write(timestamp("Wrote {0} accepted records to {1}.\n".format(accepted2_record_count, output2_data_file_name)))
-    log2_data.write(timestamp("Wrote {0} UNABLE-to-determine-validity records to {1}.\n".format(rejected2_record_count, output2_data_file_name)))
-    
 
 """
 @end validate_eventDate_field_of_data               
