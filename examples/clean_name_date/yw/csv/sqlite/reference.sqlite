@@ -1,0 +1,21 @@
+
+CREATE REFERENCE relation (
+    table_name1		TEXT		NOT NULL,
+    column_name1	TEXT		NOT NULL,
+    table_name2		TEXT		NOT NULL,
+    column_name2	TEXT		NOT NULL,
+    PRIMARY KEY(table_name1, column_name1),
+);
+
+
+
+    id                  INTEGER         NOT NULL        PRIMARY KEY,
+
+
+INSERT INTO "RFERENCE('source_line','source_id','source','id');
+INSERT INTO "RFERENCE('comment','source','source_id','id');
+INSERT INTO "RFERENCE('annotation','source_id','source','id');
+INSERT INTO "RFERENCE('annotation','qualifies','annotation','id');
+INSERT INTO "RFERENCE('annotation','comment','comment','id');
+# INSERT INTO "RFERENCE('annotation','line_number','source_line','line_number');
+# INSERT INTO "RFERENCE('annotation_qualifies','qualifies','annotation','id');

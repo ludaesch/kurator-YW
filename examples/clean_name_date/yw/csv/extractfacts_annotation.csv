@@ -62,278 +62,277 @@ annotation_id,source_id,line_number,tag,keyword,value
 61,1,101,uri,@uri,file:name_val_log.txt
 62,1,101,as,@as,name_cleaning_log
 63,1,102,log,@log,{timestamp} Reading input record {RecordID}
-64,1,135,end,@end,read_data_records
-65,1,139,begin,@begin,check_if_name_is_nonempty
-66,1,139,desc,@desc,Check if scientificName value is present
-67,1,140,in,@in,original_scientificName
-68,1,140,as,@as,scientificName
-69,1,141,out,@out,original_scientificName
-70,1,141,as,@as,empty_scientificName
-71,1,142,out,@out,original_scientificName
-72,1,142,as,@as,nonEmpty_scientificName
-73,1,143,out,@out,name_val_log
-74,1,143,uri,@uri,file:name_val_log.txt
-75,1,143,as,@as,name_cleaning_log
-76,1,144,log,@log,{timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
-77,1,145,log,@log,{timestamp} Checking if {field_name} value is Empty: {check_result}
-78,1,162,end,@end,check_if_name_is_nonempty
-79,1,166,begin,@begin,log_name_is_empty
-80,1,166,desc,@desc,Log records of empty scientific name with final status as unable to validate
-81,1,167,param,@param,RecordID
-82,1,168,in,@in,original_scientificName
-83,1,168,as,@as,empty_scientificName
-84,1,169,out,@out,final_result
-85,1,169,as,@as,record_final_status
-86,1,170,out,@out,rejected_record_count
-87,1,170,as,@as,unable-to-validate_record_count
-88,1,171,out,@out,name_val_log
-89,1,171,uri,@uri,file:name_val_log.txt
-90,1,171,as,@as,name_cleaning_log
-91,1,172,log,@log,{timestamp} {final_result} record {RecordID}
-92,1,185,end,@end,log_name_is_empty
-93,1,191,begin,@begin,find_name_match
-94,1,192,desc,@desc,Find if the scientificName matches any record in the local authority source using exact and fuzzy match
-95,1,193,in,@in,original_scientificName
-96,1,193,as,@as,nonEmpty_scientificName
-97,1,194,param,@param,local_authority_source_scientificName_lst
-98,1,194,as,@as,local_authority_source_scientificName_list
-99,1,195,call,@call,exactmatch
-100,1,196,call,@call,fieldmatch
-101,1,197,out,@out,matching_local_authority_source_record
-102,1,197,as,@as,matching_record
-103,1,198,out,@out,match_result
-104,1,199,out,@out,final_result
-105,1,199,as,@as,record_final_status
-106,1,200,out,@out,matching_method
-107,1,201,out,@out,name_val_log
-108,1,201,uri,@uri,file:name_val_log.txt
-109,1,201,as,@as,name_cleaning_log
-110,1,202,log,@log,{timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
-111,1,203,log,@log,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {compliant_result}."
-112,1,229,end,@end,find_name_match
-113,1,235,begin,@begin,log_match_not_found
-114,1,235,desc,@desc,Log record where no match is found in authority source final status as unable to validate
-115,1,236,param,@param,RecordID
-116,1,237,in,@in,final_result
-117,1,237,as,@as,record_final_status
-118,1,238,in,@in,match_result
-119,1,239,out,@out,rejected_record_count
-120,1,239,as,@as,unable-to-validate_record_count
-121,1,240,out,@out,name_val_log
-122,1,240,uri,@uri,file:name_val_log.txt
-123,1,240,as,@as,name_cleaning_log
-124,1,241,log,@log,{timestamp} {final_result} record {RecordID}
-125,1,254,end,@end,log_match_not_found
-126,1,259,begin,@begin,update_scientific_name
-127,1,259,desc,@desc,Update scientificName if fuzzy match is found
-128,1,260,in,@in,matching_method
-129,1,261,in,@in,match_result
-130,1,262,in,@in,matching_local_authority_source_record
-131,1,262,as,@as,matching_record
-132,1,263,out,@out,updated_scientificName
-133,1,271,end,@end,update_scientific_name
-134,1,276,begin,@begin,update_authorship
-135,1,276,desc,@desc,Update authorship if fuzzy match is found
-136,1,277,in,@in,original_authorship
-137,1,277,as,@as,authorship
-138,1,278,in,@in,matching_method
-139,1,279,in,@in,matching_local_authority_source_record
-140,1,279,as,@as,matching_record
-141,1,280,out,@out,updated_authorship
-142,1,290,end,@end,update_authorship
-143,1,296,begin,@begin,log_updated_record
-144,1,296,desc,@desc,Log records updating from old value to new value
-145,1,297,in,@in,updated_scientificName
-146,1,298,in,@in,updated_authorship
-147,1,299,in,@in,original_authorship
-148,1,299,as,@as,authorship
-149,1,300,out,@out,name_val_log
-150,1,300,uri,@uri,file:name_val_log.txt
-151,1,300,as,@as,name_cleaning_log
-152,1,301,log,@log,{timestamp} UPDATING {field_name} from {original_value} to {updated_value}
-153,1,319,end,@end,log_updated_record
-154,1,323,begin,@begin,log_accepted_record
-155,1,323,desc,@desc,Log record final status as accepted
-156,1,324,param,@param,RecordID
-157,1,325,in,@in,final_result
-158,1,325,as,@as,record_final_status
-159,1,326,out,@out,accepted_record_count
-160,1,327,out,@out,name_val_log
-161,1,327,uri,@uri,file:name_val_log.txt
-162,1,327,as,@as,name_cleaning_log
-163,1,328,log,@log,{timestamp} {final_result} record {RecordID}
-164,1,333,end,@end,log_accepted_record
-165,1,338,begin,@begin,write_data_into_file
-166,1,338,desc,@desc,Write data into a new file
-167,1,339,in,@in,original_others
-168,1,339,as,@as,other_fields
-169,1,340,in,@in,original_scientificName
-170,1,340,as,@as,scientificName
-171,1,341,in,@in,original_authorship
-172,1,341,as,@as,authorship
-173,1,342,in,@in,updated_scientificName
-174,1,343,in,@in,updated_authorship
-175,1,344,out,@out,output1_data
-176,1,344,uri,@uri,file:demo_output_name_val.csv
-177,1,344,as,@as,data_with_cleaned_names
-178,1,349,end,@end,write_output1_data
-179,1,353,begin,@begin,log_summary
-180,1,353,desc,@desc,Summarize on all the records
-181,1,354,in,@in,accepted_record_count
-182,1,355,in,@in,rejected_record_count
-183,1,355,as,@as,unable-to-validate_record_count
-184,1,356,out,@out,name_val_log
-185,1,356,uri,@uri,file:name_val_log.txt
-186,1,356,as,@as,name_cleaning_log
-187,1,357,log,@log,{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}
-188,1,358,log,@log,{timestamp} Wrote {rejected_record_count} UNABLE-to-determine-validity records to {output1_data_file_name}
-189,1,365,end,@end,log_summary
-190,1,369,end,@end,clean_scientific_name
-191,1,373,begin,@begin,clean_event_date
-192,1,373,desc,@desc,Clean eventDate field
-193,1,374,in,@in,output1_data
-194,1,374,uri,@uri,file:demo_output_name_val.csv
-195,1,374,as,@as,data_with_cleaned_names
-196,1,375,param,@param,record_id_data
-197,1,375,uri,@uri,file:record_id.txt
-198,1,376,out,@out,output2_data
-199,1,376,uri,@uri,file:demo_output_name_date_val.csv
-200,1,376,as,@as,data_with_cleaned_names_and_dates
-201,1,377,out,@out,date_val_log
-202,1,377,uri,@uri,file:date_val_log.txt
-203,1,377,as,@as,date_cleaning_log
-204,1,394,begin,@begin,initialize_run
-205,1,394,desc,@desc,Create the run log file
-206,1,395,out,@out,date_val_log
-207,1,395,uri,@uri,file:date_val_log.txt
-208,1,395,as,@as,date_cleaning_log
-209,1,396,log,@log,{timestamp} Reading input records from {input2_data_file_name}
-210,1,402,end,@end,initialize_run
-211,1,406,begin,@begin,read_data_records
-212,1,406,desc,@desc,Read data with cleaned names
-213,1,407,in,@in,input2_data
-214,1,407,uri,@uri,file:demo_output_name_val.csv
-215,1,407,as,@as,data_with_cleaned_names
-216,1,408,in,@in,record_id_data
-217,1,408,uri,@uri,file:record_id.txt
-218,1,409,out,@out,original2_eventDate
-219,1,409,as,@as,eventDate
-220,1,410,out,@out,RecordID
-221,1,411,out,@out,original2_others
-222,1,411,as,@as,other_fields
-223,1,412,out,@out,date_val_log
-224,1,412,uri,@uri,file:date_val_log.txt
-225,1,412,as,@as,date_cleaning_log
-226,1,413,log,@log,{timestamp} Reading input record {RecordID}
-227,1,443,end,@end,read_input2_data_records
-228,1,447,begin,@begin,check_if_date_is_nonempty
-229,1,447,desc,@desc,Check if eventDate value is present
-230,1,448,in,@in,original2_eventDate
-231,1,448,as,@as,eventDate
-232,1,449,out,@out,original2_eventDate
-233,1,449,as,@as,empty_eventDate
-234,1,450,out,@out,original2_eventDate
-235,1,450,as,@as,nonEmpty_eventDate
-236,1,451,out,@out,date_val_log
-237,1,451,uri,@uri,file:date_val_log.txt
-238,1,451,as,@as,date_cleaning_log
-239,1,452,log,@log,{timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
-240,1,453,log,@log,{timestamp} Checking if {field_name} value is Empty: {check_result}
-241,1,470,end,@end,check_if_date_is_nonempty
-242,1,474,begin,@begin,log_date_is_empty
-243,1,474,desc,@desc,Log records of empty event date with final status as unable to validate
-244,1,475,param,@param,RecordID
-245,1,476,in,@in,original2_eventDate
-246,1,476,as,@as,empty_eventDate
-247,1,477,out,@out,rejected2_record_count
-248,1,477,as,@as,unable-to-validate_record_count
-249,1,478,out,@out,date_val_log
-250,1,478,uri,@uri,file:date_val_log.txt
-251,1,478,as,@as,date_cleaning_log
-252,1,479,log,@log,{timestamp} {final_result} record {RecordID}
-253,1,492,end,@end,log_date_is_empty
-254,1,498,begin,@begin,check_ISO_date_compliant
-255,1,499,desc,@desc,Check if the eventDate is compliant with ISO date format (YYYY-MM-DD)
-256,1,500,in,@in,original2_eventDate
-257,1,500,as,@as,nonEmpty_eventDate
-258,1,501,out,@out,original2_eventDate
-259,1,501,as,@as,compliant_eventDate
-260,1,502,out,@out,original2_eventDate
-261,1,502,as,@as,nonCompliant_eventDate
-262,1,503,out,@out,date_val_log
-263,1,503,uri,@uri,file:date_val_log.txt
-264,1,503,as,@as,date_cleaning_log
-265,1,504,log,@log,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}."
-266,1,521,end,@end,check_ISO_date_compliant
-267,1,525,begin,@begin,update_event_date
-268,1,525,desc,@desc,Update eventDate by date format conversion
-269,1,526,in,@in,original2_eventDate
-270,1,526,as,@as,nonCompliant_eventDate
-271,1,527,out,@out,updated2_eventDate
-272,1,527,as,@as,updated_eventDate
-273,1,528,out,@out,date_val_log
-274,1,528,uri,@uri,file:date_val_log.txt
-275,1,528,as,@as,date_cleaning_log
-276,1,529,log,@log,{timestamp} UPDATING {field_name} from {original_value} to {updated_value}
-277,1,566,end,@end,update_event_date
-278,1,570,begin,@begin,log_accepted_record
-279,1,570,desc,@desc,Log record final status as accepted
-280,1,571,param,@param,RecordID
-281,1,572,in,@in,updated2_eventDate
-282,1,572,as,@as,updated_eventDate
-283,1,573,in,@in,original2_eventDate
-284,1,573,as,@as,compliant_eventDate
-285,1,574,out,@out,accepted2_record_count
-286,1,574,as,@as,accepted_record_count
-287,1,575,out,@out,date_val_log
-288,1,575,uri,@uri,file:date_val_log.txt
-289,1,575,as,@as,date_cleaning_log
-290,1,576,log,@log,{timestamp} {final_result} record {RecordID}
-291,1,581,end,@end,log_accepted_record
-292,1,586,begin,@begin,write_data_into_file
-293,1,586,desc,@desc,Write data into a new file
-294,1,587,in,@in,original2_others
-295,1,587,as,@as,other_fields
-296,1,588,in,@in,updated2_eventDate
-297,1,588,as,@as,updated_eventDate
-298,1,589,in,@in,original2_eventDate
-299,1,589,as,@as,eventDate
-300,1,590,out,@out,output2_data
-301,1,590,uri,@uri,file:demo_output_name_date_val.csv
-302,1,590,as,@as,data_with_cleaned_names_and_dates
-303,1,595,end,@end,write_output2_data
-304,1,599,begin,@begin,log_summary
-305,1,599,desc,@desc,Summarize on all the records
-306,1,600,in,@in,accepted2_record_count
-307,1,600,as,@as,accepted_record_count
-308,1,601,in,@in,rejected2_record_count
-309,1,601,as,@as,unable-to-validate_record_count
-310,1,602,out,@out,date_val_log
-311,1,602,uri,@uri,file:date_val_log.txt
-312,1,602,as,@as,date_cleaning_log
-313,1,603,log,@log,{timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name}
-314,1,604,log,@log,{timestamp} Wrote {rejected2_record_count} UNABLE-to-determine-validity records to {rejected2_data_file_name}
-315,1,611,end,@end,log_summary
-316,1,615,end,@end,clean_event_date
-317,1,619,end,@end,clean_name_and_date_workflow
-318,1,623,begin,@begin,exactmatch
-319,1,624,param,@param,lst
-320,1,625,param,@param,label_str
-321,1,626,return,@return,key
-322,1,627,return,@return,None
-323,1,639,end,@end,exactmatch
-324,1,643,begin,@begin,fuzzymatch
-325,1,644,param,@param,str1
-326,1,645,param,@param,str2
-327,1,646,return,@return,"[match_result,"
-328,1,674,end,@end,fuzzymatch
-329,1,678,begin,@begin,fieldmatch
-330,1,679,param,@param,lst
-331,1,680,param,@param,str2
-332,1,681,call,@call,fuzzymatch
-333,1,682,return,@return,match_str
-334,1,693,end,@end,fieldmatch
-335,1,698,begin,@begin,timestamp
-336,1,699,param,@param,message
-337,1,700,return,@return,timestamp_message
-338,1,709,end,@end,timestamp
+64,1,134,end,@end,read_data_records
+65,1,138,begin,@begin,check_if_name_is_nonempty
+66,1,138,desc,@desc,Check if scientificName value is present
+67,1,139,in,@in,original_scientificName
+68,1,139,as,@as,scientificName
+69,1,140,out,@out,original_scientificName
+70,1,140,as,@as,empty_scientificName
+71,1,141,out,@out,original_scientificName
+72,1,141,as,@as,nonEmpty_scientificName
+73,1,142,out,@out,name_val_log
+74,1,142,uri,@uri,file:name_val_log.txt
+75,1,142,as,@as,name_cleaning_log
+76,1,143,log,@log,{timestamp} Checking if {field_name} value is Empty - {check_result}
+77,1,159,end,@end,check_if_name_is_nonempty
+78,1,163,begin,@begin,log_name_is_empty
+79,1,163,desc,@desc,Log records of empty scientific name with final status as unable to validate
+80,1,164,param,@param,RecordID
+81,1,165,in,@in,original_scientificName
+82,1,165,as,@as,empty_scientificName
+83,1,166,out,@out,final_result
+84,1,166,as,@as,record_final_status
+85,1,167,out,@out,rejected_record_count
+86,1,167,as,@as,unable-to-validate_record_count
+87,1,168,out,@out,name_val_log
+88,1,168,uri,@uri,file:name_val_log.txt
+89,1,168,as,@as,name_cleaning_log
+90,1,169,log,@log,{timestamp} {final_result} the record {RecordID}
+91,1,182,end,@end,log_name_is_empty
+92,1,188,begin,@begin,find_name_match
+93,1,189,desc,@desc,Find if the scientificName matches any record in the local authority source using exact and fuzzy match
+94,1,190,in,@in,original_scientificName
+95,1,190,as,@as,nonEmpty_scientificName
+96,1,191,param,@param,local_authority_source_scientificName_lst
+97,1,191,as,@as,local_authority_source_scientificName_list
+98,1,192,call,@call,exactmatch
+99,1,193,call,@call,fieldmatch
+100,1,194,out,@out,matching_local_authority_source_record
+101,1,194,as,@as,matching_record
+102,1,195,out,@out,match_result
+103,1,196,out,@out,final_result
+104,1,196,as,@as,record_final_status
+105,1,197,out,@out,matching_method
+106,1,198,out,@out,name_val_log
+107,1,198,uri,@uri,file:name_val_log.txt
+108,1,198,as,@as,name_cleaning_log
+109,1,199,log,@log,{timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
+110,1,200,log,@log,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {compliant_result}."
+111,1,227,end,@end,find_name_match
+112,1,233,begin,@begin,log_match_not_found
+113,1,233,desc,@desc,Log record where no match is found in authority source final status as unable to validate
+114,1,234,param,@param,RecordID
+115,1,235,in,@in,final_result
+116,1,235,as,@as,record_final_status
+117,1,236,in,@in,match_result
+118,1,237,out,@out,rejected_record_count
+119,1,237,as,@as,unable-to-validate_record_count
+120,1,238,out,@out,name_val_log
+121,1,238,uri,@uri,file:name_val_log.txt
+122,1,238,as,@as,name_cleaning_log
+123,1,239,log,@log,{timestamp} {final_result} the record {RecordID}
+124,1,252,end,@end,log_match_not_found
+125,1,257,begin,@begin,update_scientific_name
+126,1,257,desc,@desc,Update scientificName if fuzzy match is found
+127,1,258,in,@in,matching_method
+128,1,259,in,@in,match_result
+129,1,260,in,@in,matching_local_authority_source_record
+130,1,260,as,@as,matching_record
+131,1,261,out,@out,updated_scientificName
+132,1,269,end,@end,update_scientific_name
+133,1,274,begin,@begin,update_authorship
+134,1,274,desc,@desc,Update authorship if fuzzy match is found
+135,1,275,in,@in,original_authorship
+136,1,275,as,@as,authorship
+137,1,276,in,@in,matching_method
+138,1,277,in,@in,matching_local_authority_source_record
+139,1,277,as,@as,matching_record
+140,1,278,out,@out,updated_authorship
+141,1,288,end,@end,update_authorship
+142,1,294,begin,@begin,log_updated_record
+143,1,294,desc,@desc,Log records updating from old value to new value
+144,1,295,in,@in,updated_scientificName
+145,1,296,in,@in,updated_authorship
+146,1,297,in,@in,original_authorship
+147,1,297,as,@as,authorship
+148,1,298,out,@out,name_val_log
+149,1,298,uri,@uri,file:name_val_log.txt
+150,1,298,as,@as,name_cleaning_log
+151,1,299,log,@log,{timestamp} UPDATING record {Record}: {field_name} from {original_value} to {updated_value}
+152,1,317,end,@end,log_updated_record
+153,1,321,begin,@begin,log_accepted_record
+154,1,321,desc,@desc,Log record final status as accepted
+155,1,322,param,@param,RecordID
+156,1,323,in,@in,final_result
+157,1,323,as,@as,record_final_status
+158,1,324,out,@out,accepted_record_count
+159,1,325,out,@out,name_val_log
+160,1,325,uri,@uri,file:name_val_log.txt
+161,1,325,as,@as,name_cleaning_log
+162,1,326,log,@log,{timestamp} {final_result} the record {RecordID}
+163,1,331,end,@end,log_accepted_record
+164,1,336,begin,@begin,write_data_into_file
+165,1,336,desc,@desc,Write data into a new file
+166,1,337,in,@in,original_others
+167,1,337,as,@as,other_fields
+168,1,338,in,@in,original_scientificName
+169,1,338,as,@as,scientificName
+170,1,339,in,@in,original_authorship
+171,1,339,as,@as,authorship
+172,1,340,in,@in,updated_scientificName
+173,1,341,in,@in,updated_authorship
+174,1,342,out,@out,output1_data
+175,1,342,uri,@uri,file:demo_output_name_val.csv
+176,1,342,as,@as,data_with_cleaned_names
+177,1,347,end,@end,write_output1_data
+178,1,351,begin,@begin,log_summary
+179,1,351,desc,@desc,Summarize on all the records
+180,1,352,in,@in,accepted_record_count
+181,1,353,in,@in,rejected_record_count
+182,1,353,as,@as,unable-to-validate_record_count
+183,1,354,out,@out,name_val_log
+184,1,354,uri,@uri,file:name_val_log.txt
+185,1,354,as,@as,name_cleaning_log
+186,1,355,log,@log,{timestamp} Wrote {accepted_record_count} ACCEPTED records to {output1_data_file_name}
+187,1,356,log,@log,{timestamp} Wrote {rejected_record_count} UNABLE-to-validate records to {output1_data_file_name}
+188,1,363,end,@end,log_summary
+189,1,367,end,@end,clean_scientific_name
+190,1,371,begin,@begin,clean_event_date
+191,1,371,desc,@desc,Clean eventDate field
+192,1,372,in,@in,output1_data
+193,1,372,uri,@uri,file:demo_output_name_val.csv
+194,1,372,as,@as,data_with_cleaned_names
+195,1,373,param,@param,record_id_data
+196,1,373,uri,@uri,file:record_id.txt
+197,1,374,out,@out,output2_data
+198,1,374,uri,@uri,file:demo_output_name_date_val.csv
+199,1,374,as,@as,data_with_cleaned_names_and_dates
+200,1,375,out,@out,date_val_log
+201,1,375,uri,@uri,file:date_val_log.txt
+202,1,375,as,@as,date_cleaning_log
+203,1,392,begin,@begin,initialize_run
+204,1,392,desc,@desc,Create the run log file
+205,1,393,out,@out,date_val_log
+206,1,393,uri,@uri,file:date_val_log.txt
+207,1,393,as,@as,date_cleaning_log
+208,1,394,log,@log,{timestamp} Reading input records from {input2_data_file_name}
+209,1,400,end,@end,initialize_run
+210,1,404,begin,@begin,read_data_records
+211,1,404,desc,@desc,Read data with cleaned names
+212,1,405,in,@in,input2_data
+213,1,405,uri,@uri,file:demo_output_name_val.csv
+214,1,405,as,@as,data_with_cleaned_names
+215,1,406,in,@in,record_id_data
+216,1,406,uri,@uri,file:record_id.txt
+217,1,407,out,@out,original2_eventDate
+218,1,407,as,@as,eventDate
+219,1,408,out,@out,RecordID
+220,1,409,out,@out,original2_others
+221,1,409,as,@as,other_fields
+222,1,410,out,@out,date_val_log
+223,1,410,uri,@uri,file:date_val_log.txt
+224,1,410,as,@as,date_cleaning_log
+225,1,411,log,@log,{timestamp} Reading input record {RecordID}
+226,1,441,end,@end,read_input2_data_records
+227,1,445,begin,@begin,check_if_date_is_nonempty
+228,1,445,desc,@desc,Check if eventDate value is present
+229,1,446,in,@in,original2_eventDate
+230,1,446,as,@as,eventDate
+231,1,447,out,@out,original2_eventDate
+232,1,447,as,@as,empty_eventDate
+233,1,448,out,@out,original2_eventDate
+234,1,448,as,@as,nonEmpty_eventDate
+235,1,449,out,@out,date_val_log
+236,1,449,uri,@uri,file:date_val_log.txt
+237,1,449,as,@as,date_cleaning_log
+238,1,450,log,@log,{timestamp} Checking if {field_name} value is Empty: {check_result}
+239,1,466,end,@end,check_if_date_is_nonempty
+240,1,470,begin,@begin,log_date_is_empty
+241,1,470,desc,@desc,Log records of empty event date with final status as unable to validate
+242,1,471,param,@param,RecordID
+243,1,472,in,@in,original2_eventDate
+244,1,472,as,@as,empty_eventDate
+245,1,473,out,@out,rejected2_record_count
+246,1,473,as,@as,unable-to-validate_record_count
+247,1,474,out,@out,date_val_log
+248,1,474,uri,@uri,file:date_val_log.txt
+249,1,474,as,@as,date_cleaning_log
+250,1,475,log,@log,{timestamp} {final_result} the record {RecordID}
+251,1,489,end,@end,log_date_is_empty
+252,1,495,begin,@begin,check_ISO_date_compliant
+253,1,496,desc,@desc,Check if the eventDate is compliant with ISO date format (YYYY-MM-DD)
+254,1,497,in,@in,original2_eventDate
+255,1,497,as,@as,nonEmpty_eventDate
+256,1,498,out,@out,original2_eventDate
+257,1,498,as,@as,compliant_eventDate
+258,1,499,out,@out,original2_eventDate
+259,1,499,as,@as,nonCompliant_eventDate
+260,1,500,out,@out,date_val_log
+261,1,500,uri,@uri,file:date_val_log.txt
+262,1,500,as,@as,date_cleaning_log
+263,1,501,log,@log,{timestamp} Trying {check_type} {source_used} {match_method} match for validating {field_name}: {field_name_value}
+264,1,502,log,@log,"{timestamp} {match_method} match was {match_result}, compliant with {source_used}: {match_result}."
+265,1,520,end,@end,check_ISO_date_compliant
+266,1,524,begin,@begin,update_event_date
+267,1,524,desc,@desc,Update eventDate by date format conversion
+268,1,525,in,@in,original2_eventDate
+269,1,525,as,@as,nonCompliant_eventDate
+270,1,526,out,@out,updated2_eventDate
+271,1,526,as,@as,updated_eventDate
+272,1,527,out,@out,date_val_log
+273,1,527,uri,@uri,file:date_val_log.txt
+274,1,527,as,@as,date_cleaning_log
+275,1,528,log,@log,{timestamp} UPDATING record {Record}: {field_name} from {original_value} to {updated_value}
+276,1,565,end,@end,update_event_date
+277,1,569,begin,@begin,log_accepted_record
+278,1,569,desc,@desc,Log record final status as accepted
+279,1,570,param,@param,RecordID
+280,1,571,in,@in,updated2_eventDate
+281,1,571,as,@as,updated_eventDate
+282,1,572,in,@in,original2_eventDate
+283,1,572,as,@as,compliant_eventDate
+284,1,573,out,@out,accepted2_record_count
+285,1,573,as,@as,accepted_record_count
+286,1,574,out,@out,date_val_log
+287,1,574,uri,@uri,file:date_val_log.txt
+288,1,574,as,@as,date_cleaning_log
+289,1,575,log,@log,{timestamp} {final_result} the record {RecordID}
+290,1,580,end,@end,log_accepted_record
+291,1,585,begin,@begin,write_data_into_file
+292,1,585,desc,@desc,Write data into a new file
+293,1,586,in,@in,original2_others
+294,1,586,as,@as,other_fields
+295,1,587,in,@in,updated2_eventDate
+296,1,587,as,@as,updated_eventDate
+297,1,588,in,@in,original2_eventDate
+298,1,588,as,@as,eventDate
+299,1,589,out,@out,output2_data
+300,1,589,uri,@uri,file:demo_output_name_date_val.csv
+301,1,589,as,@as,data_with_cleaned_names_and_dates
+302,1,594,end,@end,write_output2_data
+303,1,598,begin,@begin,log_summary
+304,1,598,desc,@desc,Summarize on all the records
+305,1,599,in,@in,accepted2_record_count
+306,1,599,as,@as,accepted_record_count
+307,1,600,in,@in,rejected2_record_count
+308,1,600,as,@as,unable-to-validate_record_count
+309,1,601,out,@out,date_val_log
+310,1,601,uri,@uri,file:date_val_log.txt
+311,1,601,as,@as,date_cleaning_log
+312,1,602,log,@log,{timestamp} Wrote {accepted2_record_count} accepted records to {output2_data_file_name}
+313,1,603,log,@log,{timestamp} Wrote {rejected2_record_count} UNABLE-to-validate records to {rejected2_data_file_name}
+314,1,610,end,@end,log_summary
+315,1,614,end,@end,clean_event_date
+316,1,618,end,@end,clean_name_and_date_workflow
+317,1,622,begin,@begin,exactmatch
+318,1,623,param,@param,lst
+319,1,624,param,@param,label_str
+320,1,625,return,@return,key
+321,1,626,return,@return,None
+322,1,638,end,@end,exactmatch
+323,1,642,begin,@begin,fuzzymatch
+324,1,643,param,@param,str1
+325,1,644,param,@param,str2
+326,1,645,return,@return,"[match_result,"
+327,1,673,end,@end,fuzzymatch
+328,1,677,begin,@begin,fieldmatch
+329,1,678,param,@param,lst
+330,1,679,param,@param,str2
+331,1,680,call,@call,fuzzymatch
+332,1,681,return,@return,match_str
+333,1,692,end,@end,fieldmatch
+334,1,697,begin,@begin,timestamp
+335,1,698,param,@param,message
+336,1,699,return,@return,timestamp_message
+337,1,708,end,@end,timestamp
