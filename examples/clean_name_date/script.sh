@@ -79,3 +79,5 @@ FROM log_template_variable_name_value u1, log_template_variable_name_value u2, l
 WHERE u1.variable_name = "field_name" and u2.variable_name='check_type' and u3.variable_name='source_used' and u4.variable_name="match_method"
 AND u1.log_entry_id=u2.log_entry_id and u2.log_entry_id=u3.log_entry_id and u3.log_entry_id=u4.log_entry_id;
 
+# example of a query that extracts sql update statements from the log files...
+select 'update taxonomy set name = "'|| new_value || 'where taxonid = ' || record_id  from record_update where field_name = 'scientificName';
