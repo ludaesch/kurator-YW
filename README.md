@@ -17,11 +17,11 @@ Note: The latest version of yesworkflow (which supports the @log markup) can be 
 
 Overall sturcture of the repository: 
 
-Directory            | Description
----------------------|------------
-.                    | Python scripts, input file, and output files.
-./**yw**             | YesWorkflow-generated graphs and other related configuration files.
-./yw/**csv**         | SQLite facts  in CSV.
+Directory                              | Description
+---------------------------------------|------------
+./examples/clean_name_date/            | Python scripts, input file, and output files.
+./examples/clean_name_date/**yw**      | YesWorkflow-generated graphs and other related configuration files.
+./examples/clean_name_date/yw/**csv**  | SQLite facts  in CSV.
 
 #### Python scripts
 
