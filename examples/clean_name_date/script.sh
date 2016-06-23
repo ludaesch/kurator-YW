@@ -2,6 +2,7 @@
 
 cd ~/git/kurator-YW/examples/clean_name_date/
 
+# create a version of the script without the YW annotations (to show the "raw" script file in the next step)
 grep "@" -v clean_name_date_yw.py | grep -v "\"\"\"" > clean_name_date.py
 
 # python script that does some data quality control operations (validations, enhancements)
@@ -17,10 +18,10 @@ vim clean_name_date_yw.py
 # here's one of the output files of the script with with proposed enhancements embedded
 cat demo_output_name_val.csv
 
-# and here's a log file
+# and here's a log file for the name validation step (there is another one, date_val_log.txt .. )
 vim name_val_log.txt
 
-# we could ask some simple questions of the log file with grep - find lines that match a pattern
+# we could ask some simple questions of this log file with grep - find lines that match a pattern
 # say, which records were accepted
 grep ACCEPTED name_val_log.txt
 
@@ -31,16 +32,17 @@ cd yw
 cat yw.properties
 
 # we'll have YW extract the markup, create a provenance model, and build a graph
+# NOTE: here, running the 'graph' command will run 'extract' and then 'model' first
 java -jar ../../../yesworkflow-0.2.1-SNAPSHOT.jar extract
 java -jar ../../../yesworkflow-0.2.1-SNAPSHOT.jar model
 java -jar ../../../yesworkflow-0.2.1-SNAPSHOT.jar graph
 
 dot -Tpng combined.gv -o combined.png
 
-# The graph gives us a visualization of what the script does at a high level
+# The graph gives us a visualization of what the script does at a high level (overall workflow)
 display combined.png
 
-# or at a lower level
+# or at a lower level (individual subworkflows)
 java -jar ../../yesworkflow-0.2.1-SNAPSHOT.jar graph ../clean_name_date_yw.py -c graph.subworkflow=clean_name_and_date_workflow.clean_scientific_name -c graph.dotfile=subgraph_name_val.gv 
 
 display subgraph_name_val.png
