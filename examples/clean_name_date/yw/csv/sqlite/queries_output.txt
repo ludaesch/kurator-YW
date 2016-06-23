@@ -1,0 +1,48 @@
+record_id           
+--------------------
+'12466924'.         
+'13596531'.         
+'16840096'.         
+'14166883'.         
+count(DISTINCT recor
+--------------------
+5                   
+count(DISTINCT recor
+--------------------
+6                   
+record_id           
+--------------------
+'12466924'.         
+'13596531'.         
+'14166883'.         
+'16840096'.         
+record_id           
+--------------------
+'12466924'          
+'27954274'          
+new_value           
+--------------------
+'Placopecten magella
+'Nodipecten nodosus'
+count(DISTINCT new_v
+--------------------
+2                   
+record_id           
+--------------------
+'10856423'.         
+'28277057'.         
+'27954274'.         
+'16526701'.         
+'78048107'.         
+'26061351'.         
+v1                    v2                    v3                    v4        
+--------------------  --------------------  --------------------  ----------
+scientificName        external_check        local_authority_sour  EXACT     
+scientificName        external_check        local_authority_sour  FUZZY     
+eventDate             self_check            ISO_date_format-(YYY  EXACT     
+record_id             intermidiate_value  
+--------------------  --------------------
+'12466924'            '(Gmelin, 1791)'.   
+'12466924'            '1950-05-27'.       
+'27954274'            'Placopecten magella
+'27954274'            '(Gmelin, 1791)'.   
